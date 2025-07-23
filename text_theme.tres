@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dnavotpy7ec7u"]
+
+[ext_resource type="FontFile" uid="uid://cori3gimmhi8o" path="res://Art/Early GameBoy.ttf" id="1_3x0lr"]
+
+[resource]
+default_font = ExtResource("1_3x0lr")

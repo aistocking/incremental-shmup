@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://covpsece2w44w"]
+
+[ext_resource type="Script" uid="uid://f84p234jppab" path="res://Scenes/Enemies/enemy_light.gd" id="1_bkui8"]
+[ext_resource type="Texture2D" uid="uid://6f3uedw52kxa" path="res://Art/Enemies/Enemy_Light.png" id="1_waqdm"]
+[ext_resource type="PackedScene" uid="uid://dfhqaaeia38w3" path="res://Scenes/Components/health_component.tscn" id="3_omyh5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t5aft"]
+size = Vector2(20, 12)
+
+[node name="EnemyLight" type="Node2D"]
+script = ExtResource("1_bkui8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+clip_children = 2
+texture = ExtResource("1_waqdm")
+
+[node name="Flash" type="ColorRect" parent="Sprite2D"]
+visible = false
+modulate = Color(1, 1, 1, 0.623529)
+offset_left = -10.0
+offset_top = -7.0
+offset_right = 11.0
+offset_bottom = 7.0
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_omyh5")]
+
+[node name="EnemyHurtBox" type="Area2D" parent="."]
+visible = false
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHurtBox"]
+shape = SubResource("RectangleShape2D_t5aft")
+debug_color = Color(0.999465, 0, 0.112206, 0.42)
+
+[node name="FlashRecover" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="FlashTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="area_entered" from="EnemyHurtBox" to="." method="_on_enemy_hurt_box_area_entered"]
+[connection signal="timeout" from="FlashTimer" to="." method="_on_flash_timer_timeout"]

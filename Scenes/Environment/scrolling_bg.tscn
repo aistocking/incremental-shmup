@@ -1,0 +1,75 @@
+[gd_scene load_steps=12 format=3 uid="uid://dmooup6ic7wew"]
+
+[ext_resource type="Texture2D" uid="uid://citb1uwd7fokn" path="res://Art/Environment/BG_FloorGrid_Base.png" id="1_3dbt8"]
+[ext_resource type="Script" uid="uid://bescw6wo3ln1a" path="res://Scenes/Environment/scrolling_bg.gd" id="1_j8vl2"]
+[ext_resource type="Texture2D" uid="uid://cwyw1gckxl4os" path="res://Art/Environment/BG_FloorGrid_Small.png" id="2_j8vl2"]
+[ext_resource type="Texture2D" uid="uid://ddgxf1oi28xkk" path="res://Art/Environment/BG_Wall.png" id="2_vi3rl"]
+[ext_resource type="Texture2D" uid="uid://c1nf1e6o32bcl" path="res://Art/Environment/BG_FloorGrid_Large.png" id="3_vi3rl"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vdlec"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j8vl2"]
+shading_mode = 0
+albedo_texture = ExtResource("2_vi3rl")
+uv1_scale = Vector3(35, 1, 1)
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vi3rl"]
+shading_mode = 0
+albedo_color = Color(0.0745098, 0.0901961, 0.0745098, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iovm1"]
+shading_mode = 0
+albedo_texture = ExtResource("1_3dbt8")
+uv1_scale = Vector3(10, 10, 10)
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ltw34"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("2_j8vl2")
+uv1_scale = Vector3(35, 35, 35)
+texture_filter = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ebniq"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("3_vi3rl")
+uv1_scale = Vector3(35, 35, 35)
+texture_filter = 4
+
+[node name="ScrollingBG" type="SubViewport"]
+script = ExtResource("1_j8vl2")
+
+[node name="Wall" type="MeshInstance3D" parent="."]
+transform = Transform3D(574.186, 0, 0, 0, -7.54896e-08, -35.5744, 0, 1.727, -1.555e-06, 0, 35, -125.83)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_vdlec")
+surface_material_override/0 = SubResource("StandardMaterial3D_j8vl2")
+
+[node name="Wall2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1017.35, 0, 0, 0, -1.08354e-07, -505.051, 0, 2.47884, -2.20765e-05, 2.20819, 421.149, -312.384)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_vdlec")
+surface_material_override/0 = SubResource("StandardMaterial3D_vi3rl")
+
+[node name="Base" type="MeshInstance3D" parent="."]
+transform = Transform3D(463.2, 0, 0, 0, 1, 0, 0, 0, 463.2, 0, 0, 0)
+mesh = SubResource("PlaneMesh_vdlec")
+surface_material_override/0 = SubResource("StandardMaterial3D_iovm1")
+
+[node name="SmallLines" type="MeshInstance3D" parent="."]
+transform = Transform3D(127.202, 0, 0, 0, 1, 0, 0, 0, 127.202, 0, 1.00531, 0)
+mesh = SubResource("PlaneMesh_vdlec")
+surface_material_override/0 = SubResource("StandardMaterial3D_ltw34")
+
+[node name="LargeLines" type="MeshInstance3D" parent="."]
+transform = Transform3D(127.202, 0, 0, 0, 1, 0, 0, 0, 127.202, 0, 2.82716, 0)
+mesh = SubResource("PlaneMesh_vdlec")
+surface_material_override/0 = SubResource("StandardMaterial3D_ebniq")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.939693, -0.34202, 0, 0.34202, 0.939693, 0, 7.16217, 25.561)
+current = true
+fov = 71.4
+far = 3330.12
