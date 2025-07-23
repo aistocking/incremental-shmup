@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dvj2jist2dsfy" path="res://Scenes/game_space.gd" id="1_q8s1b"]
 [ext_resource type="PackedScene" uid="uid://dmooup6ic7wew" path="res://Scenes/Environment/scrolling_bg.tscn" id="2_41xu2"]
-[ext_resource type="PackedScene" uid="uid://bj0y8jdkbniob" path="res://Scenes/hud.tscn" id="2_yqyse"]
-[ext_resource type="PackedScene" uid="uid://btou6innm0pc8" path="res://Scenes/player.tscn" id="3_41xu2"]
+[ext_resource type="PackedScene" uid="uid://bj0y8jdkbniob" path="res://Scenes/Player/hud.tscn" id="2_yqyse"]
+[ext_resource type="PackedScene" uid="uid://btou6innm0pc8" path="res://Scenes/Player/player.tscn" id="3_41xu2"]
 
 [sub_resource type="Animation" id="Animation_q8s1b"]
 resource_name = "Fade_In"
@@ -75,11 +75,11 @@ size = Vector2(151, 21)
 [node name="GameSpace" type="Node2D"]
 script = ExtResource("1_q8s1b")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+[node name="ScrollingBG" type="SubViewportContainer" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="ScrollingBG" parent="SubViewportContainer" instance=ExtResource("2_41xu2")]
+[node name="ScrollingBG" parent="ScrollingBG" instance=ExtResource("2_41xu2")]
 own_world_3d = true
 handle_input_locally = false
 size = Vector2i(320, 180)
@@ -133,37 +133,70 @@ zoom = Vector2(3, 3)
 
 [node name="PlayerBoundingBoxes" type="Node2D" parent="Camera2D"]
 
-[node name="Left" type="Area2D" parent="Camera2D/PlayerBoundingBoxes"]
+[node name="Left" type="StaticBody2D" parent="Camera2D/PlayerBoundingBoxes"]
+collision_layer = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/PlayerBoundingBoxes/Left"]
 position = Vector2(-22, 89.5)
 shape = SubResource("RectangleShape2D_q8s1b")
+debug_color = Color(0, 0.647427, 0.211338, 0.42)
 
-[node name="Right" type="Area2D" parent="Camera2D/PlayerBoundingBoxes"]
+[node name="Right" type="StaticBody2D" parent="Camera2D/PlayerBoundingBoxes"]
+collision_layer = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/PlayerBoundingBoxes/Right"]
 position = Vector2(153, 89.5)
 shape = SubResource("RectangleShape2D_q8s1b")
+debug_color = Color(0, 0.647059, 0.211765, 0.419608)
 
-[node name="Up" type="Area2D" parent="Camera2D/PlayerBoundingBoxes"]
+[node name="Up" type="StaticBody2D" parent="Camera2D/PlayerBoundingBoxes"]
+collision_layer = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/PlayerBoundingBoxes/Up"]
 position = Vector2(65.5, -12)
 shape = SubResource("RectangleShape2D_yqyse")
+debug_color = Color(0, 0.647059, 0.211765, 0.419608)
 
-[node name="Down" type="Area2D" parent="Camera2D/PlayerBoundingBoxes"]
+[node name="Down" type="StaticBody2D" parent="Camera2D/PlayerBoundingBoxes"]
+collision_layer = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/PlayerBoundingBoxes/Down"]
 position = Vector2(65.5, 192)
 shape = SubResource("RectangleShape2D_yqyse")
+debug_color = Color(0, 0.647059, 0.211765, 0.419608)
 
 [node name="BulletDeSpawner" type="Area2D" parent="Camera2D" groups=["BulletDeSpawner"]]
+collision_layer = 64
+collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Camera2D/BulletDeSpawner"]
 polygon = PackedVector2Array(-118, -258, -120, -47, 352, -49, 353, 215, -112, 219, -116, 404, 704, 405, 700, -260)
 
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 320.0
-offset_bottom = 180.0
+[node name="Spawners" type="Node2D" parent="."]
+
+[node name="TopMost" type="Marker2D" parent="Spawners"]
+position = Vector2(353, 18)
+
+[node name="Top" type="Marker2D" parent="Spawners"]
+position = Vector2(353, 42)
+
+[node name="MidTop" type="Marker2D" parent="Spawners"]
+position = Vector2(353, 66)
+
+[node name="Mid" type="Marker2D" parent="Spawners"]
+position = Vector2(353, 90)
+
+[node name="MidBottom" type="Marker2D" parent="Spawners"]
+position = Vector2(353, 114)
+
+[node name="Bottom" type="Marker2D" parent="Spawners"]
+position = Vector2(353, 138)
+
+[node name="BottomMost" type="Marker2D" parent="Spawners"]
+position = Vector2(353, 162)
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

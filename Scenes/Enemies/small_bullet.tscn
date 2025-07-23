@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://ddjajotgdhh0n"]
+
+[ext_resource type="Texture2D" uid="uid://dsylr7iqcxvws" path="res://Art/Enemies/Enemy_Bullet_Light..png" id="1_p46tc"]
+[ext_resource type="Script" uid="uid://8qw10w815gg7" path="res://Scenes/Enemies/small_bullet.gd" id="2_g2e5c"]
+[ext_resource type="PackedScene" uid="uid://nvjx014b5vn1" path="res://Scenes/Components/enemy_bullet_hitbox.tscn" id="3_bvoly"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3auk"]
+atlas = ExtResource("1_p46tc")
+region = Rect2(0, 0, 6, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5mplk"]
+atlas = ExtResource("1_p46tc")
+region = Rect2(6, 0, 6, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2d4ol"]
+atlas = ExtResource("1_p46tc")
+region = Rect2(12, 0, 6, 6)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_146nm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3auk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mplk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2d4ol")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sp77s"]
+size = Vector2(4, 4)
+
+[node name="SmallBullet" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_146nm")
+autoplay = "default"
+script = ExtResource("2_g2e5c")
+
+[node name="EnemyBulletHitbox" parent="." instance=ExtResource("3_bvoly")]
+
+[node name="CollisionShape2D" parent="EnemyBulletHitbox" index="0"]
+shape = SubResource("RectangleShape2D_sp77s")
+
+[editable path="EnemyBulletHitbox"]

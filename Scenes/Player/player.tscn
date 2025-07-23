@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bxgn46gkl2xfk" path="res://Art/Player/Player_FX_Exhaust.png" id="1_fkybt"]
 [ext_resource type="Texture2D" uid="uid://fhna0fh82xw3" path="res://Art/Player/Player.png" id="1_v0iea"]
-[ext_resource type="Script" uid="uid://dheuk3yk4dxyy" path="res://Scenes/player.gd" id="1_x3wgy"]
+[ext_resource type="Script" uid="uid://dheuk3yk4dxyy" path="res://Scenes/Player/player.gd" id="1_x3wgy"]
 [ext_resource type="PackedScene" uid="uid://b4c17usa6vwgb" path="res://Scenes/Components/SFXPlayer.tscn" id="2_8erm5"]
 [ext_resource type="Texture2D" uid="uid://y1svbnr052jy" path="res://Art/Player/Player_FX_BackBlast_Small.png" id="3_x3wgy"]
 [ext_resource type="Texture2D" uid="uid://w3c5xx80xc43" path="res://Art/Player/Player_FX_BackBlast_Medium.png" id="4_3smsa"]
@@ -236,6 +236,20 @@ tracks/4/keys = {
 "method": &"play_sfx"
 }]
 }
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(3.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [true],
+"method": &"change_player_control_to"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_3smsa"]
 length = 0.001
@@ -328,5 +342,7 @@ libraries = {
 }
 
 [node name="VulkanRecoverTimer" type="Timer" parent="."]
+one_shot = true
 
 [node name="MissileRecoverTimer" type="Timer" parent="."]
+one_shot = true

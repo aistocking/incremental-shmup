@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://nvjx014b5vn1"]
+
+[ext_resource type="Script" uid="uid://dkdthhkyjp7wq" path="res://Scenes/Components/enemy_bullet_hitbox.gd" id="1_p7v2g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3pgph"]
+
+[node name="EnemyBulletHitbox" type="Area2D"]
+collision_layer = 8
+script = ExtResource("1_p7v2g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3pgph")
+debug_color = Color(0.860362, 0.361882, 0, 0.42)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

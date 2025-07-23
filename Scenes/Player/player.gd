@@ -6,6 +6,7 @@ Node References
 """
 @onready var _player_sprites: Sprite2D = $ShipSprite
 @onready var _exhaust_sprites: AnimatedSprite2D = $ShipSprite/Exhaust
+@onready var _backblast_sprites: AnimatedSprite2D = $BackBlast
 @onready var _anims: AnimationPlayer = $Anims
 @onready var _bullet_spawn_marker: Marker2D = $BulletSpawnPos
 @onready var _vulkan_recover_timer: Timer = $VulkanRecoverTimer
@@ -15,14 +16,18 @@ Node References
 """
 Packed Scenes
 """
-var _BASIC_BULLET_SCENE: PackedScene = preload("res://Scenes/basic_player_bullet.tscn")
+var _BASIC_BULLET_SCENE: PackedScene = preload("res://Scenes/Player/basic_player_bullet.tscn")
 
+"""
+Variables
+"""
 var player_input: bool = false
 
 var _speed: float = 100.0
 var _previous_velocity: Vector2
 var _firing: bool = false
 var _focused: bool = false
+var _shields: int = 0
 
 func _ready():
 	pass
@@ -34,7 +39,12 @@ func start() -> void:
 	
 
 func _physics_process(delta):
-	handle_movement()
+	if _firing:
+		_fire_projectiles()
+	
+	if player_input == true:
+		handle_movement()
+	
 	move_and_slide()
 
 func _input(event: InputEvent) -> void:
@@ -42,11 +52,18 @@ func _input(event: InputEvent) -> void:
 		return
 	
 	if event.is_action_pressed("Fire"):
-		pass
+		_firing = true
+		_backblast_sprites.visible = true
+		_backblast_sprites.play("Light")
+	if event.is_action_released("Fire"):
+		_firing = false
+		_backblast_sprites.visible = false
 	
 	if event.is_action_pressed("Focus"):
-		pass
-	
+		_focused = true
+	if event.is_action_released("Focus"):
+		_focused = false
+		
 	if event.is_action_pressed("Bomb"):
 		pass
 	
@@ -82,7 +99,15 @@ func handle_movement() -> void:
 
 func _fire_projectiles() -> void:
 	if _vulkan_recover_timer.is_stopped():
-		_vulkan_recover_timer.start(1.0 / Globals.projectile_upgrade_vulkan_firerate)
+		_vulkan_recover_timer.start(0.3 / Globals.projectile_upgrade_vulkan_firerate)
 		var bullet_instance = _BASIC_BULLET_SCENE.instantiate()
 		bullet_instance.global_position = _bullet_spawn_marker.global_position
 		get_parent().add_child(bullet_instance)
+
+func get_hit() -> void:
+	if _shields <= 0:
+		_die()
+
+func _die() -> void:
+	change_player_control_to(false)
+	_player_sprites.visible = false

@@ -27,10 +27,23 @@ window/size/viewport_height=540
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 
+[file_customization]
+
+folder_colors={
+"res://Art/": "teal",
+"res://Resources/": "orange",
+"res://Scenes/": "blue",
+"res://Scenes/Components/": "yellow",
+"res://Scenes/Enemies/": "red",
+"res://Scenes/Environment/": "green",
+"res://Sound/": "purple"
+}
+
 [global_group]
 
 BulletDeSpawner=""
 Player=""
+Enemy=""
 
 [input]
 
