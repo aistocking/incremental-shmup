@@ -1,0 +1,175 @@
+[gd_scene load_steps=12 format=3 uid="uid://bmprh31hfxehv"]
+
+[ext_resource type="Script" uid="uid://b7gcfcaq88e8t" path="res://Scenes/Misc/cutscenes.gd" id="1_uf066"]
+[ext_resource type="PackedScene" uid="uid://b4c17usa6vwgb" path="res://Scenes/Components/sfx_player.tscn" id="1_xwkfj"]
+[ext_resource type="Texture2D" uid="uid://b47lye1xl0upr" path="res://Art/Cutscenes/Eye_Opening.png" id="2_uf066"]
+[ext_resource type="AudioStream" uid="uid://dk5bxhg75vej7" path="res://Sound/Ominous_Tech_BG_Noise.wav" id="3_aiqre"]
+[ext_resource type="AudioStream" uid="uid://bnlpljn60o784" path="res://Sound/Scream.wav" id="4_73682"]
+[ext_resource type="AudioStream" uid="uid://b2lnloyc8spps" path="res://Sound/Sharp_Static.wav" id="5_vsu8k"]
+[ext_resource type="Shader" uid="uid://by53mr7ow7jb" path="res://Resources/static.gdshader" id="6_8pocy"]
+
+[sub_resource type="Animation" id="Animation_j0igy"]
+resource_name = "Eye_Opening"
+length = 4.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EyeOpening:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 3.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EyeOpening:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3, 3.05, 3.1, 3.15, 3.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SfxPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3, 3.6, 3.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [ExtResource("3_aiqre"), 0.0],
+"method": &"play_sfx"
+}, {
+"args": [ExtResource("4_73682"), 0.0],
+"method": &"play_sfx"
+}, {
+"args": [ExtResource("5_vsu8k"), 0.0],
+"method": &"play_sfx"
+}, {
+"args": [],
+"method": &"stop"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SfxPlayer:volume_db")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-30.0, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Static:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 3.6, 3.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_dkbqp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EyeOpening:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EyeOpening:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SfxPlayer:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-30.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Static:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a00eg"]
+_data = {
+&"Eye_Opening": SubResource("Animation_j0igy"),
+&"RESET": SubResource("Animation_dkbqp")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3d5w4"]
+shader = ExtResource("6_8pocy")
+shader_parameter/amount = 40.0
+
+[node name="Cutscenes" type="Node2D"]
+script = ExtResource("1_uf066")
+
+[node name="SfxPlayer" parent="." instance=ExtResource("1_xwkfj")]
+volume_db = -30.0
+
+[node name="EyeOpening" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_uf066")
+hframes = 3
+vframes = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+
+[node name="Anims" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_a00eg")
+}
+
+[node name="Static" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_3d5w4")
+offset_left = -161.0
+offset_top = -91.0
+offset_right = 161.0
+offset_bottom = 92.0
+color = Color(0.545098, 0.67451, 0.0588235, 1)

@@ -61,6 +61,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_released("Fire"):
 		_firing = false
 		_backblast_sprites.visible = false
+		_backblast_sprites.stop()
 	
 	if event.is_action_pressed("Focus"):
 		_focused = true
@@ -116,6 +117,7 @@ func _die() -> void:
 	change_player_control_to(false)
 	velocity = Vector2.ZERO
 	_firing = false
+	_backblast_sprites.stop()
 	_anims.play("Die")
 	await _anims.animation_finished
 	emit_signal("player_died")

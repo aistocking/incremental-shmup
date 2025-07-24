@@ -9,4 +9,4 @@ func change_music(song: AudioStream, time: float) -> void:
 	await create_tween().tween_property(self, "volume_db", -30.0, 0.5).finished
 	stream = song
 	play(time)
-	create_tween().tween_property(self, "volume_db", Globals.music_volume, 0.5).finished
+	create_tween().tween_property(self, "volume_db", Globals.music_volume, 0.5)

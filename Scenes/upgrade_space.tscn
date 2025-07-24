@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://bwlaijqv5vrhs"]
+[gd_scene load_steps=7 format=3 uid="uid://bwlaijqv5vrhs"]
 
+[ext_resource type="Script" uid="uid://7bvg6gorv0f2" path="res://Scenes/upgrade_space.gd" id="1_btoei"]
 [ext_resource type="Texture2D" uid="uid://dp0i87c45ni6q" path="res://Art/UI/Upgrade_Base_Inactive.png" id="1_cbj8s"]
 [ext_resource type="Texture2D" uid="uid://duaspgx5q41t0" path="res://Art/UI/Upgrade_Vulkan_Damage.png" id="2_btoei"]
 [ext_resource type="Texture2D" uid="uid://bxkrbefegg4ni" path="res://Art/UI/Upgrade_Vulkan_Speed.png" id="3_04kcj"]
@@ -7,11 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://vlsmurykobry" path="res://Art/UI/Upgrade_Vulkan_Amount.png" id="5_v3ac7"]
 
 [node name="UpgradeSpace" type="Node2D"]
+script = ExtResource("1_btoei")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
 
 [node name="VulkanDamage" type="Sprite2D" parent="."]
-position = Vector2(287, 169)
 texture = ExtResource("1_cbj8s")
 
 [node name="Icon" type="Sprite2D" parent="VulkanDamage"]
@@ -19,7 +21,7 @@ visible = false
 texture = ExtResource("2_btoei")
 
 [node name="VulkanSpeed" type="Sprite2D" parent="."]
-position = Vector2(210, 168)
+position = Vector2(-75, 0)
 texture = ExtResource("1_cbj8s")
 
 [node name="Icon" type="Sprite2D" parent="VulkanSpeed"]
@@ -27,7 +29,7 @@ visible = false
 texture = ExtResource("3_04kcj")
 
 [node name="VulkanFirerate" type="Sprite2D" parent="."]
-position = Vector2(364, 167)
+position = Vector2(79, -1)
 texture = ExtResource("1_cbj8s")
 
 [node name="Icon" type="Sprite2D" parent="VulkanFirerate"]
@@ -35,7 +37,7 @@ visible = false
 texture = ExtResource("4_uiqod")
 
 [node name="VulkanAmount" type="Sprite2D" parent="."]
-position = Vector2(288, 112)
+position = Vector2(0, -64)
 texture = ExtResource("1_cbj8s")
 
 [node name="Icon" type="Sprite2D" parent="VulkanAmount"]

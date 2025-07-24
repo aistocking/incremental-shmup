@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://f84p234jppab" path="res://Scenes/Enemies/enemy_light.gd" id="1_bkui8"]
 [ext_resource type="Texture2D" uid="uid://6f3uedw52kxa" path="res://Art/Enemies/Enemy_Light.png" id="1_waqdm"]
-[ext_resource type="PackedScene" uid="uid://b4c17usa6vwgb" path="res://Scenes/Components/SFXPlayer.tscn" id="2_1gmkm"]
+[ext_resource type="PackedScene" uid="uid://b4c17usa6vwgb" path="res://Scenes/Components/sfx_player.tscn" id="2_1gmkm"]
 [ext_resource type="PackedScene" uid="uid://dfhqaaeia38w3" path="res://Scenes/Components/health_component.tscn" id="3_omyh5"]
 [ext_resource type="PackedScene" uid="uid://ytjc2hipjs3m" path="res://Scenes/Components/exp_distributor.tscn" id="3_xxl0h"]
 [ext_resource type="Texture2D" uid="uid://rj267cq2gjua" path="res://Art/Enemies/Enemy_FX_Explosion.png" id="4_omyh5"]
