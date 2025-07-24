@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0u3cka7lnwdw"]
+
+[ext_resource type="SpriteFrames" uid="uid://b553e4tim00a6" path="res://Resources/fx_smoke.tres" id="1_sn4q4"]
+[ext_resource type="Script" uid="uid://8cfvvf41jkre" path="res://Scenes/Misc/fx_smoke.gd" id="2_sn4q4"]
+
+[node name="Smoke" type="AnimatedSprite2D"]
+sprite_frames = ExtResource("1_sn4q4")
+offset = Vector2(-1, -4)
+script = ExtResource("2_sn4q4")
+
+[connection signal="animation_looped" from="." to="." method="_on_animation_looped"]

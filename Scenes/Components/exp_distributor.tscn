@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ytjc2hipjs3m"]
+
+[ext_resource type="Script" uid="uid://3oiwsa2gisjk" path="res://Scenes/Components/exp_distributor.gd" id="1_50d2e"]
+
+[node name="ExpDistributor" type="Node"]
+script = ExtResource("1_50d2e")

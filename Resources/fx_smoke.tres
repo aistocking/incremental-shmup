@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://b553e4tim00a6"]
+
+[ext_resource type="Texture2D" uid="uid://dshiebmysvpb8" path="res://Art/Enemies/Enemy_FX_Smoke.png" id="1_j6hvu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sn4q4"]
+atlas = ExtResource("1_j6hvu")
+region = Rect2(0, 0, 9, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_syb5p"]
+atlas = ExtResource("1_j6hvu")
+region = Rect2(9, 0, 9, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdt53"]
+atlas = ExtResource("1_j6hvu")
+region = Rect2(0, 8, 9, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55eag"]
+atlas = ExtResource("1_j6hvu")
+region = Rect2(9, 8, 9, 8)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sn4q4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_syb5p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gdt53")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55eag")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]

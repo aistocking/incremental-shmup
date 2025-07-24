@@ -36,6 +36,7 @@ folder_colors={
 "res://Scenes/Components/": "yellow",
 "res://Scenes/Enemies/": "red",
 "res://Scenes/Environment/": "green",
+"res://Scenes/Misc/": "purple",
 "res://Sound/": "purple"
 }
 
@@ -44,6 +45,7 @@ folder_colors={
 BulletDeSpawner=""
 Player=""
 Enemy=""
+EnemyDeSpawner=""
 
 [input]
 
@@ -107,6 +109,8 @@ Pause={
 2d_physics/layer_5="Environment"
 2d_physics/layer_6="BoundingBoxes"
 2d_physics/layer_7="BulletDeSpawner"
+2d_physics/layer_8="EnemyDeSpawner"
+2d_physics/layer_9="EXPGrabber"
 
 [rendering]
 

@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bj0y8jdkbniob"]
+[gd_scene load_steps=12 format=3 uid="uid://bj0y8jdkbniob"]
 
 [ext_resource type="Theme" uid="uid://dnavotpy7ec7u" path="res://text_theme.tres" id="1_e0onf"]
 [ext_resource type="Script" uid="uid://bdjeeogw5a0cl" path="res://Scenes/Player/hud.gd" id="1_fccik"]
+[ext_resource type="Texture2D" uid="uid://cm8bscq6cu4oc" path="res://Art/UI/UI_Progress_Base.png" id="3_43g36"]
+[ext_resource type="Texture2D" uid="uid://ca4uv8ujeehkl" path="res://Art/UI/UI_Progress_Top.png" id="4_ua0p4"]
+[ext_resource type="Texture2D" uid="uid://dvmf65bffds7c" path="res://Art/UI/UI_Progress_Bar.png" id="5_gppct"]
 
 [sub_resource type="Animation" id="Animation_e0onf"]
 resource_name = "Intro"
@@ -55,6 +58,30 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, -385)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("OutroText:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ShutDown:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_fccik"]
 length = 0.001
@@ -106,10 +133,282 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("OutroText:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ShutDown:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("OutroText:visible_ratio")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("OutroText:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -410)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("MainBlackBar:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-403, -72)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("MainBlackBar:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.523599]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("MainBlackBar:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("MainBlackBar:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ua0p4"]
+resource_name = "Outro"
+length = 1.8
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OutroText:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OutroText:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OutroText:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -410)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ShutDown:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.8, 1, 1.1, 1.3, 1.4, 1.6, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_gppct"]
+resource_name = "Fade_Out"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainBlackBar:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0.63728, 1),
+"update": 0,
+"values": [Vector2(-230, -72), Vector2(1357, -72)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainBlackBar:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.523599]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MainBlackBar:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MainBlackBar:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"outro_finished"],
+"method": &"emit_signal"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_1kv0u"]
+resource_name = "Fade_In"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainBlackBar:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0.63728, 1),
+"update": 0,
+"values": [Vector2(-403, -72), Vector2(1213, -72)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainBlackBar:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.523599]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MainBlackBar:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MainBlackBar:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bjfho"]
 _data = {
+&"Fade_In": SubResource("Animation_1kv0u"),
+&"Fade_Out": SubResource("Animation_gppct"),
 &"Intro": SubResource("Animation_e0onf"),
+&"Outro": SubResource("Animation_ua0p4"),
 &"RESET": SubResource("Animation_fccik")
 }
 
@@ -117,9 +416,8 @@ _data = {
 script = ExtResource("1_fccik")
 
 [node name="NormalBootText" type="Label" parent="."]
-offset_top = -385.0
 offset_right = 585.0
-offset_bottom = 67.0
+offset_bottom = 452.0
 theme = ExtResource("1_e0onf")
 text = ">Load C://Home/Bios/Build.sh
 >Creating: LocalParameters.dll
@@ -129,19 +427,47 @@ text = ">Load C://Home/Bios/Build.sh
 >Creating: Restrictions.dll
 >Creating: EXPHandler.dll
 >Creating: Directives.dll
->LocalParameters.LocalParamsSet()
+>LocalParameters.LocalParamsSet
 >_health = start_var * body_upgrades
 >_exp_mult = start_var * exp_upgrades
 >shield_levels = shield_upgrades
->apply_weapons-Weapons_Array-
+>apply_weapons.Weapons_Array
 >_ship_speed = start_var * speed_upgrades
->WeaponCapabilities.Engage()
->ShieldCapabilities.Start()
->Awaken()
+>WeaponCapabilities.Engage
+>ShieldCapabilities.Start
+>Global.Awaken
 
 --- Hello Master ---"
 visible_characters = 0
 visible_ratio = 0.0
+
+[node name="OutroText" type="Label" parent="."]
+visible = false
+offset_top = -410.0
+offset_right = 826.0
+offset_bottom = 124.0
+theme = ExtResource("1_e0onf")
+text = ">Simulation Failed
+>Global.Gatheer_Data
+>Saving: //Stats/Amount_Destroyed
+>Saving: //Stats/Damage
+>Saving: //Stats/Time
+>Saving: //Stats/Resources_Gathered
+>Saving: //Stats/Behaviours
+>Saving: //Stats/Threat_Estimation
+>Global.Reset
+>Destroying: //Root/OS/Bios/LocalParameters.dll
+>Destroying: //Root/OS/Bios/SubSystemFunctions.dll
+>Destroying: //Root/OS/Bios/WeaponCapabilities.dll
+>Destroying: //Root/OS/Bios/ShieldCapabilities.dll
+>Destroying: //Root/OS/Bios/Restrictions.dll
+>Destroying: //Root/OS/Bios/EXPHandler.dll
+>Destroying: //Root/OS/Bios/Directives.dll
+>Destroying: //Root/OS/Systems/
+>Destroying: //Root/OS/SubSystems/
+>Destroying: //Root/OS/
+>Destroying: //Root/
+>Global.LoadEvaluation"
 
 [node name="SystemsGo" type="Label" parent="."]
 visible = false
@@ -160,6 +486,26 @@ scale = Vector2(3, 3)
 pivot_offset = Vector2(126, 0)
 theme = ExtResource("1_e0onf")
 text = "All Systems Go!!!"
+horizontal_alignment = 1
+
+[node name="ShutDown" type="Label" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -10.0
+offset_right = 128.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+pivot_offset = Vector2(126, 0)
+theme = ExtResource("1_e0onf")
+text = "Shutting Down"
+horizontal_alignment = 1
 
 [node name="Anims" type="AnimationPlayer" parent="."]
 libraries = {
@@ -185,3 +531,52 @@ offset_right = 40.0
 offset_bottom = 23.0
 theme = ExtResource("1_e0onf")
 text = "Stuff"
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -260.0
+offset_top = -48.0
+offset_right = 260.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 2.0
+texture_under = ExtResource("3_43g36")
+texture_over = ExtResource("4_ua0p4")
+texture_progress = ExtResource("5_gppct")
+
+[node name="MainBlackBar" type="ColorRect" parent="."]
+visible = false
+z_index = 100
+offset_left = -403.0
+offset_top = -72.0
+offset_right = 844.0
+offset_bottom = 1226.0
+rotation = -0.523599
+color = Color(0, 0, 0, 1)
+
+[node name="BlackLine1" type="ColorRect" parent="MainBlackBar"]
+layout_mode = 0
+offset_left = -79.0
+offset_right = -19.0
+offset_bottom = 766.0
+color = Color(0, 0, 0, 1)
+
+[node name="BlackLine2" type="ColorRect" parent="MainBlackBar"]
+layout_mode = 0
+offset_left = -138.0
+offset_top = -29.0
+offset_right = -113.0
+offset_bottom = 695.0
+color = Color(0, 0, 0, 1)
+
+[node name="BlackLine3" type="ColorRect" parent="MainBlackBar"]
+layout_mode = 0
+offset_left = -213.0
+offset_top = -64.0
+offset_right = -202.0
+offset_bottom = 618.0
+color = Color(0, 0, 0, 1)

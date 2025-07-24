@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://btou6innm0pc8"]
+[gd_scene load_steps=38 format=3 uid="uid://btou6innm0pc8"]
 
 [ext_resource type="Texture2D" uid="uid://bxgn46gkl2xfk" path="res://Art/Player/Player_FX_Exhaust.png" id="1_fkybt"]
 [ext_resource type="Texture2D" uid="uid://fhna0fh82xw3" path="res://Art/Player/Player.png" id="1_v0iea"]
@@ -8,6 +8,18 @@
 [ext_resource type="Texture2D" uid="uid://w3c5xx80xc43" path="res://Art/Player/Player_FX_BackBlast_Medium.png" id="4_3smsa"]
 [ext_resource type="Texture2D" uid="uid://dm2sixk8n14rf" path="res://Art/Player/Player_FX_BackBlast_Large.png" id="5_8erm5"]
 [ext_resource type="AudioStream" uid="uid://dt17nyvwl738h" path="res://Sound/Take_Off.wav" id="7_3smsa"]
+[ext_resource type="Texture2D" uid="uid://bgyuroc4nmou2" path="res://Art/Player/Player_Death_Explosion.png" id="9_jhyir"]
+[ext_resource type="AudioStream" uid="uid://cj35tcycvmp37" path="res://Sound/Player_Death_Beep.wav" id="9_oikmp"]
+[ext_resource type="AudioStream" uid="uid://bap1cbeush7fo" path="res://Sound/Player_Death_Explosion.wav" id="10_06tpx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f60y1"]
+size = Vector2(20, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_igrcy"]
+size = Vector2(7, 4)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jlvik"]
+radius = 13.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f1ek2"]
 atlas = ExtResource("1_fkybt")
@@ -77,12 +89,6 @@ animations = [{
 "name": &"Moving",
 "speed": 12.0
 }]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f60y1"]
-size = Vector2(20, 10)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_igrcy"]
-size = Vector2(3, 2)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p1odr"]
 atlas = ExtResource("5_8erm5")
@@ -250,6 +256,18 @@ tracks/5/keys = {
 "method": &"change_player_control_to"
 }]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ShipSprite:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_3smsa"]
 length = 0.001
@@ -275,7 +293,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-65, 0)]
+"values": [Vector2(0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -289,21 +307,191 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ShipSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ShipSprite/Flash:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Explosion:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Explosion:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_oikmp"]
+resource_name = "Die"
+length = 2.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShipSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ShipSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ShipSprite/Flash:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.8, 1, 1.1, 1.2, 1.25, 1.3, 1.35, 1.4, 1.45, 1.5, 1.55, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true, false, true, false, true, false, true, false]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SfxPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.3, 0.8, 1.1, 1.25, 1.35, 1.45, 1.55, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [ExtResource("9_oikmp"), 0.0],
+"method": &"play_sfx"
+}, {
+"args": [ExtResource("9_oikmp"), 0.0],
+"method": &"play_sfx"
+}, {
+"args": [ExtResource("9_oikmp"), 0.0],
+"method": &"play_sfx"
+}, {
+"args": [ExtResource("9_oikmp"), 0.0],
+"method": &"play_sfx"
+}, {
+"args": [ExtResource("9_oikmp"), 0.0],
+"method": &"play_sfx"
+}, {
+"args": [ExtResource("9_oikmp"), 0.0],
+"method": &"play_sfx"
+}, {
+"args": [ExtResource("9_oikmp"), 0.0],
+"method": &"play_sfx"
+}, {
+"args": [ExtResource("10_06tpx"), 0.0],
+"method": &"play_sfx"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Explosion:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.7, 2.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Explosion:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.7, 1.8, 1.9, 2, 2.1, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8erm5"]
 _data = {
+&"Die": SubResource("Animation_oikmp"),
 &"Intro": SubResource("Animation_x3wgy"),
 &"RESET": SubResource("Animation_3smsa")
 }
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
+z_index = 10
 collision_mask = 32
 script = ExtResource("1_x3wgy")
+
+[node name="PhysicalCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_f60y1")
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_mask = 0
+
+[node name="HurtCollision" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(-4.5, -1)
+shape = SubResource("RectangleShape2D_igrcy")
+debug_color = Color(0.830428, 0.0743718, 0.362088, 0.42)
+
+[node name="EXPGrabBox" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EXPGrabBox"]
+shape = SubResource("CircleShape2D_jlvik")
+debug_color = Color(0.636392, 0.471608, 0.629994, 0.42)
 
 [node name="SfxPlayer" parent="." instance=ExtResource("2_8erm5")]
 
 [node name="ShipSprite" type="Sprite2D" parent="."]
-position = Vector2(-65, 0)
+visible = false
+clip_children = 2
 texture = ExtResource("1_v0iea")
 hframes = 3
 
@@ -316,25 +504,26 @@ autoplay = "Idle"
 frame = 3
 frame_progress = 0.582413
 
-[node name="PhysicalCollision" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_f60y1")
-
-[node name="HurtBox" type="Area2D" parent="."]
-collision_mask = 12
-
-[node name="HurtCollision" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(-5.5, -2)
-shape = SubResource("RectangleShape2D_igrcy")
-debug_color = Color(0.830428, 0.0743718, 0.362088, 0.42)
-
-[node name="BulletSpawnPos" type="Marker2D" parent="."]
-position = Vector2(11, 0)
+[node name="Flash" type="ColorRect" parent="ShipSprite"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_top = -5.0
+offset_right = -10.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="BackBlast" type="AnimatedSprite2D" parent="."]
 visible = false
 position = Vector2(12, -1)
 sprite_frames = SubResource("SpriteFrames_y6uwr")
 animation = &"Light"
+
+[node name="BulletSpawnPos" type="Marker2D" parent="."]
+position = Vector2(11, 0)
 
 [node name="Anims" type="AnimationPlayer" parent="."]
 libraries = {
@@ -346,3 +535,9 @@ one_shot = true
 
 [node name="MissileRecoverTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Explosion" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("9_jhyir")
+hframes = 2
+vframes = 3

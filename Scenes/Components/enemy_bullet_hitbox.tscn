@@ -5,11 +5,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3pgph"]
 
 [node name="EnemyBulletHitbox" type="Area2D"]
-collision_layer = 8
+collision_layer = 0
 script = ExtResource("1_p7v2g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_3pgph")
 debug_color = Color(0.860362, 0.361882, 0, 0.42)
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

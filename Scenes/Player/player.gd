@@ -12,6 +12,7 @@ Node References
 @onready var _vulkan_recover_timer: Timer = $VulkanRecoverTimer
 @onready var _missile_recover_timer: Timer = $MissileRecoverTimer
 @onready var _sfx_player: AudioStreamPlayer = $SfxPlayer
+@onready var _hurt_collider: CollisionShape2D = $HurtBox/HurtCollision
 
 """
 Packed Scenes
@@ -28,6 +29,8 @@ var _previous_velocity: Vector2
 var _firing: bool = false
 var _focused: bool = false
 var _shields: int = 0
+
+signal player_died
 
 func _ready():
 	pass
@@ -109,5 +112,10 @@ func get_hit() -> void:
 		_die()
 
 func _die() -> void:
+	_hurt_collider.set_deferred("disabled", true)
 	change_player_control_to(false)
-	_player_sprites.visible = false
+	velocity = Vector2.ZERO
+	_firing = false
+	_anims.play("Die")
+	await _anims.animation_finished
+	emit_signal("player_died")

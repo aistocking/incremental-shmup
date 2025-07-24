@@ -1,3 +1,4 @@
+class_name SFXPlayer
 extends AudioStreamPlayer
 
 func _ready():
