@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bmprh31hfxehv"]
+[gd_scene load_steps=24 format=3 uid="uid://bmprh31hfxehv"]
 
 [ext_resource type="Script" uid="uid://b7gcfcaq88e8t" path="res://Scenes/Misc/cutscenes.gd" id="1_uf066"]
 [ext_resource type="PackedScene" uid="uid://b4c17usa6vwgb" path="res://Scenes/Components/sfx_player.tscn" id="1_xwkfj"]
@@ -7,10 +7,16 @@
 [ext_resource type="AudioStream" uid="uid://bnlpljn60o784" path="res://Sound/Scream.wav" id="4_73682"]
 [ext_resource type="AudioStream" uid="uid://b2lnloyc8spps" path="res://Sound/Sharp_Static.wav" id="5_vsu8k"]
 [ext_resource type="Shader" uid="uid://by53mr7ow7jb" path="res://Resources/static.gdshader" id="6_8pocy"]
+[ext_resource type="AudioStream" uid="uid://ps7qfgf6y2a7" path="res://Sound/Alarm_Loop.wav" id="7_73682"]
+[ext_resource type="Texture2D" uid="uid://cobxikqckdtyb" path="res://Art/Cutscenes/Abort.png" id="8_aiqre"]
+[ext_resource type="AudioStream" uid="uid://dwl4nniqmqhhu" path="res://Sound/GlassBreak.wav" id="8_j0igy"]
+[ext_resource type="AudioStream" uid="uid://cha1vjrdkm3a" path="res://Sound/Static.wav" id="8_vsu8k"]
+[ext_resource type="AudioStream" uid="uid://c4e5s0vdw4lp" path="res://Sound/Low_Roar.wav" id="10_dkbqp"]
+[ext_resource type="Texture2D" uid="uid://btgpdxtrqeh1q" path="res://Art/Cutscenes/Cracks.png" id="13_dkbqp"]
 
 [sub_resource type="Animation" id="Animation_j0igy"]
 resource_name = "Eye_Opening"
-length = 6.0
+length = 8.0
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -19,7 +25,7 @@ tracks/0/path = NodePath("EyeOpening:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 5, 5.6),
+"times": PackedFloat32Array(0, 6.6, 7.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
@@ -31,7 +37,7 @@ tracks/1/path = NodePath("EyeOpening:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(5, 5.025, 5.05, 5.125, 5.2),
+"times": PackedFloat32Array(6.6, 6.625, 6.65, 6.725, 6.8),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4]
@@ -43,7 +49,7 @@ tracks/2/path = NodePath("SfxPlayer")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(1, 4.5, 5, 5.6, 5.9),
+"times": PackedFloat32Array(1.5, 5.7, 6.6, 7.2, 7.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "values": [{
 "args": [ExtResource("3_aiqre"), 0.0],
@@ -69,10 +75,10 @@ tracks/3/path = NodePath("SfxPlayer:volume_db")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(1, 3.7375),
+"times": PackedFloat32Array(1.5, 5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [-30.0, 0.0]
+"values": [-35.0, 0.0]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -81,7 +87,7 @@ tracks/4/path = NodePath("Static:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 5.6, 5.9),
+"times": PackedFloat32Array(0, 7.2, 7.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
@@ -137,9 +143,168 @@ tracks/3/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SfxPlayer2:volume_db")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Cracks:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AbortGroup:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_73682"]
+resource_name = "Abort"
+length = 7.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Static:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SfxPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 5, 5.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [ExtResource("5_vsu8k"), 0.0],
+"method": &"play_sfx"
+}, {
+"args": [ExtResource("7_73682"), 0.0],
+"method": &"play_sfx"
+}, {
+"args": [],
+"method": &"stop"
+}, {
+"args": [ExtResource("8_j0igy"), 0.0],
+"method": &"play_sfx"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SfxPlayer:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 5),
+"transitions": PackedFloat32Array(0.482968, 1, 1),
+"update": 0,
+"values": [0.0, -20.0, 0.0]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_abort_scene_multiply"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SfxPlayer2")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(3, 5, 5.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [ExtResource("8_vsu8k"), 0.0],
+"method": &"play_sfx"
+}, {
+"args": [],
+"method": &"stop"
+}, {
+"args": [ExtResource("10_dkbqp"), 0.0],
+"method": &"play_sfx"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SfxPlayer2:volume_db")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(3, 5, 5.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-45.0, 3.27, -15.044]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Cracks:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 5.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AbortGroup:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.2, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a00eg"]
 _data = {
+&"Abort": SubResource("Animation_73682"),
 &"Eye_Opening": SubResource("Animation_j0igy"),
 &"RESET": SubResource("Animation_dkbqp")
 }
@@ -148,8 +313,55 @@ _data = {
 shader = ExtResource("6_8pocy")
 shader_parameter/amount = 40.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_vsu8k"]
+atlas = ExtResource("8_aiqre")
+region = Rect2(0, 0, 101, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8pocy"]
+atlas = ExtResource("8_aiqre")
+region = Rect2(0, 30, 101, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0igy"]
+atlas = ExtResource("8_aiqre")
+region = Rect2(0, 60, 101, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkbqp"]
+atlas = ExtResource("8_aiqre")
+region = Rect2(0, 90, 101, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a00eg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vsu8k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8pocy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j0igy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dkbqp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j0igy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8pocy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vsu8k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
 [node name="Cutscenes" type="Node2D"]
 script = ExtResource("1_uf066")
+
+[node name="SfxPlayer2" parent="." instance=ExtResource("1_xwkfj")]
 
 [node name="SfxPlayer" parent="." instance=ExtResource("1_xwkfj")]
 volume_db = -30.0
@@ -183,5 +395,17 @@ offset_top = -91.0
 offset_right = 161.0
 offset_bottom = 92.0
 color = Color(0.545098, 0.67451, 0.0588235, 1)
+
+[node name="Cracks" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(2.87, 2.87)
+texture = ExtResource("13_dkbqp")
+
+[node name="AbortGroup" type="Node2D" parent="."]
+visible = false
+
+[node name="Abort" type="AnimatedSprite2D" parent="AbortGroup"]
+sprite_frames = SubResource("SpriteFrames_a00eg")
+autoplay = "default"
 
 [connection signal="animation_finished" from="Anims" to="." method="_on_anims_animation_finished"]

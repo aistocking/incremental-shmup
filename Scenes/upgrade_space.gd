@@ -4,7 +4,7 @@ extends Node2D
 Node References
 """
 @onready var _camera: Camera2D = $Camera2D
-@onready var _hud: HUD = $HUD
+@onready var _hud: CanvasLayer = $HUD
 
 """
 Variables

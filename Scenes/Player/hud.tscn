@@ -412,7 +412,7 @@ _data = {
 &"RESET": SubResource("Animation_fccik")
 }
 
-[node name="HUD" type="CanvasLayer"]
+[node name="HUD" type="CanvasLayer" groups=["HUD"]]
 script = ExtResource("1_fccik")
 
 [node name="NormalBootText" type="Label" parent="."]
@@ -580,3 +580,37 @@ offset_top = -64.0
 offset_right = -202.0
 offset_bottom = 618.0
 color = Color(0.0509804, 0.0862745, 0.0509804, 1)
+
+[node name="BitsContainer" type="HBoxContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 189.0
+grow_vertical = 0
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="BitsText" type="Label" parent="BitsContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_e0onf")
+text = "Bits:"
+
+[node name="BitsValue" type="Label" parent="BitsContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_e0onf")
+text = "00000"
+
+[node name="GameSpaceHUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="UpgradeSpaceHUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

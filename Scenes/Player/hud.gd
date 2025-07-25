@@ -5,6 +5,9 @@ extends CanvasLayer
 
 signal outro_finished
 
+func _ready():
+	pass
+
 func gamespace_start() -> void:
 	_anims.animation_set_next("Fade_In", "Intro")
 	_anims.play("Fade_In")
