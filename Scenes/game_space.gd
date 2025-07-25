@@ -22,11 +22,12 @@ Spawn Markers
 
 func _ready():
 	MusicManager.change_music(MusicManager.act1_theme, 0.0)
-	_player.connect("player_died", _hud.end)
+	_player.connect("player_died", _hud.gamespace_end)
 	_hud.connect("outro_finished", _return_to_upgrade_space)
-	_hud.start()
+	_hud.gamespace_start()
 	await get_tree().create_timer(0.2).timeout
 	_player.start()
+	Globals.cutscene_trigger = true
 
 func _spawn_random_enemy() -> void:
 	var instance = _LIGHT_ENEMY_SCENE.instantiate()
@@ -37,7 +38,10 @@ func _spawn_random_enemy() -> void:
 	add_child(instance)
 
 func _return_to_upgrade_space() -> void:
-	get_tree().change_scene_to_file("res://Scenes/upgrade_space.tscn")
+	if Globals.cutscene_trigger == true:
+		get_tree().change_scene_to_file("res://Scenes/Misc/cutscenes.tscn")
+	else:
+		get_tree().change_scene_to_file("res://Scenes/upgrade_space.tscn")
 
 func _on_spawn_timer_timeout():
 	_spawn_random_enemy()

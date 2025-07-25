@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bwlaijqv5vrhs"]
+[gd_scene load_steps=8 format=3 uid="uid://bwlaijqv5vrhs"]
 
 [ext_resource type="Script" uid="uid://7bvg6gorv0f2" path="res://Scenes/upgrade_space.gd" id="1_btoei"]
 [ext_resource type="Texture2D" uid="uid://dp0i87c45ni6q" path="res://Art/UI/Upgrade_Base_Inactive.png" id="1_cbj8s"]
+[ext_resource type="PackedScene" uid="uid://bj0y8jdkbniob" path="res://Scenes/Player/hud.tscn" id="2_04kcj"]
 [ext_resource type="Texture2D" uid="uid://duaspgx5q41t0" path="res://Art/UI/Upgrade_Vulkan_Damage.png" id="2_btoei"]
 [ext_resource type="Texture2D" uid="uid://bxkrbefegg4ni" path="res://Art/UI/Upgrade_Vulkan_Speed.png" id="3_04kcj"]
 [ext_resource type="Texture2D" uid="uid://4ob6mf0cr16d" path="res://Art/UI/Upgrade_Vulkan_Firerate.png" id="4_uiqod"]
@@ -11,7 +12,17 @@
 script = ExtResource("1_btoei")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)
 position_smoothing_enabled = true
+
+[node name="BG" type="ColorRect" parent="Camera2D"]
+offset_left = -326.0
+offset_top = -187.0
+offset_right = 322.0
+offset_bottom = 185.0
+color = Color(0.0509804, 0.0862745, 0.0509804, 1)
+
+[node name="HUD" parent="." instance=ExtResource("2_04kcj")]
 
 [node name="VulkanDamage" type="Sprite2D" parent="."]
 texture = ExtResource("1_cbj8s")

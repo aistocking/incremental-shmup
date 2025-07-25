@@ -443,8 +443,9 @@ visible_ratio = 0.0
 
 [node name="OutroText" type="Label" parent="."]
 visible = false
+offset_top = -410.0
 offset_right = 826.0
-offset_bottom = 534.0
+offset_bottom = 124.0
 theme = ExtResource("1_e0onf")
 text = ">Simulation Failed
 >Global.Gatheer_Data
@@ -550,9 +551,9 @@ texture_progress = ExtResource("5_gppct")
 [node name="MainBlackBar" type="ColorRect" parent="."]
 visible = false
 z_index = 100
-offset_left = 1357.0
+offset_left = -403.0
 offset_top = -72.0
-offset_right = 2604.0
+offset_right = 844.0
 offset_bottom = 1226.0
 rotation = -0.523599
 color = Color(0.0509804, 0.0862745, 0.0509804, 1)

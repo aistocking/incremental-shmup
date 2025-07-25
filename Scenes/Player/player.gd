@@ -125,7 +125,9 @@ func _die() -> void:
 	_exhaust_particles_heavy.emitting = false
 	_exhaust_particles_light.emitting = false
 	_backblast_sprites.stop()
+	_backblast_sprites.visible = false
 	_exhaust_sprites.stop()
+	_exhaust_sprites.visible = false
 	velocity = Vector2.ZERO
 	_firing = false
 	_anims.play("Die")

@@ -11,6 +11,8 @@ var music_volume: float = -8.0 * (master_volume / 100)
 Misc Variables
 """
 var current_exp: int = 0
+var cutscene_trigger: bool = false
+var previous_scene: String
 
 """
 Upgrade Variables
