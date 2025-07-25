@@ -13,11 +13,14 @@ Node References
 @onready var _missile_recover_timer: Timer = $MissileRecoverTimer
 @onready var _sfx_player: AudioStreamPlayer = $SfxPlayer
 @onready var _hurt_collider: CollisionShape2D = $HurtBox/HurtCollision
+@onready var _exhaust_particles_heavy: GPUParticles2D = $ExhaustAnimGroup/HeavyExhaustParticles
+@onready var _exhaust_particles_light: GPUParticles2D = $ExhaustAnimGroup/LightExhaustParticles
 
 """
 Packed Scenes
 """
 var _BASIC_BULLET_SCENE: PackedScene = preload("res://Scenes/Player/basic_player_bullet.tscn")
+var _BOOST_RING_SCENE: PackedScene = preload("res://Scenes/Player/boost_ring.tscn")
 
 """
 Variables
@@ -90,8 +93,12 @@ func handle_movement() -> void:
 	
 	if direction_horizontal > 0:
 		_exhaust_sprites.play("Moving")
+		_exhaust_particles_heavy.emitting = true
+		_exhaust_particles_light.emitting = false
 	else:
 		_exhaust_sprites.play("Idle")
+		_exhaust_particles_heavy.emitting = false
+		_exhaust_particles_light.emitting = true
 	if direction_vertical < 0:
 		_player_sprites.frame = 1
 	elif direction_vertical > 0:
@@ -115,9 +122,17 @@ func get_hit() -> void:
 func _die() -> void:
 	_hurt_collider.set_deferred("disabled", true)
 	change_player_control_to(false)
+	_exhaust_particles_heavy.emitting = false
+	_exhaust_particles_light.emitting = false
+	_backblast_sprites.stop()
+	_exhaust_sprites.stop()
 	velocity = Vector2.ZERO
 	_firing = false
-	_backblast_sprites.stop()
 	_anims.play("Die")
 	await _anims.animation_finished
 	emit_signal("player_died")
+
+func create_boost_ring() -> void:
+	var instance = _BOOST_RING_SCENE.instantiate()
+	instance.position = $ExhaustAnimGroup.position
+	add_child(instance)

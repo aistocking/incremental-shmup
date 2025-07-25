@@ -27,7 +27,7 @@ render_target_update_mode = 4
 [node name="HUD" parent="." instance=ExtResource("2_yqyse")]
 
 [node name="Player" parent="." instance=ExtResource("3_41xu2")]
-position = Vector2(32, 89)
+position = Vector2(32, 123)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(160, 90)

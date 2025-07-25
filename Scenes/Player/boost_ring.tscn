@@ -1,0 +1,159 @@
+[gd_scene load_steps=8 format=3 uid="uid://0t6ih17ddsob"]
+
+[ext_resource type="Script" uid="uid://dcqfjidedewst" path="res://Scenes/Player/boost_ring.gd" id="1_4or8f"]
+[ext_resource type="PackedScene" uid="uid://u2ddp76g0vlw" path="res://Art/Player/Boost_Ring.glb" id="2_rskli"]
+[ext_resource type="Texture2D" uid="uid://bluam1pa7ngmg" path="res://Art/Player/Boost_trail.png" id="3_2ubx0"]
+
+[sub_resource type="Animation" id="Animation_akyns"]
+resource_name = "default"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boost_Ring:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 4.71239, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Boost_Ring:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.3, 0.3, 0.3), Vector3(2, 1, 2)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Boost_Ring/Cylinder:transparency")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Boost_Ring:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -1.5, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3kt0g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boost_Ring:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Boost_Ring:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Boost_Ring/Cylinder:transparency")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Boost_Ring:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4mafp"]
+_data = {
+&"RESET": SubResource("Animation_3kt0g"),
+&"default": SubResource("Animation_akyns")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4mafp"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("3_2ubx0")
+texture_filter = 0
+
+[node name="BoostRing" type="SubViewportContainer"]
+offset_right = 64.0
+offset_bottom = 64.0
+rotation = 1.5708
+scale = Vector2(2, 2)
+pivot_offset = Vector2(35, 5)
+script = ExtResource("1_4or8f")
+
+[node name="SubViewPort" type="SubViewport" parent="."]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+snap_2d_transforms_to_pixel = true
+snap_2d_vertices_to_pixel = true
+anisotropic_filtering_level = 0
+size = Vector2i(64, 64)
+render_target_update_mode = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewPort"]
+libraries = {
+&"": SubResource("AnimationLibrary_4mafp")
+}
+autoplay = "default"
+
+[node name="Boost_Ring" parent="SubViewPort" instance=ExtResource("2_rskli")]
+
+[node name="Cylinder" parent="SubViewPort/Boost_Ring" index="0"]
+transparency = 1.0
+surface_material_override/0 = SubResource("StandardMaterial3D_4mafp")
+
+[node name="Camera3D" type="Camera3D" parent="SubViewPort"]
+transform = Transform3D(1, 0, 0, 0, 0.949994, 0.312269, 0, -0.312269, 0.949994, -0.0205007, 0.556094, 2.7978)
+
+[connection signal="animation_finished" from="SubViewPort/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+
+[editable path="SubViewPort/Boost_Ring"]
