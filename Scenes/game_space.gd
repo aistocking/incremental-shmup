@@ -27,7 +27,6 @@ func _ready():
 	_hud.gamespace_start()
 	await get_tree().create_timer(0.2).timeout
 	_player.start()
-	Globals.cutscene_trigger = true
 
 func _spawn_random_enemy() -> void:
 	var instance = _LIGHT_ENEMY_SCENE.instantiate()

@@ -9,7 +9,7 @@ Node References
 """
 Variables
 """
-var _focus_target: Sprite2D
+var _focus_target: TextureButton
 var player_input: bool
 
 """
@@ -21,8 +21,12 @@ func _ready():
 	_hud.upgradespace_start()
 	_hud.connect("outro_finished", _return_to_gamespace)
 	MusicManager.change_music(_bg_music, 0.0)
-	_focus_target = $VulkanDamage
+	_focus_target = $TextureButton
 	player_input = true
+	_camera.position = _focus_target.position
+	$TextureButton.grab_focus()
+
+func _physics_process(delta):
 	_camera.position = _focus_target.position
 
 func _input(event: InputEvent) -> void:
@@ -41,3 +45,11 @@ func _input(event: InputEvent) -> void:
 
 func _return_to_gamespace() -> void:
 	get_tree().change_scene_to_file("res://Scenes/upgrade_space.tscn")
+
+
+func _on_texture_button_2_focus_entered():
+	_focus_target = $TextureButton2
+
+
+func _on_texture_button_focus_entered():
+	_focus_target = $TextureButton

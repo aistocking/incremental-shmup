@@ -14,6 +14,128 @@
 [ext_resource type="AudioStream" uid="uid://c4e5s0vdw4lp" path="res://Sound/Low_Roar.wav" id="10_dkbqp"]
 [ext_resource type="Texture2D" uid="uid://btgpdxtrqeh1q" path="res://Art/Cutscenes/Cracks.png" id="13_dkbqp"]
 
+[sub_resource type="Animation" id="Animation_73682"]
+resource_name = "Abort"
+length = 7.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Static:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SfxPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 5, 5.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [ExtResource("5_vsu8k"), 0.0],
+"method": &"play_sfx"
+}, {
+"args": [ExtResource("7_73682"), 0.0],
+"method": &"play_sfx"
+}, {
+"args": [],
+"method": &"stop"
+}, {
+"args": [ExtResource("8_j0igy"), 0.0],
+"method": &"play_sfx"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SfxPlayer:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 5),
+"transitions": PackedFloat32Array(0.482968, 1, 1),
+"update": 0,
+"values": [0.0, -20.0, 0.0]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_abort_scene_multiply"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SfxPlayer2")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(3, 5, 5.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [ExtResource("8_vsu8k"), 0.0],
+"method": &"play_sfx"
+}, {
+"args": [],
+"method": &"stop"
+}, {
+"args": [ExtResource("10_dkbqp"), 0.0],
+"method": &"play_sfx"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SfxPlayer2:volume_db")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(3, 5, 5.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-45.0, 3.27, -15.044]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Cracks:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 5.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AbortGroup:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.2, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
 [sub_resource type="Animation" id="Animation_j0igy"]
 resource_name = "Eye_Opening"
 length = 8.0
@@ -178,128 +300,6 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_73682"]
-resource_name = "Abort"
-length = 7.0
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Static:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SfxPlayer")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 5, 5.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"values": [{
-"args": [ExtResource("5_vsu8k"), 0.0],
-"method": &"play_sfx"
-}, {
-"args": [ExtResource("7_73682"), 0.0],
-"method": &"play_sfx"
-}, {
-"args": [],
-"method": &"stop"
-}, {
-"args": [ExtResource("8_j0igy"), 0.0],
-"method": &"play_sfx"
-}]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("SfxPlayer:volume_db")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2, 5),
-"transitions": PackedFloat32Array(0.482968, 1, 1),
-"update": 0,
-"values": [0.0, -20.0, 0.0]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(1.6),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"_abort_scene_multiply"
-}]
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("SfxPlayer2")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(3, 5, 5.7),
-"transitions": PackedFloat32Array(1, 1, 1),
-"values": [{
-"args": [ExtResource("8_vsu8k"), 0.0],
-"method": &"play_sfx"
-}, {
-"args": [],
-"method": &"stop"
-}, {
-"args": [ExtResource("10_dkbqp"), 0.0],
-"method": &"play_sfx"
-}]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("SfxPlayer2:volume_db")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(3, 5, 5.7),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [-45.0, 3.27, -15.044]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Cracks:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 5.7),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("AbortGroup:visible")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.2, 5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a00eg"]
