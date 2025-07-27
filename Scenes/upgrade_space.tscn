@@ -1,13 +1,60 @@
-[gd_scene load_steps=9 format=3 uid="uid://bwlaijqv5vrhs"]
+[gd_scene load_steps=22 format=3 uid="uid://bwlaijqv5vrhs"]
 
 [ext_resource type="Script" uid="uid://7bvg6gorv0f2" path="res://Scenes/upgrade_space.gd" id="1_btoei"]
 [ext_resource type="Texture2D" uid="uid://dp0i87c45ni6q" path="res://Art/UI/Upgrade_Base_Inactive.png" id="1_cbj8s"]
 [ext_resource type="PackedScene" uid="uid://bj0y8jdkbniob" path="res://Scenes/Player/hud.tscn" id="2_04kcj"]
 [ext_resource type="Texture2D" uid="uid://duaspgx5q41t0" path="res://Art/UI/Upgrade_Vulkan_Damage.png" id="2_btoei"]
 [ext_resource type="Texture2D" uid="uid://bxkrbefegg4ni" path="res://Art/UI/Upgrade_Vulkan_Speed.png" id="3_04kcj"]
-[ext_resource type="Texture2D" uid="uid://4ob6mf0cr16d" path="res://Art/UI/Upgrade_Vulkan_Firerate.png" id="4_uiqod"]
-[ext_resource type="Texture2D" uid="uid://vlsmurykobry" path="res://Art/UI/Upgrade_Vulkan_Amount.png" id="5_v3ac7"]
+[ext_resource type="Texture2D" uid="uid://0ths6vlvbmow" path="res://Art/UI/Upgrade_Main_CPU.png" id="3_t3tx2"]
+[ext_resource type="Texture2D" uid="uid://b8p8gry6olday" path="res://Art/UI/Upgrade_Cursor.png" id="5_cbj8s"]
+[ext_resource type="Texture2D" uid="uid://bx3jyldo2ect" path="res://Art/UI/Upgrade_Vulkan_Unlock.png" id="7_a3beg"]
+[ext_resource type="Texture2D" uid="uid://xccd6oou5je2" path="res://Art/UI/Upgrade_Base_Major_Active.png" id="8_2idtm"]
 [ext_resource type="Texture2D" uid="uid://duinwxjgkl5d3" path="res://Art/UI/Upgrade_Base_Active.png" id="8_uiqod"]
+[ext_resource type="Texture2D" uid="uid://cklftxkxrn7sn" path="res://Art/UI/Upgrade_TextBox.png" id="8_v3ac7"]
+[ext_resource type="Texture2D" uid="uid://nqvpf3vrl5n" path="res://Art/UI/Upgrade_Base_Major_Inactive.png" id="9_bspfg"]
+[ext_resource type="Theme" uid="uid://dnavotpy7ec7u" path="res://text_theme.tres" id="9_v3ac7"]
+[ext_resource type="Texture2D" uid="uid://4ob6mf0cr16d" path="res://Art/UI/Upgrade_Vulkan_Firerate.png" id="11_831ub"]
+[ext_resource type="Texture2D" uid="uid://cf6ou1u11au4i" path="res://Art/UI/Upgrade_Sortie_Button_Unfocused.png" id="14_bspfg"]
+[ext_resource type="Texture2D" uid="uid://d0fvj76iw5a0u" path="res://Art/UI/Upgrade_Sortie_Button_Pressed.png" id="15_831ub"]
+[ext_resource type="Texture2D" uid="uid://dr4xhhe3trpri" path="res://Art/UI/Upgrade_Sortie_Button_Focused.png" id="16_8rv04"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_btoei"]
+atlas = ExtResource("5_cbj8s")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04kcj"]
+atlas = ExtResource("5_cbj8s")
+region = Rect2(40, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uiqod"]
+atlas = ExtResource("5_cbj8s")
+region = Rect2(0, 40, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v3ac7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_btoei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_btoei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04kcj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uiqod")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uiqod")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04kcj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [node name="UpgradeSpace" type="Node2D"]
 script = ExtResource("1_btoei")
@@ -26,55 +73,140 @@ color = Color(0.0509804, 0.0862745, 0.0509804, 1)
 [node name="HUD" parent="." instance=ExtResource("2_04kcj")]
 visible = false
 
-[node name="VulkanDamage" type="Sprite2D" parent="."]
-texture = ExtResource("1_cbj8s")
+[node name="MainCPU" type="Sprite2D" parent="."]
+position = Vector2(0, 128)
+texture = ExtResource("3_t3tx2")
 
-[node name="Icon" type="Sprite2D" parent="VulkanDamage"]
-visible = false
+[node name="VulkanUpgrades" type="Node2D" parent="."]
+
+[node name="VulkanDamage" type="Sprite2D" parent="VulkanUpgrades"]
+z_index = 2
+position = Vector2(0, -40)
 texture = ExtResource("2_btoei")
 
-[node name="VulkanSpeed" type="Sprite2D" parent="."]
-position = Vector2(-75, 0)
-texture = ExtResource("1_cbj8s")
-
-[node name="Icon" type="Sprite2D" parent="VulkanSpeed"]
-visible = false
-texture = ExtResource("3_04kcj")
-
-[node name="VulkanFirerate" type="Sprite2D" parent="."]
-position = Vector2(79, -1)
-texture = ExtResource("1_cbj8s")
-
-[node name="Icon" type="Sprite2D" parent="VulkanFirerate"]
-visible = false
-texture = ExtResource("4_uiqod")
-
-[node name="VulkanAmount" type="Sprite2D" parent="."]
-position = Vector2(0, -64)
-texture = ExtResource("1_cbj8s")
-
-[node name="Icon" type="Sprite2D" parent="VulkanAmount"]
-visible = false
-texture = ExtResource("5_v3ac7")
-
-[node name="TextureButton" type="TextureButton" parent="."]
-offset_left = -41.0
-offset_top = 51.0
-offset_right = -9.0
-offset_bottom = 83.0
-focus_neighbor_right = NodePath("../TextureButton2")
-texture_normal = ExtResource("8_uiqod")
-texture_disabled = ExtResource("1_cbj8s")
-
-[node name="TextureButton2" type="TextureButton" parent="."]
-offset_left = 86.0
-offset_top = 40.0
-offset_right = 118.0
-offset_bottom = 72.0
-focus_neighbor_left = NodePath("../TextureButton")
+[node name="VDamageButton" type="TextureButton" parent="VulkanUpgrades/VulkanDamage"]
+z_index = -1
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+pivot_offset = Vector2(16, 16)
+focus_neighbor_left = NodePath("../../VulkanFireRate/VFireRateButton")
+focus_neighbor_right = NodePath("../../VulkanSpeed/VSpeedButton")
+focus_neighbor_bottom = NodePath("../../VulkanUnlock/VUnlockButton")
 disabled = true
 texture_normal = ExtResource("8_uiqod")
 texture_disabled = ExtResource("1_cbj8s")
 
-[connection signal="focus_entered" from="TextureButton" to="." method="_on_texture_button_focus_entered"]
-[connection signal="focus_entered" from="TextureButton2" to="." method="_on_texture_button_2_focus_entered"]
+[node name="VulkanUnlock" type="Sprite2D" parent="VulkanUpgrades"]
+z_index = 2
+position = Vector2(0, 35)
+texture = ExtResource("7_a3beg")
+
+[node name="VUnlockButton" type="TextureButton" parent="VulkanUpgrades/VulkanUnlock"]
+z_index = -1
+offset_left = -23.0
+offset_top = -23.0
+offset_right = 24.0
+offset_bottom = 24.0
+pivot_offset = Vector2(23, 23)
+focus_neighbor_top = NodePath("../../VulkanDamage/VDamageButton")
+focus_neighbor_bottom = NodePath("../../../SortieButton")
+texture_normal = ExtResource("8_2idtm")
+texture_disabled = ExtResource("9_bspfg")
+
+[node name="VulkanSpeed" type="Sprite2D" parent="VulkanUpgrades"]
+z_index = 3
+position = Vector2(90, -40)
+texture = ExtResource("3_04kcj")
+
+[node name="VSpeedButton" type="TextureButton" parent="VulkanUpgrades/VulkanSpeed"]
+z_index = -1
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+pivot_offset = Vector2(16, 16)
+focus_neighbor_left = NodePath("../../VulkanDamage/VDamageButton")
+focus_neighbor_bottom = NodePath("../../VulkanUnlock/VUnlockButton")
+disabled = true
+texture_normal = ExtResource("8_uiqod")
+texture_disabled = ExtResource("1_cbj8s")
+
+[node name="VulkanFireRate" type="Sprite2D" parent="VulkanUpgrades"]
+z_index = 3
+position = Vector2(-90, -40)
+texture = ExtResource("11_831ub")
+
+[node name="VFireRateButton" type="TextureButton" parent="VulkanUpgrades/VulkanFireRate"]
+z_index = -1
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+pivot_offset = Vector2(16, 16)
+focus_neighbor_right = NodePath("../../VulkanDamage/VDamageButton")
+focus_neighbor_bottom = NodePath("../../VulkanUnlock/VUnlockButton")
+disabled = true
+texture_normal = ExtResource("8_uiqod")
+texture_disabled = ExtResource("1_cbj8s")
+
+[node name="Cursor" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_v3ac7")
+autoplay = "default"
+frame_progress = 0.831018
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+offset_left = 139.0
+offset_top = 67.0
+offset_right = 300.0
+offset_bottom = 149.0
+texture = ExtResource("8_v3ac7")
+region_rect = Rect2(0, 0, 30, 30)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="TestTitle" type="Label" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("9_v3ac7")
+text = "Vulkan Damage"
+
+[node name="TestText" type="Label" parent="."]
+visible = false
+offset_right = 547.0
+offset_bottom = 46.0
+scale = Vector2(0.4, 0.4)
+theme = ExtResource("9_v3ac7")
+text = "Increases the damage done by a Vulkan projectile by 50%"
+autowrap_mode = 2
+
+[node name="SortieButton" type="TextureButton" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -29.0
+offset_top = 71.0
+offset_right = 29.0
+offset_bottom = 87.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(58, 16)
+size_flags_horizontal = 8
+size_flags_vertical = 8
+focus_neighbor_top = NodePath("../VulkanUpgrades/VulkanUnlock/VUnlockButton")
+texture_normal = ExtResource("14_bspfg")
+texture_pressed = ExtResource("15_831ub")
+texture_focused = ExtResource("16_8rv04")
+
+[connection signal="focus_entered" from="VulkanUpgrades/VulkanDamage/VDamageButton" to="." method="_on_v_damage_button_focus_entered"]
+[connection signal="focus_entered" from="VulkanUpgrades/VulkanUnlock/VUnlockButton" to="." method="_on_v_unlock_button_focus_entered"]
+[connection signal="focus_entered" from="VulkanUpgrades/VulkanSpeed/VSpeedButton" to="." method="_on_v_speed_button_focus_entered"]
+[connection signal="focus_entered" from="VulkanUpgrades/VulkanFireRate/VFireRateButton" to="." method="_on_v_fire_rate_button_focus_entered"]
+[connection signal="pressed" from="SortieButton" to="." method="_on_sortie_button_pressed"]

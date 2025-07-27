@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cnivctmdsedym"]
+[gd_scene load_steps=8 format=3 uid="uid://cnivctmdsedym"]
 
 [ext_resource type="Script" uid="uid://dvj2jist2dsfy" path="res://Scenes/game_space.gd" id="1_q8s1b"]
 [ext_resource type="PackedScene" uid="uid://dmooup6ic7wew" path="res://Scenes/Environment/scrolling_bg.tscn" id="2_41xu2"]
 [ext_resource type="PackedScene" uid="uid://bj0y8jdkbniob" path="res://Scenes/Player/hud.tscn" id="2_yqyse"]
 [ext_resource type="PackedScene" uid="uid://btou6innm0pc8" path="res://Scenes/Player/player.tscn" id="3_41xu2"]
+[ext_resource type="Theme" uid="uid://dnavotpy7ec7u" path="res://text_theme.tres" id="5_41xu2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q8s1b"]
 size = Vector2(40, 199)
@@ -25,6 +26,7 @@ size = Vector2i(320, 180)
 render_target_update_mode = 4
 
 [node name="HUD" parent="." instance=ExtResource("2_yqyse")]
+visible = false
 
 [node name="Player" parent="." instance=ExtResource("3_41xu2")]
 position = Vector2(32, 123)
@@ -97,4 +99,30 @@ position = Vector2(353, 162)
 wait_time = 2.0
 autostart = true
 
+[node name="Debug Buttons" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="Debug Buttons"]
+offset_left = 268.41
+offset_top = 3.0
+offset_right = 428.41
+offset_bottom = 34.0
+scale = Vector2(0.3, 0.3)
+theme = ExtResource("5_41xu2")
+text = "Cutscene 1"
+
+[node name="Button2" type="Button" parent="Debug Buttons"]
+offset_left = 216.435
+offset_top = 3.0
+offset_right = 376.435
+offset_bottom = 34.0
+scale = Vector2(0.3, 0.3)
+theme = ExtResource("5_41xu2")
+text = "Cutscene 2"
+
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="pressed" from="Debug Buttons/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Debug Buttons/Button2" to="." method="_on_button_2_pressed"]

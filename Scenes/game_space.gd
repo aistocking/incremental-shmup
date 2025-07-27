@@ -44,3 +44,11 @@ func _return_to_upgrade_space() -> void:
 
 func _on_spawn_timer_timeout():
 	_spawn_random_enemy()
+
+
+func _on_button_pressed():
+	Globals.set_cutscene_to_play(Globals.CUTSCENES.EYE)
+
+
+func _on_button_2_pressed():
+	Globals.set_cutscene_to_play(Globals.CUTSCENES.ABORT)
