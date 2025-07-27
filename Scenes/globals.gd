@@ -42,3 +42,6 @@ func change_scene(scene_path: String) -> void:
 func set_cutscene_to_play(cutscene_name: CUTSCENES) -> void:
 	cutscene_trigger = true
 	cutscene_to_be_played = cutscene_name
+
+func increment_upgrade_level(upgrade: int) -> void:
+	upgrade = upgrade + 1

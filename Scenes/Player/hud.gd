@@ -10,6 +10,7 @@ func _ready():
 	Globals.connect("exp_changed", _update_bit_counter)
 	_update_bit_counter()
 	visible = true
+	update_debug_stats()
 
 func gamespace_start() -> void:
 	$FullScreenMargin/GameSpaceHUD.visible = true
@@ -36,3 +37,7 @@ func upgradespace_end() -> void:
 
 func _update_bit_counter() -> void:
 	_gamespace_bits_value.text = str(Globals.current_exp)
+
+func update_debug_stats() -> void:
+	$FullScreenMargin/UpgradeSpaceHUD/DebugStats.text = "VDamage:" + str(Globals.projectile_upgrade_vulkan_damage) + "\n" + "VSpeed:" + str(Globals.projectile_upgrade_vulkan_speed) + "\n" + "VFireRate:" + str(Globals.projectile_upgrade_vulkan_firerate)
+	

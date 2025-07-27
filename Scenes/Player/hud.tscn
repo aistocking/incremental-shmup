@@ -1,13 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://bj0y8jdkbniob"]
+[gd_scene load_steps=12 format=3 uid="uid://bj0y8jdkbniob"]
 
 [ext_resource type="Theme" uid="uid://dnavotpy7ec7u" path="res://text_theme.tres" id="1_e0onf"]
 [ext_resource type="Script" uid="uid://bdjeeogw5a0cl" path="res://Scenes/Player/hud.gd" id="1_fccik"]
 [ext_resource type="Texture2D" uid="uid://cm8bscq6cu4oc" path="res://Art/UI/UI_Progress_Base.png" id="3_43g36"]
 [ext_resource type="Texture2D" uid="uid://ca4uv8ujeehkl" path="res://Art/UI/UI_Progress_Top.png" id="4_ua0p4"]
 [ext_resource type="Texture2D" uid="uid://dvmf65bffds7c" path="res://Art/UI/UI_Progress_Bar.png" id="5_gppct"]
-[ext_resource type="Texture2D" uid="uid://cf6ou1u11au4i" path="res://Art/UI/Upgrade_Sortie_Button_Unfocused.png" id="6_lcw67"]
-[ext_resource type="Texture2D" uid="uid://d0fvj76iw5a0u" path="res://Art/UI/Upgrade_Sortie_Button_Pressed.png" id="7_odoxt"]
-[ext_resource type="Texture2D" uid="uid://dr4xhhe3trpri" path="res://Art/UI/Upgrade_Sortie_Button_Focused.png" id="8_61prf"]
 
 [sub_resource type="Animation" id="Animation_1kv0u"]
 resource_name = "Fade_In"
@@ -603,21 +600,8 @@ text = "0"
 [node name="UpgradeSpaceHUD" type="Control" parent="FullScreenMargin"]
 layout_mode = 2
 
-[node name="SortieButton" type="TextureButton" parent="FullScreenMargin/UpgradeSpaceHUD"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -58.0
-offset_top = -16.0
-grow_horizontal = 0
-grow_vertical = 0
-scale = Vector2(3, 3)
-pivot_offset = Vector2(58, 16)
-size_flags_horizontal = 8
-size_flags_vertical = 8
-texture_normal = ExtResource("6_lcw67")
-texture_pressed = ExtResource("7_odoxt")
-texture_focused = ExtResource("8_61prf")
+[node name="DebugStats" type="Label" parent="FullScreenMargin/UpgradeSpaceHUD"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme = ExtResource("1_e0onf")

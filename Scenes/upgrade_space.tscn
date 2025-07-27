@@ -206,7 +206,10 @@ texture_pressed = ExtResource("15_831ub")
 texture_focused = ExtResource("16_8rv04")
 
 [connection signal="focus_entered" from="VulkanUpgrades/VulkanDamage/VDamageButton" to="." method="_on_v_damage_button_focus_entered"]
+[connection signal="pressed" from="VulkanUpgrades/VulkanDamage/VDamageButton" to="." method="_on_v_damage_button_pressed"]
 [connection signal="focus_entered" from="VulkanUpgrades/VulkanUnlock/VUnlockButton" to="." method="_on_v_unlock_button_focus_entered"]
 [connection signal="focus_entered" from="VulkanUpgrades/VulkanSpeed/VSpeedButton" to="." method="_on_v_speed_button_focus_entered"]
+[connection signal="pressed" from="VulkanUpgrades/VulkanSpeed/VSpeedButton" to="." method="_on_v_speed_button_pressed"]
 [connection signal="focus_entered" from="VulkanUpgrades/VulkanFireRate/VFireRateButton" to="." method="_on_v_fire_rate_button_focus_entered"]
+[connection signal="pressed" from="VulkanUpgrades/VulkanFireRate/VFireRateButton" to="." method="_on_v_fire_rate_button_pressed"]
 [connection signal="pressed" from="SortieButton" to="." method="_on_sortie_button_pressed"]
