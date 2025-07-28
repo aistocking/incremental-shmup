@@ -16,6 +16,7 @@ Node References
 @onready var _exhaust_particles_heavy: GPUParticles2D = $ExhaustAnimGroup/HeavyExhaustParticles
 @onready var _exhaust_particles_light: GPUParticles2D = $ExhaustAnimGroup/LightExhaustParticles
 
+var _shoot_sfx: AudioStream = preload("res://Sound/Shoot.wav")
 """
 Packed Scenes
 """
@@ -112,6 +113,7 @@ func _fire_projectiles() -> void:
 	if _vulkan_recover_timer.is_stopped():
 		_vulkan_recover_timer.start(0.3 / Globals.projectile_upgrade_vulkan_firerate)
 		var bullet_instance = _BASIC_BULLET_SCENE.instantiate()
+		_sfx_player.play_sfx(_shoot_sfx, 0.0)
 		bullet_instance.global_position = _bullet_spawn_marker.global_position
 		get_parent().add_child(bullet_instance)
 
