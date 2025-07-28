@@ -23,6 +23,10 @@ func _abort_scene_multiply() -> void:
 		$AbortGroup.add_child(duplicated_instance)
 		await get_tree().create_timer(.7 / (i+1)).timeout
 
+func _stop_all_aborts() -> void:
+	for i in $AbortGroup.get_child_count():
+		$AbortGroup.get_child(i).pause()
+
 func _on_anims_animation_finished(anim_name):
 	if anim_name == "Abort":
 		get_tree().quit()

@@ -41,3 +41,11 @@ func _update_bit_counter() -> void:
 func update_debug_stats() -> void:
 	$FullScreenMargin/UpgradeSpaceHUD/DebugStats.text = "VDamage:" + str(Globals.projectile_upgrade_vulkan_damage) + "\n" + "VSpeed:" + str(Globals.projectile_upgrade_vulkan_speed) + "\n" + "VFireRate:" + str(Globals.projectile_upgrade_vulkan_firerate)
 	
+
+
+func _on_button_pressed():
+	Globals.set_cutscene_to_play(Globals.CUTSCENES.EYE)
+
+
+func _on_button_2_pressed():
+	Globals.set_cutscene_to_play(Globals.CUTSCENES.ABORT)

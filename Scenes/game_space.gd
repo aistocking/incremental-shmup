@@ -28,6 +28,9 @@ func _ready():
 	await get_tree().create_timer(0.2).timeout
 	_player.start()
 
+func _physics_process(delta):
+	$Camera2D/PlayerBoundingBoxes/Right/CollisionShape2D/VisualBarrier.material.set_shader_parameter("player_position", _player.global_position)
+
 func _spawn_random_enemy() -> void:
 	var instance = _LIGHT_ENEMY_SCENE.instantiate()
 	var random_y = randf_range(_spawn_marker_top.global_position.y, _spawn_marker_bottom.global_position.y)
@@ -44,11 +47,3 @@ func _return_to_upgrade_space() -> void:
 
 func _on_spawn_timer_timeout():
 	_spawn_random_enemy()
-
-
-func _on_button_pressed():
-	Globals.set_cutscene_to_play(Globals.CUTSCENES.EYE)
-
-
-func _on_button_2_pressed():
-	Globals.set_cutscene_to_play(Globals.CUTSCENES.ABORT)
