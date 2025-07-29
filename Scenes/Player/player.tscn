@@ -1,6 +1,5 @@
-[gd_scene load_steps=39 format=3 uid="uid://btou6innm0pc8"]
+[gd_scene load_steps=30 format=3 uid="uid://btou6innm0pc8"]
 
-[ext_resource type="Texture2D" uid="uid://bxgn46gkl2xfk" path="res://Art/Player/Player_FX_Exhaust.png" id="1_fkybt"]
 [ext_resource type="Texture2D" uid="uid://fhna0fh82xw3" path="res://Art/Player/Player.png" id="1_v0iea"]
 [ext_resource type="Script" uid="uid://dheuk3yk4dxyy" path="res://Scenes/Player/player.gd" id="1_x3wgy"]
 [ext_resource type="PackedScene" uid="uid://b4c17usa6vwgb" path="res://Scenes/Components/sfx_player.tscn" id="2_8erm5"]
@@ -8,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://w3c5xx80xc43" path="res://Art/Player/Player_FX_BackBlast_Medium.png" id="4_3smsa"]
 [ext_resource type="Texture2D" uid="uid://dm2sixk8n14rf" path="res://Art/Player/Player_FX_BackBlast_Large.png" id="5_8erm5"]
 [ext_resource type="AudioStream" uid="uid://dt17nyvwl738h" path="res://Sound/Take_Off.wav" id="7_3smsa"]
+[ext_resource type="SpriteFrames" uid="uid://bwm6nbp1517qw" path="res://Resources/player_exhaust.tres" id="7_74mp2"]
 [ext_resource type="Texture2D" uid="uid://bgyuroc4nmou2" path="res://Art/Player/Player_Death_Explosion.png" id="9_jhyir"]
 [ext_resource type="AudioStream" uid="uid://cj35tcycvmp37" path="res://Sound/Player_Death_Beep.wav" id="9_oikmp"]
 [ext_resource type="AudioStream" uid="uid://bap1cbeush7fo" path="res://Sound/Player_Death_Explosion.wav" id="10_06tpx"]
@@ -413,75 +413,6 @@ radial_velocity_min = -2.23517e-05
 radial_velocity_max = 39.92
 gravity = Vector3(-75, 0, 0)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_f1ek2"]
-atlas = ExtResource("1_fkybt")
-region = Rect2(0, 11, 10, 11)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tx1dd"]
-atlas = ExtResource("1_fkybt")
-region = Rect2(10, 11, 10, 11)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gymyn"]
-atlas = ExtResource("1_fkybt")
-region = Rect2(20, 11, 10, 11)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pu2lt"]
-atlas = ExtResource("1_fkybt")
-region = Rect2(30, 11, 10, 11)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ukyrk"]
-atlas = ExtResource("1_fkybt")
-region = Rect2(0, 0, 10, 11)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7dp3o"]
-atlas = ExtResource("1_fkybt")
-region = Rect2(10, 0, 10, 11)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h4iuc"]
-atlas = ExtResource("1_fkybt")
-region = Rect2(20, 0, 10, 11)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fd4e3"]
-atlas = ExtResource("1_fkybt")
-region = Rect2(30, 0, 10, 11)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_qqcod"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f1ek2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tx1dd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gymyn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pu2lt")
-}],
-"loop": true,
-"name": &"Idle",
-"speed": 12.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ukyrk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7dp3o")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_h4iuc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fd4e3")
-}],
-"loop": true,
-"name": &"Moving",
-"speed": 12.0
-}]
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_p1odr"]
 atlas = ExtResource("5_8erm5")
 region = Rect2(0, 0, 10, 13)
@@ -620,7 +551,7 @@ hframes = 3
 [node name="Exhaust" type="AnimatedSprite2D" parent="ShipSprite"]
 z_index = -1
 position = Vector2(-14, 0)
-sprite_frames = SubResource("SpriteFrames_qqcod")
+sprite_frames = ExtResource("7_74mp2")
 animation = &"Moving"
 autoplay = "Idle"
 

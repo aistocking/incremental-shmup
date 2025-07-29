@@ -121,13 +121,13 @@ func _fire_projectiles() -> void:
 				0:
 					bullet_instance.global_position = _bullet_spawn_marker.global_position
 				1:
-					bullet_instance.global_position = _bullet_spawn_marker.global_position + Vector2(-1, 4)
+					bullet_instance.global_position = _bullet_spawn_marker.global_position + Vector2(-3, 4)
 				2:
-					bullet_instance.global_position = _bullet_spawn_marker.global_position + Vector2(-1, -4)
+					bullet_instance.global_position = _bullet_spawn_marker.global_position + Vector2(-3, -4)
 				3:
-					bullet_instance.global_position = _bullet_spawn_marker.global_position + Vector2(-2, 8)
+					bullet_instance.global_position = _bullet_spawn_marker.global_position + Vector2(-6, 8)
 				4:
-					bullet_instance.global_position = _bullet_spawn_marker.global_position + Vector2(-2, -8)
+					bullet_instance.global_position = _bullet_spawn_marker.global_position + Vector2(-6, -8)
 			get_parent().add_child(bullet_instance)
 
 func get_hit() -> void:

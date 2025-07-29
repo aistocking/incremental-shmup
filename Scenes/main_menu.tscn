@@ -1,13 +1,351 @@
-[gd_scene load_steps=14 format=3 uid="uid://ewsbm4nr5s05"]
+[gd_scene load_steps=23 format=3 uid="uid://ewsbm4nr5s05"]
 
 [ext_resource type="Texture2D" uid="uid://djrvks8vxuxkf" path="res://Art/UI/Main_Menu.png" id="1_28flt"]
 [ext_resource type="Script" uid="uid://ccpq7t508hr41" path="res://Scenes/main_menu.gd" id="1_cp0ys"]
 [ext_resource type="Texture2D" uid="uid://br050g30ocu5c" path="res://Art/UI/Cursor.png" id="2_48xlc"]
 [ext_resource type="PackedScene" uid="uid://b4c17usa6vwgb" path="res://Scenes/Components/sfx_player.tscn" id="2_yhxw7"]
+[ext_resource type="Texture2D" uid="uid://dkxmo6dgymyfu" path="res://Art/UI/Main_Menu_BG_WireFrame01.png" id="3_trj04"]
 [ext_resource type="Texture2D" uid="uid://c1142igobu8gj" path="res://Art/UI/Main_Menu_Start_Unfocused.png" id="3_yhxw7"]
+[ext_resource type="Texture2D" uid="uid://b3x0ebs3ify0t" path="res://Art/UI/Main_Menu_BG_WireFrame02.png" id="4_t1dhk"]
 [ext_resource type="Texture2D" uid="uid://dd8oihdeuf7sg" path="res://Art/UI/Main_Menu_Start_Focused.png" id="4_trj04"]
 [ext_resource type="Texture2D" uid="uid://bmfethwydabxs" path="res://Art/UI/Main_Menu_Exit_Unfocused.png" id="5_16hvj"]
 [ext_resource type="Texture2D" uid="uid://dfsbi0nafv0oo" path="res://Art/UI/Main_Menu_Exit_Focused.png" id="6_vr1f0"]
+[ext_resource type="Texture2D" uid="uid://cklftxkxrn7sn" path="res://Art/UI/Upgrade_TextBox.png" id="7_t1dhk"]
+[ext_resource type="Texture2D" uid="uid://fhna0fh82xw3" path="res://Art/Player/Player.png" id="12_5egv6"]
+[ext_resource type="SpriteFrames" uid="uid://bwm6nbp1517qw" path="res://Resources/player_exhaust.tres" id="13_vtepg"]
+
+[sub_resource type="Animation" id="Animation_8dnnj"]
+resource_name = "Intro"
+length = 4.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IntroStuff/Dark:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("IntroStuff/Bright1:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("IntroStuff/Bright2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("IntroStuff/Ship:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("IntroStuff/Ship:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.5, 1.1),
+"transitions": PackedFloat32Array(1.36604, 1),
+"update": 0,
+"values": [Vector2(-34, 135), Vector2(555, 135)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("IntroStuff/Bright2:size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.5, 1.1, 3),
+"transitions": PackedFloat32Array(1.36604, 6, 1),
+"update": 0,
+"values": [Vector2(0, 1), Vector2(480, 1), Vector2(480, 135)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("IntroStuff/Bright1:size")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.5, 1.1),
+"transitions": PackedFloat32Array(1.36604, 1),
+"update": 0,
+"values": [Vector2(0, 1), Vector2(480, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("IntroStuff/Bright1:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1.1, 3),
+"transitions": PackedFloat32Array(6, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 135)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("IntroStuff/Bright2:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(3, 3.8),
+"transitions": PackedFloat32Array(5, 1),
+"update": 0,
+"values": [Vector2(0, 135), Vector2(0, 275)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("IntroStuff/Bright1:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(3, 3.8),
+"transitions": PackedFloat32Array(5, 1),
+"update": 0,
+"values": [Vector2(0, 135), Vector2(0, -5)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("IntroStuff:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 3.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/11/type = "method"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath(".")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_start_button_focus_entered"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_m3bi6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IntroStuff/Dark:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("IntroStuff/Bright1:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("IntroStuff/Bright2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("IntroStuff/Ship:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("IntroStuff/Ship:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-34, 140)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("IntroStuff/Bright2:size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(480, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("IntroStuff/Bright1:size")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(480, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("IntroStuff/Bright1:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 135)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("IntroStuff/Bright2:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 135)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("IntroStuff/Bright1:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 135)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("IntroStuff:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("MainBlackBar:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-200, -72)]
+}
+
+[sub_resource type="Animation" id="Animation_5egv6"]
+resource_name = "Outro"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IntroStuff:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainBlackBar:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1.41421, 1),
+"update": 0,
+"values": [Vector2(-200, -72), Vector2(700, -72)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wyh8j"]
+_data = {
+&"Intro": SubResource("Animation_8dnnj"),
+&"Outro": SubResource("Animation_5egv6"),
+&"RESET": SubResource("Animation_m3bi6")
+}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1ehe0"]
 atlas = ExtResource("2_48xlc")
@@ -53,6 +391,12 @@ offset_bottom = 275.0
 scale = Vector2(2, 2)
 script = ExtResource("1_cp0ys")
 
+[node name="Anims" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_wyh8j")
+}
+autoplay = "Intro"
+
 [node name="SfxPlayer" parent="." instance=ExtResource("2_yhxw7")]
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -64,37 +408,104 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0509804, 0.0862745, 0.0509804, 1)
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="DarkWireFrame" type="Parallax2D" parent="."]
+repeat_size = Vector2(491, 0)
+autoscroll = Vector2(6, 0)
+repeat_times = 3
+
+[node name="WireFrameDarkBottom" type="TextureRect" parent="DarkWireFrame"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = 246.0
+offset_right = 491.0
+offset_bottom = 271.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("4_t1dhk")
+stretch_mode = 1
+
+[node name="WireFrameDarkTop" type="TextureRect" parent="DarkWireFrame"]
+offset_right = 491.0
+offset_bottom = 25.0
+texture = ExtResource("4_t1dhk")
+stretch_mode = 1
+flip_v = true
+
+[node name="BrightWireFrame" type="Parallax2D" parent="."]
+repeat_size = Vector2(491, 0)
+autoscroll = Vector2(10, 0)
+repeat_times = 3
+
+[node name="WireFrameBrightBottom" type="TextureRect" parent="BrightWireFrame"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = 256.0
+offset_right = 491.0
+offset_bottom = 271.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("3_trj04")
+stretch_mode = 1
+
+[node name="WireFrameBrightTop" type="TextureRect" parent="BrightWireFrame"]
+offset_right = 491.0
+offset_bottom = 15.0
+texture = ExtResource("3_trj04")
+stretch_mode = 1
+flip_v = true
+
+[node name="TitleText" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -192.0
-offset_right = 192.0
-offset_bottom = 192.0
+offset_left = -201.5
+offset_top = 9.0
+offset_right = 182.5
+offset_bottom = 201.0
 grow_horizontal = 2
 texture = ExtResource("1_28flt")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="TextBox" type="NinePatchRect" parent="."]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -24.5
-offset_top = -28.0
-offset_right = 24.5
+offset_left = -60.5
+offset_top = -98.0
+offset_right = 50.5
+offset_bottom = -33.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_constants/margin_bottom = 45
+texture = ExtResource("7_t1dhk")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="TextBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_bottom = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextBox/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 15
 alignment = 1
 
-[node name="StartButton" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+[node name="StartButton" type="TextureButton" parent="TextBox/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 focus_neighbor_top = NodePath(".")
@@ -102,7 +513,7 @@ focus_neighbor_bottom = NodePath("../ExitButton")
 texture_normal = ExtResource("3_yhxw7")
 texture_focused = ExtResource("4_trj04")
 
-[node name="ExitButton" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+[node name="ExitButton" type="TextureButton" parent="TextBox/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 focus_neighbor_top = NodePath("../StartButton")
@@ -111,17 +522,93 @@ texture_normal = ExtResource("5_16hvj")
 texture_focused = ExtResource("6_vr1f0")
 
 [node name="CursorLeft" type="AnimatedSprite2D" parent="."]
-position = Vector2(198.5, 196)
 sprite_frames = SubResource("SpriteFrames_cp0ys")
 autoplay = "default"
 
 [node name="CursorRight" type="AnimatedSprite2D" parent="."]
-position = Vector2(285.5, 198.5)
 scale = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_cp0ys")
 autoplay = "default"
 
-[connection signal="focus_entered" from="MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_focus_entered"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="focus_entered" from="MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_focus_entered"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[node name="IntroStuff" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Dark" type="ColorRect" parent="IntroStuff"]
+layout_mode = 0
+offset_right = 483.0
+offset_bottom = 273.0
+color = Color(0.0509804, 0.0862745, 0.0509804, 1)
+
+[node name="Bright1" type="ColorRect" parent="IntroStuff"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 6.0
+anchor_top = 3.375
+anchor_right = 6.0
+anchor_bottom = 3.375
+offset_left = -240.0
+offset_top = -1.52588e-05
+offset_right = -240.0
+offset_bottom = 0.999985
+scale = Vector2(1, 135)
+pivot_offset = Vector2(0, 1)
+color = Color(0.956863, 1, 0.772549, 1)
+
+[node name="Bright2" type="ColorRect" parent="IntroStuff"]
+layout_mode = 0
+offset_top = 135.0
+offset_bottom = 136.0
+color = Color(0.956863, 1, 0.772549, 1)
+
+[node name="Ship" type="Sprite2D" parent="IntroStuff"]
+position = Vector2(-34, 140)
+scale = Vector2(3, 3)
+texture = ExtResource("12_5egv6")
+hframes = 3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="IntroStuff/Ship"]
+position = Vector2(-14.3333, 0)
+sprite_frames = ExtResource("13_vtepg")
+animation = &"Moving"
+autoplay = "Moving"
+
+[node name="MainBlackBar" type="ColorRect" parent="."]
+z_index = 100
+offset_left = 700.0
+offset_top = -72.0
+offset_right = 1947.0
+offset_bottom = 1226.0
+rotation = 0.523599
+scale = Vector2(-1, 1)
+color = Color(0.0509804, 0.0862745, 0.0509804, 1)
+
+[node name="BlackLine1" type="ColorRect" parent="MainBlackBar"]
+layout_mode = 0
+offset_left = -79.0
+offset_right = -19.0
+offset_bottom = 766.0
+color = Color(0.0509804, 0.0862745, 0.0509804, 1)
+
+[node name="BlackLine2" type="ColorRect" parent="MainBlackBar"]
+layout_mode = 0
+offset_left = -138.0
+offset_top = -29.0
+offset_right = -113.0
+offset_bottom = 695.0
+color = Color(0.0509804, 0.0862745, 0.0509804, 1)
+
+[node name="BlackLine3" type="ColorRect" parent="MainBlackBar"]
+layout_mode = 0
+offset_left = -213.0
+offset_top = -64.0
+offset_right = -202.0
+offset_bottom = 618.0
+color = Color(0.0509804, 0.0862745, 0.0509804, 1)
+
+[connection signal="animation_finished" from="Anims" to="." method="_on_anims_animation_finished"]
+[connection signal="focus_entered" from="TextBox/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_focus_entered"]
+[connection signal="pressed" from="TextBox/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="focus_entered" from="TextBox/MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_focus_entered"]
+[connection signal="pressed" from="TextBox/MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
