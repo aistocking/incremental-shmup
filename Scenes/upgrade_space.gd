@@ -71,6 +71,10 @@ func _on_v_speed_button_focus_entered():
 func _on_v_fire_rate_button_focus_entered():
 	_set_ui_elements($VulkanUpgrades/VulkanFireRate)
 
+func _on_v_amount_button_focus_entered():
+	_set_ui_elements($VulkanUpgrades/VulkanAmount)
+
+
 func _on_sortie_button_pressed():
 	_return_to_gamespace()
 
@@ -78,7 +82,6 @@ func _on_sortie_button_pressed():
 func _on_v_damage_button_pressed():
 	Globals.projectile_upgrade_vulkan_damage += 1
 	_hud.update_debug_stats()
-	print(str(Globals.projectile_upgrade_vulkan_damage))
 
 
 func _on_v_speed_button_pressed():
@@ -88,4 +91,9 @@ func _on_v_speed_button_pressed():
 
 func _on_v_fire_rate_button_pressed():
 	Globals.projectile_upgrade_vulkan_firerate += 1
+	_hud.update_debug_stats()
+
+
+func _on_v_amount_button_pressed():
+	Globals.projectile_upgrade_vulkan_amount += 1
 	_hud.update_debug_stats()

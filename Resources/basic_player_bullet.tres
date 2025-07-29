@@ -1,6 +1,7 @@
-[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://dqdnakebsriw8"]
+[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://dqdnakebsriw8"]
 
 [ext_resource type="Texture2D" uid="uid://coud1r6ku5ln1" path="res://Art/Player/Player_Projectile_Bullet.png" id="1_wahk3"]
+[ext_resource type="Texture2D" uid="uid://d2tilr0eq0ovm" path="res://Art/Player/Player_Projectile_Bullet_Hit.png" id="2_utihd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uadix"]
 atlas = ExtResource("1_wahk3")
@@ -13,6 +14,18 @@ region = Rect2(10, 0, 10, 3)
 [sub_resource type="AtlasTexture" id="AtlasTexture_3kio4"]
 atlas = ExtResource("1_wahk3")
 region = Rect2(20, 0, 10, 3)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1w25v"]
+atlas = ExtResource("2_utihd")
+region = Rect2(0, 0, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3u5wb"]
+atlas = ExtResource("2_utihd")
+region = Rect2(7, 0, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3wl0"]
+atlas = ExtResource("2_utihd")
+region = Rect2(14, 0, 7, 7)
 
 [resource]
 animations = [{
@@ -28,5 +41,22 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1w25v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3u5wb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3wl0")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"hit",
 "speed": 12.0
 }]

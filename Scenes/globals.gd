@@ -23,12 +23,28 @@ var current_scene: String
 """
 Upgrade Variables
 """
-var projectile_upgrade_vulkan_amount: int = 1
-var projectile_upgrade_vulkan_firerate: int = 1
-var projectile_upgrade_vulkan_speed: int = 1
-var projectile_upgrade_vulkan_damage: int = 1
+#Vulkan
+var projectile_upgrade_vulkan_amount: int = 0
+var projectile_upgrade_vulkan_firerate: int = 0
+var projectile_upgrade_vulkan_speed: int = 0
+var projectile_upgrade_vulkan_damage: int = 0
+var projectile_upgrade_vulkan_peirce: int = 0
+#Missile
+var projectile_upgrade_missile_unlock: int = 0
+var projectile_upgrade_missile_amount: int = 0
+var projectile_upgrade_missile_firerate: int = 0
+var projectile_upgrade_missile_speed: int = 0
+var projectile_upgrade_missile_damage: int = 0
+var projectile_upgrade_missile_size: int = 0
+#Options
+var option_upgrade_amount: int = 0
+var option_upgrade_firerate: int = 0
+var option_upgrade_speed: int = 0
+var option_upgrade_damage: int = 0
+#System
+var system_shield_amount: int = 0
 
-var enemy_exp_multiplier: int = 1
+var enemy_exp_multiplier: int = 0
 
 func gain_exp(amount: int) -> void:
 	current_exp += amount

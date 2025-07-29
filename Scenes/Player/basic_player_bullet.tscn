@@ -8,9 +8,8 @@ size = Vector2(8, 3)
 
 [node name="BasicPlayerBullet" type="AnimatedSprite2D"]
 sprite_frames = ExtResource("2_n6i6t")
+animation = &"hit"
 autoplay = "default"
-frame = 1
-frame_progress = 0.0319553
 script = ExtResource("2_uadix")
 
 [node name="PlayerBulletHitBox" type="Area2D" parent="."]

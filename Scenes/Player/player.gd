@@ -37,7 +37,7 @@ var _shields: int = 0
 signal player_died
 
 func _ready():
-	pass
+	_shields = Globals.system_shield_amount
 
 func start() -> void:
 	_anims.play("Intro")
@@ -111,15 +111,28 @@ func handle_movement() -> void:
 
 func _fire_projectiles() -> void:
 	if _vulkan_recover_timer.is_stopped():
-		_vulkan_recover_timer.start(0.3 / Globals.projectile_upgrade_vulkan_firerate)
-		var bullet_instance = _BASIC_BULLET_SCENE.instantiate()
+		_vulkan_recover_timer.start(0.54 - (Globals.projectile_upgrade_vulkan_firerate * 0.05))
 		_sfx_player.play_sfx(_shoot_sfx, 0.0)
-		bullet_instance.global_position = _bullet_spawn_marker.global_position
-		get_parent().add_child(bullet_instance)
+		for i in (Globals.projectile_upgrade_vulkan_amount + 1):
+			var bullet_instance = _BASIC_BULLET_SCENE.instantiate()
+			match i:
+				0:
+					bullet_instance.global_position = _bullet_spawn_marker.global_position
+				1:
+					bullet_instance.global_position = _bullet_spawn_marker.global_position + Vector2(-1, 4)
+				2:
+					bullet_instance.global_position = _bullet_spawn_marker.global_position + Vector2(-1, -4)
+				3:
+					bullet_instance.global_position = _bullet_spawn_marker.global_position + Vector2(-2, 8)
+				4:
+					bullet_instance.global_position = _bullet_spawn_marker.global_position + Vector2(-2, -8)
+			get_parent().add_child(bullet_instance)
 
 func get_hit() -> void:
 	if _shields <= 0:
 		_die()
+	else:
+		_shields -= 1
 
 func _die() -> void:
 	_hurt_collider.set_deferred("disabled", true)
