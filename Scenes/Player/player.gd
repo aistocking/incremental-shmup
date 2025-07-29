@@ -17,6 +17,8 @@ Node References
 @onready var _exhaust_particles_light: GPUParticles2D = $ExhaustAnimGroup/LightExhaustParticles
 
 var _shoot_sfx: AudioStream = preload("res://Sound/Shoot.wav")
+var _hit_sfx: AudioStream = preload("res://Sound/Hit.wav")
+
 """
 Packed Scenes
 """
@@ -133,6 +135,7 @@ func get_hit() -> void:
 		_die()
 	else:
 		_shields -= 1
+	_sfx_player.play_sfx(_hit_sfx, 0.0)
 
 func _die() -> void:
 	_hurt_collider.set_deferred("disabled", true)
