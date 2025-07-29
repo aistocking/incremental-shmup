@@ -30,6 +30,6 @@ func _on_area_2d_area_entered(area):
 	Globals.gain_exp(value)
 	await create_tween().tween_property(self, "global_position", _player_ref.global_position, 0.05).finished
 	visible = false
-	_sfx_player.play_sfx(_pickup_sound, 0.0)
+	_sfx_player.play_sfx_rand_pitch(_pickup_sound, 0.0, .1)
 	await _sfx_player.finished
 	queue_free()
