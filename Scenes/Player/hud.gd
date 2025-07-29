@@ -7,6 +7,7 @@ extends CanvasLayer
 signal outro_finished
 
 func _ready():
+	$MainBlackBar.visible = true
 	Globals.connect("exp_changed", _update_bit_counter)
 	_update_bit_counter()
 	visible = true

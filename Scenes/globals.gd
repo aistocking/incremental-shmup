@@ -61,3 +61,6 @@ func set_cutscene_to_play(cutscene_name: CUTSCENES) -> void:
 
 func increment_upgrade_level(upgrade: int) -> void:
 	upgrade = upgrade + 1
+
+func save() -> void:
+	pass

@@ -4,7 +4,7 @@ extends SubViewport
 @onready var _small_lines: MeshInstance3D = $SmallLines
 @onready var _large_lines: MeshInstance3D = $LargeLines
 @onready var _camera: Camera3D = $Camera3D
-@onready var _building01 : MeshInstance3D = $Building01
+@onready var _moving_objects : Node3D = $MovingObjects
 
 var _player: CharacterBody2D
 
@@ -15,7 +15,8 @@ func _physics_process(delta):
 	_wall.get_surface_override_material(0).uv1_offset.x += 0.1 * delta
 	_small_lines.get_surface_override_material(0).uv1_offset.x += 0.6 * delta
 	_large_lines.get_surface_override_material(0).uv1_offset.x += 1 * delta
-	_building01.position.x -= 9 * delta
+	for i in _moving_objects.get_child_count():
+		_moving_objects.get_child(i).position.x -= (100 / abs(_moving_objects.get_child(i).position.z)) * delta
 	_match_player_height()
 
 func _match_player_height() -> void:

@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhs76w00ueggg"]
+
+[ext_resource type="ArrayMesh" uid="uid://bmmwe8bnajy7e" path="res://Art/Environment/Building01.obj" id="1_cfa0f"]
+[ext_resource type="Texture2D" uid="uid://cpqq3nhrxrmwf" path="res://Art/Environment/Building01.png" id="2_57vd2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g1aw4"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("2_57vd2")
+uv1_scale = Vector3(0.84, 1, 1)
+texture_filter = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iovm1"]
+size = Vector3(2.55859, 3.26459, 2.17383)
+
+[node name="Building01" type="MeshInstance3D"]
+transform = Transform3D(2.51, 0, 0, 0, 2.51, 0, 0, 0, 2.51, 0, 0, 0)
+mesh = ExtResource("1_cfa0f")
+surface_material_override/0 = SubResource("StandardMaterial3D_g1aw4")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.13229, 0)
+shape = SubResource("BoxShape3D_iovm1")
+debug_color = Color(1.92523e-06, 0.646552, 0.234233, 0.42)
