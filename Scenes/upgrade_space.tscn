@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bwlaijqv5vrhs"]
+[gd_scene load_steps=30 format=3 uid="uid://bwlaijqv5vrhs"]
 
 [ext_resource type="Script" uid="uid://7bvg6gorv0f2" path="res://Scenes/upgrade_space.gd" id="1_btoei"]
 [ext_resource type="Texture2D" uid="uid://dp0i87c45ni6q" path="res://Art/UI/Upgrade_Base_Inactive.png" id="1_cbj8s"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bxkrbefegg4ni" path="res://Art/UI/Upgrade_Vulkan_Speed.png" id="3_04kcj"]
 [ext_resource type="Texture2D" uid="uid://0ths6vlvbmow" path="res://Art/UI/Upgrade_Main_CPU.png" id="3_t3tx2"]
 [ext_resource type="Texture2D" uid="uid://b8p8gry6olday" path="res://Art/UI/Upgrade_Cursor.png" id="5_cbj8s"]
+[ext_resource type="PackedScene" uid="uid://cdeqn3008voj0" path="res://Scenes/Misc/ui_upgrabe_button.tscn" id="7_6uyru"]
 [ext_resource type="Texture2D" uid="uid://bx3jyldo2ect" path="res://Art/UI/Upgrade_Vulkan_Unlock.png" id="7_a3beg"]
 [ext_resource type="Texture2D" uid="uid://xccd6oou5je2" path="res://Art/UI/Upgrade_Base_Major_Active.png" id="8_2idtm"]
 [ext_resource type="Texture2D" uid="uid://duinwxjgkl5d3" path="res://Art/UI/Upgrade_Base_Active.png" id="8_uiqod"]
@@ -136,24 +137,8 @@ texture_normal = ExtResource("8_2idtm")
 texture_disabled = ExtResource("9_bspfg")
 metadata/_edit_use_anchors_ = true
 
-[node name="VulkanDamage" type="Sprite2D" parent="VulkanUpgrades"]
-z_index = 2
+[node name="VulkanDamage" parent="VulkanUpgrades" instance=ExtResource("7_6uyru")]
 position = Vector2(0, -40)
-texture = ExtResource("2_btoei")
-
-[node name="VDamageButton" type="TextureButton" parent="VulkanUpgrades/VulkanDamage"]
-z_index = -1
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
-pivot_offset = Vector2(16, 16)
-focus_neighbor_left = NodePath("../../VulkanFireRate/VFireRateButton")
-focus_neighbor_right = NodePath("../../VulkanSpeed/VSpeedButton")
-focus_neighbor_bottom = NodePath("../../VulkanUnlock/VUnlockButton")
-disabled = true
-texture_normal = ExtResource("8_uiqod")
-texture_disabled = ExtResource("1_cbj8s")
 
 [node name="VulkanSpeed" type="Sprite2D" parent="VulkanUpgrades"]
 z_index = 3
@@ -474,8 +459,6 @@ texture_pressed = ExtResource("15_831ub")
 texture_focused = ExtResource("16_8rv04")
 
 [connection signal="focus_entered" from="VulkanUpgrades/VulkanUnlock/VUnlockButton" to="." method="_on_v_unlock_button_focus_entered"]
-[connection signal="focus_entered" from="VulkanUpgrades/VulkanDamage/VDamageButton" to="." method="_on_v_damage_button_focus_entered"]
-[connection signal="pressed" from="VulkanUpgrades/VulkanDamage/VDamageButton" to="." method="_on_v_damage_button_pressed"]
 [connection signal="focus_entered" from="VulkanUpgrades/VulkanSpeed/VSpeedButton" to="." method="_on_v_speed_button_focus_entered"]
 [connection signal="pressed" from="VulkanUpgrades/VulkanSpeed/VSpeedButton" to="." method="_on_v_speed_button_pressed"]
 [connection signal="focus_entered" from="VulkanUpgrades/VulkanFireRate/VFireRateButton" to="." method="_on_v_fire_rate_button_focus_entered"]

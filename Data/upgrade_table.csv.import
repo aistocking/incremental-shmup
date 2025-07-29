@@ -1,0 +1,14 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://dc2pg1bjxk7e3"
+
+[deps]
+
+source_file="res://Data/upgrade_table.csv"
+
+[params]
+
+compress=true
+delimiter=0

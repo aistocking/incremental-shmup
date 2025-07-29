@@ -1,10 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://dmooup6ic7wew"]
+[gd_scene load_steps=17 format=3 uid="uid://dmooup6ic7wew"]
 
 [ext_resource type="Texture2D" uid="uid://citb1uwd7fokn" path="res://Art/Environment/BG_FloorGrid_Base.png" id="1_3dbt8"]
 [ext_resource type="Script" uid="uid://bescw6wo3ln1a" path="res://Scenes/Environment/scrolling_bg.gd" id="1_j8vl2"]
 [ext_resource type="Texture2D" uid="uid://cwyw1gckxl4os" path="res://Art/Environment/BG_FloorGrid_Small.png" id="2_j8vl2"]
 [ext_resource type="Texture2D" uid="uid://ddgxf1oi28xkk" path="res://Art/Environment/BG_Wall.png" id="2_vi3rl"]
 [ext_resource type="Texture2D" uid="uid://c1nf1e6o32bcl" path="res://Art/Environment/BG_FloorGrid_Large.png" id="3_vi3rl"]
+[ext_resource type="ArrayMesh" uid="uid://bmmwe8bnajy7e" path="res://Art/Environment/Building01.obj" id="6_iovm1"]
+[ext_resource type="Texture2D" uid="uid://cpqq3nhrxrmwf" path="res://Art/Environment/Building01.png" id="7_ltw34"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_vdlec"]
 
@@ -37,6 +39,19 @@ shading_mode = 0
 albedo_texture = ExtResource("3_vi3rl")
 uv1_scale = Vector3(35, 35, 35)
 texture_filter = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g1aw4"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("7_ltw34")
+uv1_scale = Vector3(0.84, 1, 1)
+texture_filter = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iovm1"]
+size = Vector3(2.55859, 3.26459, 2.17383)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ltw34"]
+size = Vector3(15.1992, 22.4766, 253.224)
 
 [node name="ScrollingBG" type="SubViewport"]
 script = ExtResource("1_j8vl2")
@@ -73,3 +88,25 @@ transform = Transform3D(1, 0, 0, 0, 0.939693, -0.34202, 0, 0.34202, 0.939693, 0,
 current = true
 fov = 71.4
 far = 3330.12
+
+[node name="Building01" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.51, 0, 0, 0, 2.51, 0, 0, 0, 2.51, 42.6383, 3.511, -19.5219)
+mesh = ExtResource("6_iovm1")
+surface_material_override/0 = SubResource("StandardMaterial3D_g1aw4")
+
+[node name="Area3D" type="Area3D" parent="Building01"]
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Building01/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.13229, 0)
+shape = SubResource("BoxShape3D_iovm1")
+debug_color = Color(1.92523e-06, 0.646552, 0.234233, 0.42)
+
+[node name="BuildingLoopTrigger" type="Area3D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BuildingLoopTrigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -131.858, 7.7685, 0)
+shape = SubResource("BoxShape3D_ltw34")
+
+[connection signal="area_entered" from="BuildingLoopTrigger" to="." method="_on_building_loop_trigger_area_entered"]
