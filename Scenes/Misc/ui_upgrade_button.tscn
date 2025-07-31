@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://duaspgx5q41t0" path="res://Art/UI/Upgrade_Vulkan_Damage.png" id="1_8jgog"]
 [ext_resource type="Texture2D" uid="uid://duinwxjgkl5d3" path="res://Art/UI/Upgrade_Base_Active.png" id="2_r7cne"]
-[ext_resource type="Script" uid="uid://bpyvp3iuqxg5t" path="res://Scenes/Misc/ui_upgrabe_button.gd" id="2_vsyl2"]
+[ext_resource type="Script" uid="uid://bpyvp3iuqxg5t" path="res://Scenes/Misc/ui_upgrade_button.gd" id="2_vsyl2"]
 [ext_resource type="Texture2D" uid="uid://dp0i87c45ni6q" path="res://Art/UI/Upgrade_Base_Inactive.png" id="3_vsyl2"]
 
 [node name="UpgradeButton" type="Sprite2D"]
@@ -17,9 +17,11 @@ offset_top = -16.0
 offset_right = 16.0
 offset_bottom = 16.0
 pivot_offset = Vector2(16, 16)
-focus_neighbor_left = NodePath("../../VulkanFireRate/VFireRateButton")
-focus_neighbor_right = NodePath("../../VulkanSpeed/VSpeedButton")
-focus_neighbor_bottom = NodePath("../../VulkanUnlock/VUnlockButton")
+size_flags_horizontal = 4
+size_flags_vertical = 4
 disabled = true
 texture_normal = ExtResource("2_r7cne")
 texture_disabled = ExtResource("3_vsyl2")
+
+[connection signal="focus_entered" from="ActualButton" to="." method="_on_actual_button_focus_entered"]
+[connection signal="pressed" from="ActualButton" to="." method="_on_actual_button_pressed"]

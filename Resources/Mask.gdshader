@@ -15,7 +15,7 @@ uniform float radius = 0.5;
 #endif
 
 void fragment() {
-	
+
 	float aspect_ratio = SCREEN_PIXEL_SIZE.y / SCREEN_PIXEL_SIZE.x;
 
 	// Scale coords to non-square screens.

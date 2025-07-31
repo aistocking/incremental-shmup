@@ -24,18 +24,9 @@ var current_scene: String
 Upgrade Variables
 """
 #Vulkan
-var projectile_upgrade_vulkan_amount: int = 0
-var projectile_upgrade_vulkan_firerate: int = 0
-var projectile_upgrade_vulkan_speed: int = 0
-var projectile_upgrade_vulkan_damage: int = 0
-var projectile_upgrade_vulkan_peirce: int = 0
+var vulkan_dict = {"Unlock": 1, "Damage": 0, "FireRate": 0, "Speed": 0, "Amount": 0, "Pierce": 0}
 #Missile
-var projectile_upgrade_missile_unlock: int = 0
-var projectile_upgrade_missile_amount: int = 0
-var projectile_upgrade_missile_firerate: int = 0
-var projectile_upgrade_missile_speed: int = 0
-var projectile_upgrade_missile_damage: int = 0
-var projectile_upgrade_missile_size: int = 0
+var missile_dict = {"Unlock": 0, "Damage": 0, "FireRate": 0, "Speed": 0, "Amount": 0, "Size": 0}
 #Options
 var option_upgrade_amount: int = 0
 var option_upgrade_firerate: int = 0

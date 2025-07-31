@@ -164,6 +164,58 @@ tracks/11/keys = {
 "method": &"_on_start_button_focus_entered"
 }]
 }
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("MainBlackBar:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_5egv6"]
+resource_name = "Outro"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IntroStuff:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainBlackBar:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1.41421, 1),
+"update": 0,
+"values": [Vector2(-200, -72), Vector2(700, -72)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MainBlackBar:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_m3bi6"]
 length = 0.001
@@ -297,7 +349,7 @@ tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
@@ -311,33 +363,17 @@ tracks/11/keys = {
 "update": 0,
 "values": [Vector2(-200, -72)]
 }
-
-[sub_resource type="Animation" id="Animation_5egv6"]
-resource_name = "Outro"
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("IntroStuff:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("MainBlackBar:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MainBlackBar:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1.41421, 1),
-"update": 0,
-"values": [Vector2(-200, -72), Vector2(700, -72)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wyh8j"]
@@ -531,6 +567,7 @@ sprite_frames = SubResource("SpriteFrames_cp0ys")
 autoplay = "default"
 
 [node name="IntroStuff" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -549,9 +586,8 @@ anchor_top = 3.375
 anchor_right = 6.0
 anchor_bottom = 3.375
 offset_left = -240.0
-offset_top = -1.52588e-05
-offset_right = -240.0
-offset_bottom = 0.999985
+offset_right = 240.0
+offset_bottom = 1.0
 scale = Vector2(1, 135)
 pivot_offset = Vector2(0, 1)
 color = Color(0.956863, 1, 0.772549, 1)
@@ -559,6 +595,7 @@ color = Color(0.956863, 1, 0.772549, 1)
 [node name="Bright2" type="ColorRect" parent="IntroStuff"]
 layout_mode = 0
 offset_top = 135.0
+offset_right = 480.0
 offset_bottom = 136.0
 color = Color(0.956863, 1, 0.772549, 1)
 
@@ -575,10 +612,12 @@ animation = &"Moving"
 autoplay = "Moving"
 
 [node name="MainBlackBar" type="ColorRect" parent="."]
+visible = false
 z_index = 100
-offset_left = 700.0
+layout_mode = 0
+offset_left = -200.0
 offset_top = -72.0
-offset_right = 1947.0
+offset_right = 1047.0
 offset_bottom = 1226.0
 rotation = 0.523599
 scale = Vector2(-1, 1)

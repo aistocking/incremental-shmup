@@ -30,6 +30,7 @@ window/stretch/mode="viewport"
 
 folder_colors={
 "res://Art/": "teal",
+"res://Data/": "red",
 "res://Resources/": "orange",
 "res://Scenes/": "blue",
 "res://Scenes/Components/": "yellow",
@@ -46,6 +47,7 @@ Player=""
 Enemy=""
 EnemyDeSpawner=""
 HUD=""
+Cursor=""
 
 [input]
 

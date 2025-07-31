@@ -1,8 +1,8 @@
 extends AnimatedSprite2D
 
-var _speed: float = 250.0 + (Globals.projectile_upgrade_vulkan_speed * 25)
-var _damage: int = 1 + (Globals.projectile_upgrade_vulkan_damage * 1)
-var _peirce_amount: int = 0 + Globals.projectile_upgrade_vulkan_peirce
+var _speed: float = 250.0 + (Globals.vulkan_dict["Speed"] * 25)
+var _damage: int = 1 + (Globals.vulkan_dict["Damage"] * 1)
+var _peirce_amount: int = 0 + Globals.vulkan_dict["Pierce"]
 var _moving: bool = true
 
 func _physics_process(delta):

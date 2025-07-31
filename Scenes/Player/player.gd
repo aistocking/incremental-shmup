@@ -113,9 +113,9 @@ func handle_movement() -> void:
 
 func _fire_projectiles() -> void:
 	if _vulkan_recover_timer.is_stopped():
-		_vulkan_recover_timer.start(0.54 - (Globals.projectile_upgrade_vulkan_firerate * 0.05))
+		_vulkan_recover_timer.start(0.54 - (Globals.vulkan_dict["FireRate"] * 0.05))
 		_sfx_player.play_sfx_rand_pitch(_shoot_sfx, 0.0, .1)
-		for i in (Globals.projectile_upgrade_vulkan_amount + 1):
+		for i in (Globals.vulkan_dict["Amount"] + 1):
 			var bullet_instance = _BASIC_BULLET_SCENE.instantiate()
 			match i:
 				0:
