@@ -56,6 +56,21 @@ func grab_or_update_global_data(update: bool) -> void:
 				Globals.missile_dict[upgrade_type] = current_level
 			else:
 				current_level = Globals.missile_dict[upgrade_type]
+		"Plasma":
+			if update:
+				Globals.plasma_dict[upgrade_type] = current_level
+			else:
+				current_level = Globals.plasma_dict[upgrade_type]
+		"Option":
+			if update:
+				Globals.option_dict[upgrade_type] = current_level
+			else:
+				current_level = Globals.option_dict[upgrade_type]
+		"System":
+			if update:
+				Globals.system_dict[upgrade_type] = current_level
+			else:
+				current_level = Globals.system_dict[upgrade_type]
 
 func set_stats_from_csv():
 	var found_category: bool = false

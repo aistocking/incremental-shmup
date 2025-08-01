@@ -15,6 +15,11 @@ Node References
 @onready var _hurt_collider: CollisionShape2D = $HurtBox/HurtCollision
 @onready var _exhaust_particles_heavy: GPUParticles2D = $ExhaustAnimGroup/HeavyExhaustParticles
 @onready var _exhaust_particles_light: GPUParticles2D = $ExhaustAnimGroup/LightExhaustParticles
+@onready var _shield_sprites: AnimatedSprite2D = $Shield
+
+"""
+Resources
+"""
 
 var _shoot_sfx: AudioStream = preload("res://Sound/Shoot.wav")
 var _missile_fire_sfx: AudioStream = preload("res://Sound/Missile_Fire.wav")
@@ -31,19 +36,25 @@ const _BOOST_RING_SCENE: PackedScene = preload("res://Scenes/Player/boost_ring.t
 Variables
 """
 var player_input: bool = false
-
 var _speed: float = 100.0
 var _previous_velocity: Vector2
 var _firing: bool = false
+var _focused: bool = false
+#Internal pointers so we dont have to constantly investigate global dicts
 var _vulkan_amount: int = Globals.vulkan_dict["Amount"] + Globals.vulkan_dict["Unlock"]
 var _vulkan_firerate: int = Globals.vulkan_dict["FireRate"]
 var _missile_amount: int = Globals.missile_dict["Amount"] + Globals.missile_dict["Unlock"]
 var _missile_firerate: int = Globals.missile_dict["FireRate"]
-var _plasma_unlocked: bool = Globals.plasma_dict["Unlock"]
-var _focused: bool = false
+var _plasma_unlocked: bool = bool(Globals.plasma_dict["Unlock"])
+var _can_focus: bool = bool(Globals.system_dict["Unlock"])
 var _shields: int = Globals.system_dict["Shield"]
 
 signal player_died
+
+
+"""
+Functions
+"""
 
 func _ready():
 	pass
@@ -51,8 +62,10 @@ func _ready():
 func start() -> void:
 	_anims.play("Intro")
 	await _anims.animation_finished
+	if _shields > 0:
+		_shield_sprites.visible = true
+		_match_shields()
 	change_player_control_to(true)
-	
 
 func _physics_process(delta):
 	if _firing:
@@ -136,7 +149,7 @@ func _fire_projectiles() -> void:
 				4:
 					bullet_instance.global_position = _bullet_spawn_marker.global_position + Vector2(-6, -8)
 			get_parent().add_child(bullet_instance)
-	if _missile_recover_timer.is_stopped():
+	if _missile_recover_timer.is_stopped() and _missile_amount != 0:
 		_missile_recover_timer.start(1 - (_missile_firerate * 0.085))
 		_sfx_player.play_sfx_rand_pitch(_missile_fire_sfx, 0.0, .1)
 		for i in (_missile_amount):
@@ -156,11 +169,23 @@ func _fire_projectiles() -> void:
 					missile_instance.y_movement = 25
 			get_parent().add_child(missile_instance)
 
+func _match_shields() -> void:
+	match _shields:
+		0:
+			_shield_sprites.play("break")
+		1:
+			_shield_sprites.play("level1")
+		2:
+			_shield_sprites.play("level2")
+		3:
+			_shield_sprites.play("level3")
+
 func get_hit() -> void:
 	if _shields <= 0:
 		_die()
 	else:
 		_shields -= 1
+		_match_shields()
 	_sfx_player.play_sfx(_hit_sfx, 0.0)
 
 func _die() -> void:
@@ -182,3 +207,7 @@ func create_boost_ring() -> void:
 	var instance = _BOOST_RING_SCENE.instantiate()
 	instance.position = $ExhaustAnimGroup.position
 	add_child(instance)
+
+
+func _on_shield_animation_finished():
+	_shield_sprites.visible = false

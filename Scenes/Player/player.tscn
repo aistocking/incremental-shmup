@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://btou6innm0pc8"]
+[gd_scene load_steps=44 format=3 uid="uid://btou6innm0pc8"]
 
 [ext_resource type="Texture2D" uid="uid://fhna0fh82xw3" path="res://Art/Player/Player.png" id="1_v0iea"]
 [ext_resource type="Script" uid="uid://dheuk3yk4dxyy" path="res://Scenes/Player/player.gd" id="1_x3wgy"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bgyuroc4nmou2" path="res://Art/Player/Player_Death_Explosion.png" id="9_jhyir"]
 [ext_resource type="AudioStream" uid="uid://cj35tcycvmp37" path="res://Sound/Player_Death_Beep.wav" id="9_oikmp"]
 [ext_resource type="AudioStream" uid="uid://bap1cbeush7fo" path="res://Sound/Player_Death_Explosion.wav" id="10_06tpx"]
+[ext_resource type="Texture2D" uid="uid://btqmwkr7yaikv" path="res://Art/Player/Player_Shield.png" id="12_oikmp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f60y1"]
 size = Vector2(20, 10)
@@ -413,6 +414,122 @@ radial_velocity_min = -2.23517e-05
 radial_velocity_max = 39.92
 gravity = Vector3(-75, 0, 0)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_oikmp"]
+atlas = ExtResource("12_oikmp")
+region = Rect2(0, 33, 23, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06tpx"]
+atlas = ExtResource("12_oikmp")
+region = Rect2(23, 33, 23, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7g0yx"]
+atlas = ExtResource("12_oikmp")
+region = Rect2(46, 33, 23, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dey5f"]
+atlas = ExtResource("12_oikmp")
+region = Rect2(0, 22, 23, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5xpd"]
+atlas = ExtResource("12_oikmp")
+region = Rect2(23, 22, 23, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ks1b7"]
+atlas = ExtResource("12_oikmp")
+region = Rect2(46, 22, 23, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnuln"]
+atlas = ExtResource("12_oikmp")
+region = Rect2(0, 11, 23, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqm4k"]
+atlas = ExtResource("12_oikmp")
+region = Rect2(23, 11, 23, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rcvs5"]
+atlas = ExtResource("12_oikmp")
+region = Rect2(46, 11, 23, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8ma5"]
+atlas = ExtResource("12_oikmp")
+region = Rect2(0, 0, 23, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eksi1"]
+atlas = ExtResource("12_oikmp")
+region = Rect2(23, 0, 23, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jincj"]
+atlas = ExtResource("12_oikmp")
+region = Rect2(46, 0, 23, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qr1w5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oikmp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06tpx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7g0yx")
+}],
+"loop": false,
+"name": &"break",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dey5f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r5xpd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ks1b7")
+}],
+"loop": true,
+"name": &"level1",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnuln")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqm4k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rcvs5")
+}],
+"loop": true,
+"name": &"level2",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8ma5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eksi1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jincj")
+}],
+"loop": true,
+"name": &"level3",
+"speed": 10.0
+}]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_p1odr"]
 atlas = ExtResource("5_8erm5")
 region = Rect2(0, 0, 10, 13)
@@ -567,6 +684,12 @@ offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Shield" type="AnimatedSprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.505882)
+sprite_frames = SubResource("SpriteFrames_qr1w5")
+animation = &"break"
+
 [node name="BackBlast" type="AnimatedSprite2D" parent="."]
 visible = false
 position = Vector2(12, -1)
@@ -587,3 +710,5 @@ visible = false
 texture = ExtResource("9_jhyir")
 hframes = 2
 vframes = 3
+
+[connection signal="animation_finished" from="Shield" to="." method="_on_shield_animation_finished"]

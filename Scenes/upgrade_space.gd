@@ -18,7 +18,7 @@ Node References
 """
 Variables
 """
-var _focus_target: Sprite2D
+var _focus_target
 var _upgrade_success_state: bool
 var player_input: bool
 
@@ -43,6 +43,8 @@ func _input(event: InputEvent) -> void:
 		return
 	
 	if event.is_action_pressed("Confirm"):
+		if _focus_target == $MainCPU:
+			return
 		if _focus_target.get_child(0).disabled:
 			if _focus_target.unlock_upgrade():
 				_sfx_player.play_sfx(_ui_upgrade_sfx, 0.0)
@@ -101,11 +103,12 @@ func _on_sortie_button_pressed():
 	_return_to_gamespace()
 
 func _on_sortie_button_focus_entered():
+	_focus_target = $MainCPU
 	$TextBoxGroup.visible = false
-	_cursor.position = $MainCPU.position
-	_camera.position = $MainCPU.position
+	_cursor.position = _focus_target.position
+	_camera.position = _focus_target.position
 	_cursor.play("CPU")
-	$MainCPU.play("default")
+	_focus_target.play("default")
 	_sfx_player.play_sfx(_ui_move_sfx, 0.0)
 
 func _on_sortie_button_focus_exited():
