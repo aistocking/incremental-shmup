@@ -29,7 +29,7 @@ func _ready():
 
 func upgrade_stat() -> void:
 	if current_level < unlock_limit and Globals.current_exp >= cost[current_level]:
-		Globals.current_exp -= cost[current_level]
+		Globals.remove_exp(cost[current_level])
 		current_level += 1
 		grab_or_update_global_data(true)
 		emit_signal("upgrade_success_state", true)

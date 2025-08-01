@@ -2,7 +2,9 @@ class_name HUD
 extends CanvasLayer
 
 @onready var _anims: AnimationPlayer = $Anims
-@onready var _gamespace_bits_value: Label = $FullScreenMargin/GameSpaceHUD/BitMargins/BitsContainer/BitsValue
+@onready var _gamespace_bits_value: Label = $FullScreenMargin/GameSpaceHUD/BitsContainer/BitsValue
+@onready var _upgradespace_bits_value: Label = $FullScreenMargin/UpgradeSpaceHUD/BitsContainer/BitsValue
+
 
 signal outro_finished
 
@@ -38,6 +40,7 @@ func upgradespace_end() -> void:
 
 func _update_bit_counter() -> void:
 	_gamespace_bits_value.text = str(Globals.current_exp)
+	_upgradespace_bits_value.text = str(Globals.current_exp)
 
 func update_debug_stats() -> void:
 	$FullScreenMargin/UpgradeSpaceHUD/DebugStats.text = "VDamage:" + str(Globals.vulkan_dict["Damage"]) + "\n" + "VSpeed:" + str(Globals.vulkan_dict["Speed"]) + "\n" + "VFireRate:" + str(Globals.vulkan_dict["FireRate"]) + "\n" + "VAmount:" + str(Globals.vulkan_dict["Amount"])

@@ -36,8 +36,20 @@ var system_dict = {"Unlock": 0, "Shield": 0, "Speed": 0}
 
 var enemy_exp_multiplier: int = 0
 
+
+func _input(event):
+	if event.is_action_pressed("Debug_Gain_Bits"):
+		gain_exp(100000000)
+
 func gain_exp(amount: int) -> void:
 	current_exp += amount
+	emit_signal("exp_changed")
+
+func remove_exp(amount: int) -> void:
+	if amount > current_exp:
+		push_error("amount higher than current exp")
+		return
+	current_exp -= amount
 	emit_signal("exp_changed")
 
 func change_scene(scene_path: String) -> void:
