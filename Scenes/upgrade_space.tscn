@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bwlaijqv5vrhs"]
+[gd_scene load_steps=52 format=3 uid="uid://bwlaijqv5vrhs"]
 
 [ext_resource type="Script" uid="uid://7bvg6gorv0f2" path="res://Scenes/upgrade_space.gd" id="1_btoei"]
 [ext_resource type="PackedScene" uid="uid://bj0y8jdkbniob" path="res://Scenes/Player/hud.tscn" id="2_04kcj"]
@@ -21,6 +21,14 @@
 [ext_resource type="Texture2D" uid="uid://d14v8ahqqmwqi" path="res://Art/UI/Upgrade_System_Unlock.png" id="19_7vnxd"]
 [ext_resource type="Texture2D" uid="uid://cfa3y0qrg8ca2" path="res://Art/UI/Upgrade_System_Speed.png" id="20_6uyru"]
 [ext_resource type="Texture2D" uid="uid://c20271t6djomm" path="res://Art/UI/Upgrade_System_Shield.png" id="21_sapnf"]
+[ext_resource type="Texture2D" uid="uid://d0br605bk1k0w" path="res://Art/UI/Upgrade_ThreatLevel_Cursor1.png" id="22_3slf3"]
+[ext_resource type="Texture2D" uid="uid://cwx1b1aoixdit" path="res://Art/Cutscenes/Cutscene_CMDBox.png" id="22_6uyru"]
+[ext_resource type="Texture2D" uid="uid://cf6ou1u11au4i" path="res://Art/UI/Upgrade_Sortie_Button_Unfocused.png" id="22_51rvc"]
+[ext_resource type="Texture2D" uid="uid://cys21i1eyfaco" path="res://Art/UI/Upgrade_ThreatLevel_Cursor2.png" id="23_hlpko"]
+[ext_resource type="Texture2D" uid="uid://d0fvj76iw5a0u" path="res://Art/UI/Upgrade_Sortie_Button_Pressed.png" id="23_vpqdy"]
+[ext_resource type="Texture2D" uid="uid://c6xqfa8j1f3m4" path="res://Art/UI/Upgrade_ThreatLevel_Cursor3.png" id="24_fyhg8"]
+[ext_resource type="Texture2D" uid="uid://dr4xhhe3trpri" path="res://Art/UI/Upgrade_Sortie_Button_Focused.png" id="24_qiefi"]
+[ext_resource type="Texture2D" uid="uid://bqskq76kippy1" path="res://Art/UI/Upgrade_ThreatLevel_Cursor4.png" id="25_cpaud"]
 
 [sub_resource type="Animation" id="Animation_51rvc"]
 length = 0.001
@@ -39,7 +47,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("TextBoxGroup/NinePatchRect:visible")
+tracks/1/path = NodePath("TextBoxGroup/Outline:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -51,7 +59,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("TextBoxGroup/NinePatchRect:size")
+tracks/2/path = NodePath("TextBoxGroup/Outline:size")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -63,7 +71,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("TextBoxGroup/NinePatchRect:position")
+tracks/3/path = NodePath("TextBoxGroup/Outline:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -71,6 +79,66 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Camera2D/SortieBoxGroup:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Camera2D/SortieBoxGroup/Outline:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Camera2D/SortieBoxGroup/CMDBox:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Camera2D/SortieBoxGroup:size")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(54, 52)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Camera2D/SortieBoxGroup:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-27, -26)]
 }
 
 [sub_resource type="Animation" id="Animation_1wto8"]
@@ -92,7 +160,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("TextBoxGroup/NinePatchRect:visible")
+tracks/1/path = NodePath("TextBoxGroup/Outline:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -104,7 +172,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("TextBoxGroup/NinePatchRect:size")
+tracks/2/path = NodePath("TextBoxGroup/Outline:size")
 tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -116,7 +184,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("TextBoxGroup/NinePatchRect:position")
+tracks/3/path = NodePath("TextBoxGroup/Outline:position")
 tracks/3/interp = 0
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -126,11 +194,88 @@ tracks/3/keys = {
 "values": [Vector2(170, 105), Vector2(118, 72), Vector2(40, 33), Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_6uyru"]
+resource_name = "SortieBox"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D/SortieBoxGroup:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera2D/SortieBoxGroup/Outline:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera2D/SortieBoxGroup/CMDBox:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera2D/SortieBoxGroup:size")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(54, 52), Vector2(122, 86), Vector2(184, 114), Vector2(262, 152), Vector2(304, 174), Vector2(338, 190)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Camera2D/SortieBoxGroup:position")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-27, -26), Vector2(-61, -43), Vector2(-92, -57), Vector2(-131, -76), Vector2(-152, -87), Vector2(-169, -95)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vpqdy"]
 _data = {
 &"RESET": SubResource("Animation_51rvc"),
+&"SortieBox": SubResource("Animation_6uyru"),
 &"TextBoxAppear": SubResource("Animation_1wto8")
 }
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_cbyg7"]
+frames = 4
+frame_0/texture = ExtResource("22_3slf3")
+frame_0/duration = 0.1
+frame_1/texture = ExtResource("23_hlpko")
+frame_1/duration = 0.1
+frame_2/texture = ExtResource("24_fyhg8")
+frame_2/duration = 0.1
+frame_3/texture = ExtResource("25_cpaud")
+frame_3/duration = 0.1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qiefi"]
 atlas = ExtResource("3_t3tx2")
@@ -305,17 +450,121 @@ zoom = Vector2(1.5, 1.5)
 position_smoothing_enabled = true
 
 [node name="BG" type="ColorRect" parent="Camera2D"]
+z_index = -5
 offset_left = -607.0
 offset_top = -307.0
 offset_right = 603.0
 offset_bottom = 305.0
 color = Color(0.0509804, 0.0862745, 0.0509804, 1)
 
+[node name="SortieBoxGroup" type="Control" parent="Camera2D"]
+visible = false
+z_index = 5
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -26.0
+offset_right = 27.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="Outline" type="NinePatchRect" parent="Camera2D/SortieBoxGroup"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("18_sapnf")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="CMDBox" type="NinePatchRect" parent="Camera2D/SortieBoxGroup"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("22_6uyru")
+patch_margin_left = 23
+patch_margin_top = 6
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/SortieBoxGroup/CMDBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="ThreatLvlText" type="Label" parent="Camera2D/SortieBoxGroup/CMDBox/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("9_v3ac7")
+text = "Threat Level"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/SortieBoxGroup/CMDBox/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="CursorLeft" type="TextureRect" parent="Camera2D/SortieBoxGroup/CMDBox/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AnimatedTexture_cbyg7")
+stretch_mode = 3
+flip_h = true
+
+[node name="ThreatLvl" type="Label" parent="Camera2D/SortieBoxGroup/CMDBox/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("9_v3ac7")
+text = "01"
+horizontal_alignment = 1
+
+[node name="ThreatLvlButton" type="Button" parent="Camera2D/SortieBoxGroup/CMDBox/VBoxContainer/HBoxContainer/ThreatLvl"]
+z_index = -1
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+focus_neighbor_bottom = NodePath("../../../HBoxContainer2/SortieButton")
+flat = true
+
+[node name="CursorRight" type="TextureRect" parent="Camera2D/SortieBoxGroup/CMDBox/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AnimatedTexture_cbyg7")
+stretch_mode = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Camera2D/SortieBoxGroup/CMDBox/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="SortieButton" type="TextureButton" parent="Camera2D/SortieBoxGroup/CMDBox/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../../HBoxContainer/ThreatLvl/ThreatLvlButton")
+texture_normal = ExtResource("22_51rvc")
+texture_pressed = ExtResource("23_vpqdy")
+texture_focused = ExtResource("24_qiefi")
+
 [node name="MainCPU" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 128)
 sprite_frames = SubResource("SpriteFrames_ment5")
 
-[node name="SortieButton" type="TextureButton" parent="MainCPU"]
+[node name="CPUButton" type="TextureButton" parent="MainCPU"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -347,7 +596,7 @@ upgrade_category = "Vulkan"
 focus_neighbor_left = NodePath("../../../MissileUpgrades/MissileUnlock/ActualButton")
 focus_neighbor_top = NodePath("../../VulkanDamage/ActualButton")
 focus_neighbor_right = NodePath("../../../PlasmaUpgrades/PlasmaUnlock/ActualButton")
-focus_neighbor_bottom = NodePath("../../../MainCPU/SortieButton")
+focus_neighbor_bottom = NodePath("../../../MainCPU/CPUButton")
 
 [node name="VulkanDamage" parent="VulkanUpgrades" instance=ExtResource("4_6uyru")]
 position = Vector2(0, -50)
@@ -406,7 +655,7 @@ upgrade_category = "Missiles"
 [node name="ActualButton" parent="MissileUpgrades/MissileUnlock" index="0"]
 focus_neighbor_left = NodePath("../../MissileDamage/ActualButton")
 focus_neighbor_top = NodePath("../../../VulkanUpgrades/VulkanFireRate/ActualButton")
-focus_neighbor_right = NodePath("../../../MainCPU/SortieButton")
+focus_neighbor_right = NodePath("../../../MainCPU/CPUButton")
 focus_neighbor_bottom = NodePath("../../../OptionUpgrades/OptionUnlock/ActualButton")
 
 [node name="MissileDamage" parent="MissileUpgrades" instance=ExtResource("4_6uyru")]
@@ -461,7 +710,7 @@ upgrade_type = "Unlock"
 upgrade_category = "Plasma"
 
 [node name="ActualButton" parent="PlasmaUpgrades/PlasmaUnlock" index="0"]
-focus_neighbor_left = NodePath("../../../MainCPU/SortieButton")
+focus_neighbor_left = NodePath("../../../MainCPU/CPUButton")
 focus_neighbor_top = NodePath("../../../VulkanUpgrades/VulkanSpeed/ActualButton")
 focus_neighbor_right = NodePath("../../PlasmaDamage/ActualButton")
 focus_neighbor_bottom = NodePath("../../../SystemUpgrades/SystemUnlock/ActualButton")
@@ -508,7 +757,7 @@ upgrade_category = "Option"
 
 [node name="ActualButton" parent="OptionUpgrades/OptionUnlock" index="0"]
 focus_neighbor_left = NodePath("../../OptionDamage/ActualButton")
-focus_neighbor_top = NodePath("../../../MainCPU/SortieButton")
+focus_neighbor_top = NodePath("../../../MainCPU/CPUButton")
 focus_neighbor_right = NodePath("../../../SystemUpgrades/SystemUnlock/ActualButton")
 focus_neighbor_bottom = NodePath("../../OptionSpeed/ActualButton")
 
@@ -565,7 +814,7 @@ upgrade_category = "System"
 
 [node name="ActualButton" parent="SystemUpgrades/SystemUnlock" index="0"]
 focus_neighbor_left = NodePath("../../../OptionUpgrades/OptionUnlock/ActualButton")
-focus_neighbor_top = NodePath("../../../MainCPU/SortieButton")
+focus_neighbor_top = NodePath("../../../MainCPU/CPUButton")
 focus_neighbor_right = NodePath("../../SystemShield/ActualButton")
 focus_neighbor_bottom = NodePath("../../SystemSpeed/ActualButton")
 
@@ -605,7 +854,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="NinePatchRect" type="NinePatchRect" parent="TextBoxGroup"]
+[node name="Outline" type="NinePatchRect" parent="TextBoxGroup"]
 visible = false
 layout_mode = 0
 offset_right = 163.0
@@ -669,9 +918,12 @@ text = "0 / 1"
 layer = 2
 visible = false
 
-[connection signal="focus_entered" from="MainCPU/SortieButton" to="." method="_on_sortie_button_focus_entered"]
-[connection signal="focus_exited" from="MainCPU/SortieButton" to="." method="_on_sortie_button_focus_exited"]
-[connection signal="pressed" from="MainCPU/SortieButton" to="." method="_on_sortie_button_pressed"]
+[connection signal="focus_entered" from="Camera2D/SortieBoxGroup/CMDBox/VBoxContainer/HBoxContainer/ThreatLvl/ThreatLvlButton" to="." method="_on_threat_lvl_button_focus_entered"]
+[connection signal="focus_exited" from="Camera2D/SortieBoxGroup/CMDBox/VBoxContainer/HBoxContainer/ThreatLvl/ThreatLvlButton" to="." method="_on_threat_lvl_button_focus_exited"]
+[connection signal="pressed" from="Camera2D/SortieBoxGroup/CMDBox/VBoxContainer/HBoxContainer2/SortieButton" to="." method="_on_sortie_button_pressed"]
+[connection signal="focus_entered" from="MainCPU/CPUButton" to="." method="_on_cpu_button_focus_entered"]
+[connection signal="focus_exited" from="MainCPU/CPUButton" to="." method="_on_cpu_button_focus_exited"]
+[connection signal="pressed" from="MainCPU/CPUButton" to="." method="_on_cpu_button_pressed"]
 
 [editable path="VulkanUpgrades/VulkanUnlock"]
 [editable path="VulkanUpgrades/VulkanDamage"]

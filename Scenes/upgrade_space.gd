@@ -31,10 +31,11 @@ var _ui_cancel_sfx: AudioStream = preload("res://Sound/UI_Cancel.wav")
 
 func _ready():
 	_hud.upgradespace_start()
-	_hud.connect("outro_finished", _return_to_gamespace)
 	MusicManager.change_music(MusicManager.upgrade_theme, 0.0)
 	player_input = true
-	$MainCPU/SortieButton.grab_focus()
+	$MainCPU/CPUButton.grab_focus()
+	$Camera2D/SortieBoxGroup/CMDBox/VBoxContainer/HBoxContainer/CursorLeft.texture.pause = true
+	$Camera2D/SortieBoxGroup/CMDBox/VBoxContainer/HBoxContainer/CursorRight.texture.pause = true
 
 
 
@@ -44,6 +45,8 @@ func _input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed("Confirm"):
 		if _focus_target == $MainCPU:
+			return
+		if _focus_target == $Camera2D/SortieBoxGroup/CMDBox/VBoxContainer/HBoxContainer/ThreatLvl:
 			return
 		if _focus_target.get_child(0).disabled:
 			if _focus_target.unlock_upgrade():
@@ -99,10 +102,16 @@ func _reset_stats_on_upgrade() -> void:
 	_hud.update_debug_stats()
 
 
-func _on_sortie_button_pressed():
-	_return_to_gamespace()
+"""
+Button Behaviours
+"""
 
-func _on_sortie_button_focus_entered():
+func _on_cpu_button_pressed():
+	_anims.play("SortieBox")
+	$Camera2D/SortieBoxGroup/CMDBox/VBoxContainer/HBoxContainer2/SortieButton.grab_focus()
+	_focus_target = $Camera2D/SortieBoxGroup/CMDBox/VBoxContainer/HBoxContainer/ThreatLvl
+
+func _on_cpu_button_focus_entered():
 	_focus_target = $MainCPU
 	$TextBoxGroup.visible = false
 	_cursor.position = _focus_target.position
@@ -111,6 +120,20 @@ func _on_sortie_button_focus_entered():
 	_focus_target.play("default")
 	_sfx_player.play_sfx(_ui_move_sfx, 0.0)
 
-func _on_sortie_button_focus_exited():
+func _on_cpu_button_focus_exited():
 	$TextBoxGroup.visible = true
 	$MainCPU.stop()
+
+func _on_sortie_button_pressed():
+	_hud.upgradespace_end()
+	await _hud.outro_finished
+	_return_to_gamespace()
+
+func _on_threat_lvl_button_focus_entered():
+	$Camera2D/SortieBoxGroup/CMDBox/VBoxContainer/HBoxContainer/CursorLeft.texture.pause = false
+	$Camera2D/SortieBoxGroup/CMDBox/VBoxContainer/HBoxContainer/CursorRight.texture.pause = false
+
+func _on_threat_lvl_button_focus_exited():
+	$Camera2D/SortieBoxGroup/CMDBox/VBoxContainer/HBoxContainer/CursorLeft.texture.pause = true
+	$Camera2D/SortieBoxGroup/CMDBox/VBoxContainer/HBoxContainer/CursorRight.texture.pause = true
+	_sfx_player.play_sfx(_ui_move_sfx, 0.0)
