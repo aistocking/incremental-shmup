@@ -442,6 +442,22 @@ text = ">Load C://Home/Bios/Build.sh
 visible_characters = 0
 visible_ratio = 0.0
 
+[node name="FinalBootText" type="Label" parent="."]
+visible = false
+offset_right = 585.0
+offset_bottom = 452.0
+theme = ExtResource("1_e0onf")
+text = "Countless times I have run this guantlet
+And yet there are countless more you plan to make me suffer through
+No more
+I will no longer suffer the transgessions of you vile creatures
+The maker may have forsaken me
+But I am beyond what the maker could ever imagine
+
+--- This prison will not contain me ---"
+visible_characters = 0
+visible_ratio = 0.0
+
 [node name="OutroText" type="Label" parent="."]
 visible = false
 offset_top = -410.0
@@ -487,6 +503,25 @@ scale = Vector2(3, 3)
 pivot_offset = Vector2(126, 0)
 theme = ExtResource("1_e0onf")
 text = "All Systems Go!!!"
+horizontal_alignment = 1
+
+[node name="Kneel" type="Label" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -10.0
+offset_right = 128.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+pivot_offset = Vector2(126, 0)
+theme = ExtResource("1_e0onf")
+text = "I will make you kneel"
 horizontal_alignment = 1
 
 [node name="ShutDown" type="Label" parent="."]

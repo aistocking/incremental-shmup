@@ -6,12 +6,13 @@ Node References
 @onready var _camera: Camera2D = $Camera2D
 @onready var _hud: CanvasLayer = $HUD
 @onready var _cursor: AnimatedSprite2D = $Cursor
-@onready var _text_box: NinePatchRect = $TextBox
-@onready var _upgrade_title: Label = $TextBox/MarginContainer/UpgradeTitle
-@onready var _upgrade_text: Label = $TextBox/MarginContainer/UpgradeText
-@onready var _upgrade_cost: Label = $TextBox/MarginContainer/UpgradeCost
-@onready var _upgrade_level: Label = $TextBox/MarginContainer/UpgradeLevel
+@onready var _text_box_group: Control = $TextBoxGroup
+@onready var _upgrade_title: Label = $TextBoxGroup/TextBox/MarginContainer/UpgradeTitle
+@onready var _upgrade_text: Label = $TextBoxGroup/TextBox/MarginContainer/UpgradeText
+@onready var _upgrade_cost: Label = $TextBoxGroup/TextBox/MarginContainer/UpgradeCost
+@onready var _upgrade_level: Label = $TextBoxGroup/TextBox/MarginContainer/UpgradeLevel
 @onready var _sfx_player: SFXPlayer = $SfxPlayer
+@onready var _anims: AnimationPlayer = $Anims
 
 
 """
@@ -32,9 +33,8 @@ func _ready():
 	_hud.upgradespace_start()
 	_hud.connect("outro_finished", _return_to_gamespace)
 	MusicManager.change_music(MusicManager.upgrade_theme, 0.0)
-	set_ui_elements($VulkanUpgrades/VulkanUnlock)
 	player_input = true
-	$VulkanUpgrades/VulkanUnlock/ActualButton.grab_focus()
+	$MainCPU/SortieButton.grab_focus()
 
 
 
@@ -81,13 +81,14 @@ func set_ui_elements(target: Sprite2D) -> void:
 	else:
 		_cursor.play("Normal")
 	_cursor.position = _focus_target.position
-	_text_box.position = _focus_target.position + Vector2(-200, -110)
+	_text_box_group.position = _focus_target.position + Vector2(-200, -110)
 	_upgrade_title.text = _focus_target.title
 	_upgrade_text.text = _focus_target.description
 	_upgrade_cost.text = str(_focus_target.cost[_focus_target.current_level])
 	_upgrade_level.text = str(_focus_target.current_level) + " / " + str(_focus_target.unlock_limit)
 	_camera.position = _focus_target.position
 	_sfx_player.play_sfx(_ui_move_sfx, 0.0)
+	_anims.play("TextBoxAppear")
 	_hud.update_debug_stats()
 
 func _reset_stats_on_upgrade() -> void:
@@ -96,30 +97,17 @@ func _reset_stats_on_upgrade() -> void:
 	_hud.update_debug_stats()
 
 
-func _on_v_speed_button_focus_entered():
-	set_ui_elements($VulkanUpgrades/VulkanSpeed)
-
-func _on_v_fire_rate_button_focus_entered():
-	set_ui_elements($VulkanUpgrades/VulkanFireRate)
-
-func _on_v_amount_button_focus_entered():
-	set_ui_elements($VulkanUpgrades/VulkanAmount)
-
-
 func _on_sortie_button_pressed():
 	_return_to_gamespace()
 
+func _on_sortie_button_focus_entered():
+	$TextBoxGroup.visible = false
+	_cursor.position = $MainCPU.position
+	_camera.position = $MainCPU.position
+	_cursor.play("CPU")
+	$MainCPU.play("default")
+	_sfx_player.play_sfx(_ui_move_sfx, 0.0)
 
-func _on_v_speed_button_pressed():
-	Globals.projectile_upgrade_vulkan_speed += 1
-	_hud.update_debug_stats()
-
-
-func _on_v_fire_rate_button_pressed():
-	Globals.projectile_upgrade_vulkan_firerate += 1
-	_hud.update_debug_stats()
-
-
-func _on_v_amount_button_pressed():
-	Globals.projectile_upgrade_vulkan_amount += 1
-	_hud.update_debug_stats()
+func _on_sortie_button_focus_exited():
+	$TextBoxGroup.visible = true
+	$MainCPU.stop()

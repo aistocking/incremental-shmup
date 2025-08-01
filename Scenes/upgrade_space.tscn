@@ -1,27 +1,198 @@
-[gd_scene load_steps=30 format=3 uid="uid://bwlaijqv5vrhs"]
+[gd_scene load_steps=42 format=3 uid="uid://bwlaijqv5vrhs"]
 
 [ext_resource type="Script" uid="uid://7bvg6gorv0f2" path="res://Scenes/upgrade_space.gd" id="1_btoei"]
-[ext_resource type="Texture2D" uid="uid://dp0i87c45ni6q" path="res://Art/UI/Upgrade_Base_Inactive.png" id="1_cbj8s"]
 [ext_resource type="PackedScene" uid="uid://bj0y8jdkbniob" path="res://Scenes/Player/hud.tscn" id="2_04kcj"]
-[ext_resource type="Texture2D" uid="uid://duaspgx5q41t0" path="res://Art/UI/Upgrade_Vulkan_Damage.png" id="2_btoei"]
 [ext_resource type="PackedScene" uid="uid://b4c17usa6vwgb" path="res://Scenes/Components/sfx_player.tscn" id="2_sapnf"]
 [ext_resource type="Texture2D" uid="uid://bxkrbefegg4ni" path="res://Art/UI/Upgrade_Vulkan_Speed.png" id="3_04kcj"]
 [ext_resource type="Texture2D" uid="uid://0ths6vlvbmow" path="res://Art/UI/Upgrade_Main_CPU.png" id="3_t3tx2"]
 [ext_resource type="PackedScene" uid="uid://cdeqn3008voj0" path="res://Scenes/Misc/ui_upgrade_button.tscn" id="4_6uyru"]
 [ext_resource type="Texture2D" uid="uid://b8p8gry6olday" path="res://Art/UI/Upgrade_Cursor.png" id="5_cbj8s"]
-[ext_resource type="Texture2D" uid="uid://xccd6oou5je2" path="res://Art/UI/Upgrade_Base_Major_Active.png" id="8_2idtm"]
-[ext_resource type="Texture2D" uid="uid://duinwxjgkl5d3" path="res://Art/UI/Upgrade_Base_Active.png" id="8_uiqod"]
+[ext_resource type="Texture2D" uid="uid://bx3jyldo2ect" path="res://Art/UI/Upgrade_Vulkan_Unlock.png" id="6_8rv04"]
 [ext_resource type="Texture2D" uid="uid://cklftxkxrn7sn" path="res://Art/UI/Upgrade_TextBox.png" id="8_v3ac7"]
-[ext_resource type="Texture2D" uid="uid://nqvpf3vrl5n" path="res://Art/UI/Upgrade_Base_Major_Inactive.png" id="9_bspfg"]
 [ext_resource type="Theme" uid="uid://dnavotpy7ec7u" path="res://text_theme.tres" id="9_v3ac7"]
+[ext_resource type="Texture2D" uid="uid://duk6fvhbwj0ql" path="res://Art/UI/Upgrade_Options_Unlock.png" id="10_831ub"]
 [ext_resource type="Texture2D" uid="uid://4ob6mf0cr16d" path="res://Art/UI/Upgrade_Vulkan_Firerate.png" id="11_831ub"]
 [ext_resource type="Texture2D" uid="uid://diw1hlkk6ld6j" path="res://Art/UI/Upgrade_Missile_Unlock.png" id="12_0vjcr"]
 [ext_resource type="Texture2D" uid="uid://vlsmurykobry" path="res://Art/UI/Upgrade_Vulkan_Amount.png" id="12_7vnxd"]
-[ext_resource type="Texture2D" uid="uid://duk6fvhbwj0ql" path="res://Art/UI/Upgrade_Options_Unlock.png" id="13_tuxxg"]
-[ext_resource type="Texture2D" uid="uid://cf6ou1u11au4i" path="res://Art/UI/Upgrade_Sortie_Button_Unfocused.png" id="14_bspfg"]
 [ext_resource type="Texture2D" uid="uid://s3j3bj0ykmqp" path="res://Art/UI/Upgrade_Cursor_Large.png" id="14_tuxxg"]
-[ext_resource type="Texture2D" uid="uid://d0fvj76iw5a0u" path="res://Art/UI/Upgrade_Sortie_Button_Pressed.png" id="15_831ub"]
-[ext_resource type="Texture2D" uid="uid://dr4xhhe3trpri" path="res://Art/UI/Upgrade_Sortie_Button_Focused.png" id="16_8rv04"]
+[ext_resource type="Texture2D" uid="uid://c86u5ft45agkj" path="res://Art/UI/Upgrade_Plasma_Unlock.png" id="15_6uyru"]
+[ext_resource type="Texture2D" uid="uid://dru4gint872gd" path="res://Art/UI/Upgrade_Cursor_CPU.png" id="16_7vnxd"]
+[ext_resource type="Texture2D" uid="uid://508fa33u47r5" path="res://Art/UI/UI_Box_Outline.png" id="18_sapnf"]
+[ext_resource type="Texture2D" uid="uid://d14v8ahqqmwqi" path="res://Art/UI/Upgrade_System_Unlock.png" id="19_7vnxd"]
+[ext_resource type="Texture2D" uid="uid://cfa3y0qrg8ca2" path="res://Art/UI/Upgrade_System_Speed.png" id="20_6uyru"]
+[ext_resource type="Texture2D" uid="uid://c20271t6djomm" path="res://Art/UI/Upgrade_System_Shield.png" id="21_sapnf"]
+
+[sub_resource type="Animation" id="Animation_1wto8"]
+resource_name = "TextBoxAppear"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextBoxGroup/TextBox:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextBoxGroup/NinePatchRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextBoxGroup/NinePatchRect:size")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(10, 10), Vector2(50, 35), Vector2(125, 70), Vector2(163, 94)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextBoxGroup/NinePatchRect:position")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(170, 105), Vector2(118, 72), Vector2(40, 33), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_51rvc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextBoxGroup/TextBox:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextBoxGroup/NinePatchRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextBoxGroup/NinePatchRect:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(163, 94)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextBoxGroup/NinePatchRect:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vpqdy"]
+_data = {
+&"RESET": SubResource("Animation_51rvc"),
+&"TextBoxAppear": SubResource("Animation_1wto8")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qiefi"]
+atlas = ExtResource("3_t3tx2")
+region = Rect2(0, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbyg7"]
+atlas = ExtResource("3_t3tx2")
+region = Rect2(60, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3slf3"]
+atlas = ExtResource("3_t3tx2")
+region = Rect2(120, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hlpko"]
+atlas = ExtResource("3_t3tx2")
+region = Rect2(0, 60, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fyhg8"]
+atlas = ExtResource("3_t3tx2")
+region = Rect2(60, 60, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpaud"]
+atlas = ExtResource("3_t3tx2")
+region = Rect2(120, 60, 60, 60)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ment5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qiefi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbyg7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3slf3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hlpko")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fyhg8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cpaud")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8q6ss"]
+atlas = ExtResource("16_7vnxd")
+region = Rect2(0, 0, 68, 68)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ufjt"]
+atlas = ExtResource("16_7vnxd")
+region = Rect2(68, 0, 68, 68)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nj6gi"]
+atlas = ExtResource("16_7vnxd")
+region = Rect2(136, 0, 68, 68)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7vnxd"]
 atlas = ExtResource("14_tuxxg")
@@ -49,6 +220,29 @@ region = Rect2(80, 0, 40, 40)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_v3ac7"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8q6ss")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8q6ss")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ufjt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nj6gi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nj6gi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ufjt")
+}],
+"loop": true,
+"name": &"CPU",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7vnxd")
@@ -101,369 +295,401 @@ script = ExtResource("1_btoei")
 
 [node name="SfxPlayer" parent="." instance=ExtResource("2_sapnf")]
 
+[node name="Anims" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vpqdy")
+}
+
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.5, 1.5)
 position_smoothing_enabled = true
 
 [node name="BG" type="ColorRect" parent="Camera2D"]
-offset_left = -492.0
-offset_top = -275.0
-offset_right = 488.0
-offset_bottom = 273.0
+offset_left = -607.0
+offset_top = -307.0
+offset_right = 603.0
+offset_bottom = 305.0
 color = Color(0.0509804, 0.0862745, 0.0509804, 1)
 
 [node name="HUD" parent="." instance=ExtResource("2_04kcj")]
 visible = false
 
-[node name="MainCPU" type="Sprite2D" parent="."]
+[node name="MainCPU" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 128)
-texture = ExtResource("3_t3tx2")
+sprite_frames = SubResource("SpriteFrames_ment5")
+
+[node name="SortieButton" type="TextureButton" parent="MainCPU"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -36.0
+offset_right = -24.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(58, 16)
+size_flags_horizontal = 8
+size_flags_vertical = 8
+focus_neighbor_left = NodePath("../../MissileUpgrades/MissileUnlock/ActualButton")
+focus_neighbor_top = NodePath("../../VulkanUpgrades/VulkanUnlock/ActualButton")
+focus_neighbor_right = NodePath("../../PlasmaUpgrades/PlasmaUnlock/ActualButton")
+focus_neighbor_bottom = NodePath("../../OptionUpgrades/OptionUnlock/ActualButton")
 
 [node name="VulkanUpgrades" type="Node2D" parent="."]
 
 [node name="VulkanUnlock" parent="VulkanUpgrades" instance=ExtResource("4_6uyru")]
-position = Vector2(0, 34)
+position = Vector2(0, 25)
+texture = ExtResource("6_8rv04")
 upgrade_type = "Unlock"
 upgrade_category = "Vulkan"
 
 [node name="ActualButton" parent="VulkanUpgrades/VulkanUnlock" index="0"]
+focus_neighbor_left = NodePath("../../../MissileUpgrades/MissileUnlock/ActualButton")
 focus_neighbor_top = NodePath("../../VulkanDamage/ActualButton")
-focus_neighbor_bottom = NodePath("../../../SortieButton")
+focus_neighbor_right = NodePath("../../../PlasmaUpgrades/PlasmaUnlock/ActualButton")
+focus_neighbor_bottom = NodePath("../../../MainCPU/SortieButton")
 
 [node name="VulkanDamage" parent="VulkanUpgrades" instance=ExtResource("4_6uyru")]
-position = Vector2(0, -40)
+position = Vector2(0, -50)
 upgrade_type = "Damage"
 upgrade_category = "Vulkan"
 
 [node name="ActualButton" parent="VulkanUpgrades/VulkanDamage" index="0"]
+focus_neighbor_left = NodePath("../../VulkanFireRate/ActualButton")
+focus_neighbor_top = NodePath("../../VulkanAmount/ActualButton")
+focus_neighbor_right = NodePath("../../VulkanSpeed/ActualButton")
 focus_neighbor_bottom = NodePath("../../VulkanUnlock/ActualButton")
 
-[node name="VulkanSpeed" type="Sprite2D" parent="VulkanUpgrades"]
-z_index = 3
-position = Vector2(90, -40)
+[node name="VulkanSpeed" parent="VulkanUpgrades" instance=ExtResource("4_6uyru")]
+position = Vector2(100, -50)
 texture = ExtResource("3_04kcj")
+upgrade_type = "Speed"
+upgrade_category = "Vulkan"
 
-[node name="VSpeedButton" type="TextureButton" parent="VulkanUpgrades/VulkanSpeed"]
-z_index = -1
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
-pivot_offset = Vector2(16, 16)
-disabled = true
-texture_normal = ExtResource("8_uiqod")
-texture_disabled = ExtResource("1_cbj8s")
+[node name="ActualButton" parent="VulkanUpgrades/VulkanSpeed" index="0"]
+focus_neighbor_left = NodePath("../../VulkanDamage/ActualButton")
+focus_neighbor_top = NodePath("../../VulkanAmount/ActualButton")
+focus_neighbor_right = NodePath("../../../PlasmaUpgrades/PlasmaSize/ActualButton")
+focus_neighbor_bottom = NodePath("../../../PlasmaUpgrades/PlasmaUnlock/ActualButton")
 
-[node name="VulkanFireRate" type="Sprite2D" parent="VulkanUpgrades"]
-z_index = 3
-position = Vector2(-90, -40)
+[node name="VulkanFireRate" parent="VulkanUpgrades" instance=ExtResource("4_6uyru")]
+position = Vector2(-100, -50)
 texture = ExtResource("11_831ub")
+upgrade_type = "FireRate"
+upgrade_category = "Vulkan"
 
-[node name="VFireRateButton" type="TextureButton" parent="VulkanUpgrades/VulkanFireRate"]
-z_index = -1
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
-pivot_offset = Vector2(16, 16)
-focus_neighbor_top = NodePath("../../VulkanAmount/VAmountButton")
-disabled = true
-texture_normal = ExtResource("8_uiqod")
-texture_disabled = ExtResource("1_cbj8s")
-metadata/_edit_use_anchors_ = true
+[node name="ActualButton" parent="VulkanUpgrades/VulkanFireRate" index="0"]
+focus_neighbor_left = NodePath("../../../MissileUpgrades/MissileSpeed/ActualButton")
+focus_neighbor_top = NodePath("../../VulkanAmount/ActualButton")
+focus_neighbor_right = NodePath("../../VulkanDamage/ActualButton")
+focus_neighbor_bottom = NodePath("../../../MissileUpgrades/MissileUnlock/ActualButton")
 
-[node name="VulkanAmount" type="Sprite2D" parent="VulkanUpgrades"]
-z_index = 3
-position = Vector2(-90, -120)
+[node name="VulkanAmount" parent="VulkanUpgrades" instance=ExtResource("4_6uyru")]
+position = Vector2(-100, -125)
 texture = ExtResource("12_7vnxd")
+upgrade_type = "Amount"
+upgrade_category = "Vulkan"
 
-[node name="VAmountButton" type="TextureButton" parent="VulkanUpgrades/VulkanAmount"]
-z_index = -1
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
-pivot_offset = Vector2(16, 16)
-focus_neighbor_bottom = NodePath("../../VulkanFireRate/VFireRateButton")
-disabled = true
-texture_normal = ExtResource("8_uiqod")
-texture_disabled = ExtResource("1_cbj8s")
-metadata/_edit_use_anchors_ = true
+[node name="ActualButton" parent="VulkanUpgrades/VulkanAmount" index="0"]
+focus_neighbor_left = NodePath("../../../MissileUpgrades/MissileSpeed/ActualButton")
+focus_neighbor_right = NodePath("../../VulkanDamage/ActualButton")
+focus_neighbor_bottom = NodePath("../../VulkanFireRate/ActualButton")
 
 [node name="MissileUpgrades" type="Node2D" parent="."]
 
-[node name="MissileUnlock" type="Sprite2D" parent="MissileUpgrades"]
-z_index = 2
-position = Vector2(-195, 35)
+[node name="MissileUnlock" parent="MissileUpgrades" instance=ExtResource("4_6uyru")]
+position = Vector2(-100, 90)
 texture = ExtResource("12_0vjcr")
+upgrade_type = "Unlock"
+upgrade_category = "Missiles"
 
-[node name="MUnlockButton" type="TextureButton" parent="MissileUpgrades/MissileUnlock"]
-z_index = -1
-offset_left = -23.0
-offset_top = -23.0
-offset_right = 24.0
-offset_bottom = 24.0
-pivot_offset = Vector2(23, 23)
-focus_neighbor_top = NodePath("../../MissileDamage/MDamageButton")
-focus_neighbor_bottom = NodePath("../../../SortieButton")
-disabled = true
-texture_normal = ExtResource("8_2idtm")
-texture_disabled = ExtResource("9_bspfg")
-metadata/_edit_use_anchors_ = true
+[node name="ActualButton" parent="MissileUpgrades/MissileUnlock" index="0"]
+focus_neighbor_left = NodePath("../../MissileDamage/ActualButton")
+focus_neighbor_top = NodePath("../../../VulkanUpgrades/VulkanFireRate/ActualButton")
+focus_neighbor_right = NodePath("../../../MainCPU/SortieButton")
+focus_neighbor_bottom = NodePath("../../../OptionUpgrades/OptionUnlock/ActualButton")
 
-[node name="MissileDamage" type="Sprite2D" parent="MissileUpgrades"]
-z_index = 2
-position = Vector2(-290, 35)
-texture = ExtResource("2_btoei")
+[node name="MissileDamage" parent="MissileUpgrades" instance=ExtResource("4_6uyru")]
+position = Vector2(-200, 90)
+upgrade_type = "Damage"
+upgrade_category = "Missiles"
 
-[node name="MDamageButton" type="TextureButton" parent="MissileUpgrades/MissileDamage"]
-z_index = -1
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
-pivot_offset = Vector2(16, 16)
-focus_neighbor_left = NodePath("../../MissileFireRate/MFireRateButton")
-focus_neighbor_right = NodePath("../../MissileSpeed/MSpeedButton")
-focus_neighbor_bottom = NodePath("../../MissileUnlock/MUnlockButton")
-disabled = true
-texture_normal = ExtResource("8_uiqod")
-texture_disabled = ExtResource("1_cbj8s")
+[node name="ActualButton" parent="MissileUpgrades/MissileDamage" index="0"]
+focus_neighbor_left = NodePath("../../MissileFireRate/ActualButton")
+focus_neighbor_top = NodePath("../../MissileSpeed/ActualButton")
+focus_neighbor_right = NodePath("../../MissileUnlock/ActualButton")
+focus_neighbor_bottom = NodePath("../../../OptionUpgrades/OptionDamage/ActualButton")
 
-[node name="MissileSpeed" type="Sprite2D" parent="MissileUpgrades"]
-z_index = 3
-position = Vector2(-290, -40)
-texture = ExtResource("3_04kcj")
+[node name="MissileSpeed" parent="MissileUpgrades" instance=ExtResource("4_6uyru")]
+position = Vector2(-200, 15)
+upgrade_type = "Speed"
+upgrade_category = "Missiles"
 
-[node name="MSpeedButton" type="TextureButton" parent="MissileUpgrades/MissileSpeed"]
-z_index = -1
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
-pivot_offset = Vector2(16, 16)
-focus_neighbor_left = NodePath("../../MissileDamage/MDamageButton")
-focus_neighbor_bottom = NodePath("../../MissileUnlock/MUnlockButton")
-disabled = true
-texture_normal = ExtResource("8_uiqod")
-texture_disabled = ExtResource("1_cbj8s")
-metadata/_edit_use_anchors_ = true
+[node name="ActualButton" parent="MissileUpgrades/MissileSpeed" index="0"]
+focus_neighbor_left = NodePath("../../MissileFireRate/ActualButton")
+focus_neighbor_top = NodePath("../../../VulkanUpgrades/VulkanFireRate/ActualButton")
+focus_neighbor_right = NodePath("../../../VulkanUpgrades/VulkanUnlock/ActualButton")
+focus_neighbor_bottom = NodePath("../../MissileDamage/ActualButton")
 
-[node name="MissileFireRate" type="Sprite2D" parent="MissileUpgrades"]
-z_index = 3
-position = Vector2(-376, 35)
-texture = ExtResource("11_831ub")
+[node name="MissileFireRate" parent="MissileUpgrades" instance=ExtResource("4_6uyru")]
+position = Vector2(-300, 90)
+upgrade_type = "FireRate"
+upgrade_category = "Missiles"
 
-[node name="MFireRateButton" type="TextureButton" parent="MissileUpgrades/MissileFireRate"]
-z_index = -1
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
-pivot_offset = Vector2(16, 16)
-focus_neighbor_right = NodePath("../../MissileDamage/MDamageButton")
-focus_neighbor_bottom = NodePath("../../MissileUnlock/MUnlockButton")
-disabled = true
-texture_normal = ExtResource("8_uiqod")
-texture_disabled = ExtResource("1_cbj8s")
-metadata/_edit_use_anchors_ = true
+[node name="ActualButton" parent="MissileUpgrades/MissileFireRate" index="0"]
+focus_neighbor_left = NodePath("../../MissileAmount/ActualButton")
+focus_neighbor_top = NodePath("../../MissileSpeed/ActualButton")
+focus_neighbor_right = NodePath("../../MissileDamage/ActualButton")
+focus_neighbor_bottom = NodePath("../../../OptionUpgrades/OptionFireRate/ActualButton")
 
-[node name="MissileAmount" type="Sprite2D" parent="MissileUpgrades"]
-z_index = 3
-position = Vector2(-376, -40)
-texture = ExtResource("11_831ub")
+[node name="MissileAmount" parent="MissileUpgrades" instance=ExtResource("4_6uyru")]
+position = Vector2(-400, 90)
+upgrade_type = "Amount"
+upgrade_category = "Missiles"
 
-[node name="MAmountButton" type="TextureButton" parent="MissileUpgrades/MissileAmount"]
-z_index = -1
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
-pivot_offset = Vector2(16, 16)
-focus_neighbor_right = NodePath("../../MissileDamage/MDamageButton")
-focus_neighbor_bottom = NodePath("../../MissileUnlock/MUnlockButton")
-disabled = true
-texture_normal = ExtResource("8_uiqod")
-texture_disabled = ExtResource("1_cbj8s")
-metadata/_edit_use_anchors_ = true
+[node name="ActualButton" parent="MissileUpgrades/MissileAmount" index="0"]
+focus_neighbor_top = NodePath("../../MissileSpeed/ActualButton")
+focus_neighbor_right = NodePath("../../MissileFireRate/ActualButton")
+focus_neighbor_bottom = NodePath("../../../OptionUpgrades/OptionFireRate/ActualButton")
+
+[node name="PlasmaUpgrades" type="Node2D" parent="."]
+
+[node name="PlasmaUnlock" parent="PlasmaUpgrades" instance=ExtResource("4_6uyru")]
+position = Vector2(100, 90)
+texture = ExtResource("15_6uyru")
+upgrade_type = "Unlock"
+upgrade_category = "Plasma"
+
+[node name="ActualButton" parent="PlasmaUpgrades/PlasmaUnlock" index="0"]
+focus_neighbor_left = NodePath("../../../MainCPU/SortieButton")
+focus_neighbor_top = NodePath("../../../VulkanUpgrades/VulkanSpeed/ActualButton")
+focus_neighbor_right = NodePath("../../PlasmaDamage/ActualButton")
+focus_neighbor_bottom = NodePath("../../../SystemUpgrades/SystemUnlock/ActualButton")
+
+[node name="PlasmaDamage" parent="PlasmaUpgrades" instance=ExtResource("4_6uyru")]
+position = Vector2(200, 90)
+upgrade_type = "Damage"
+upgrade_category = "Plasma"
+
+[node name="ActualButton" parent="PlasmaUpgrades/PlasmaDamage" index="0"]
+focus_neighbor_left = NodePath("../../PlasmaUnlock/ActualButton")
+focus_neighbor_top = NodePath("../../PlasmaSize/ActualButton")
+focus_neighbor_right = NodePath("../../PlasmaFireRate/ActualButton")
+focus_neighbor_bottom = NodePath("../../../SystemUpgrades/SystemShield/ActualButton")
+
+[node name="PlasmaSize" parent="PlasmaUpgrades" instance=ExtResource("4_6uyru")]
+position = Vector2(200, 15)
+upgrade_type = "Size"
+upgrade_category = "Plasma"
+
+[node name="ActualButton" parent="PlasmaUpgrades/PlasmaSize" index="0"]
+focus_neighbor_left = NodePath("../../../VulkanUpgrades/VulkanUnlock/ActualButton")
+focus_neighbor_top = NodePath("../../../VulkanUpgrades/VulkanSpeed/ActualButton")
+focus_neighbor_right = NodePath("../../PlasmaFireRate/ActualButton")
+focus_neighbor_bottom = NodePath("../../PlasmaDamage/ActualButton")
+
+[node name="PlasmaFireRate" parent="PlasmaUpgrades" instance=ExtResource("4_6uyru")]
+position = Vector2(300, 90)
+upgrade_type = "FireRate"
+upgrade_category = "Plasma"
+
+[node name="ActualButton" parent="PlasmaUpgrades/PlasmaFireRate" index="0"]
+focus_neighbor_left = NodePath("../../PlasmaDamage/ActualButton")
+focus_neighbor_top = NodePath("../../PlasmaSize/ActualButton")
+focus_neighbor_bottom = NodePath("../../../SystemUpgrades/SystemShield/ActualButton")
 
 [node name="OptionUpgrades" type="Node2D" parent="."]
 
-[node name="OptionUnlock" type="Sprite2D" parent="OptionUpgrades"]
-z_index = 2
-position = Vector2(-125, 165)
-texture = ExtResource("13_tuxxg")
+[node name="OptionUnlock" parent="OptionUpgrades" instance=ExtResource("4_6uyru")]
+position = Vector2(-75, 200)
+texture = ExtResource("10_831ub")
+upgrade_type = "Unlock"
+upgrade_category = "Option"
 
-[node name="OUnlockButton" type="TextureButton" parent="OptionUpgrades/OptionUnlock"]
-z_index = -1
-offset_left = -23.0
-offset_top = -23.0
-offset_right = 24.0
-offset_bottom = 24.0
-pivot_offset = Vector2(23, 23)
-focus_neighbor_top = NodePath("../../OptionDamage/ODamageButton")
-focus_neighbor_bottom = NodePath("../../../SortieButton")
-disabled = true
-texture_normal = ExtResource("8_2idtm")
-texture_disabled = ExtResource("9_bspfg")
-metadata/_edit_use_anchors_ = true
+[node name="ActualButton" parent="OptionUpgrades/OptionUnlock" index="0"]
+focus_neighbor_left = NodePath("../../OptionDamage/ActualButton")
+focus_neighbor_top = NodePath("../../../MainCPU/SortieButton")
+focus_neighbor_right = NodePath("../../../SystemUpgrades/SystemUnlock/ActualButton")
+focus_neighbor_bottom = NodePath("../../OptionSpeed/ActualButton")
 
-[node name="OptionDamage" type="Sprite2D" parent="OptionUpgrades"]
-z_index = 2
-position = Vector2(-212, 165)
-texture = ExtResource("2_btoei")
+[node name="OptionDamage" parent="OptionUpgrades" instance=ExtResource("4_6uyru")]
+position = Vector2(-175, 200)
+upgrade_type = "Damage"
+upgrade_category = "Option"
 
-[node name="ODamageButton" type="TextureButton" parent="OptionUpgrades/OptionDamage"]
-z_index = -1
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
-pivot_offset = Vector2(16, 16)
-focus_neighbor_left = NodePath("../../OptionFireRate/OFireRateButton")
-focus_neighbor_right = NodePath("../../OptionSpeed/OSpeedButton")
-focus_neighbor_bottom = NodePath("../../OptionUnlock/OUnlockButton")
-disabled = true
-texture_normal = ExtResource("8_uiqod")
-texture_disabled = ExtResource("1_cbj8s")
+[node name="ActualButton" parent="OptionUpgrades/OptionDamage" index="0"]
+focus_neighbor_left = NodePath("../../OptionFireRate/ActualButton")
+focus_neighbor_top = NodePath("../../../MissileUpgrades/MissileDamage/ActualButton")
+focus_neighbor_right = NodePath("../../OptionUnlock/ActualButton")
+focus_neighbor_bottom = NodePath("../../OptionSpeed/ActualButton")
 
-[node name="OptionSpeed" type="Sprite2D" parent="OptionUpgrades"]
-z_index = 3
-position = Vector2(-290, 165)
-texture = ExtResource("3_04kcj")
+[node name="OptionSpeed" parent="OptionUpgrades" instance=ExtResource("4_6uyru")]
+position = Vector2(-175, 275)
+upgrade_type = "Speed"
+upgrade_category = "Option"
 
-[node name="OSpeedButton" type="TextureButton" parent="OptionUpgrades/OptionSpeed"]
-z_index = -1
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
-pivot_offset = Vector2(16, 16)
-focus_neighbor_left = NodePath("../../OptionDamage/ODamageButton")
-focus_neighbor_bottom = NodePath("../../OptionUnlock/OUnlockButton")
-disabled = true
-texture_normal = ExtResource("8_uiqod")
-texture_disabled = ExtResource("1_cbj8s")
-metadata/_edit_use_anchors_ = true
+[node name="ActualButton" parent="OptionUpgrades/OptionSpeed" index="0"]
+focus_neighbor_left = NodePath("../../OptionFireRate/ActualButton")
+focus_neighbor_top = NodePath("../../OptionDamage/ActualButton")
+focus_neighbor_right = NodePath("../../../SystemUpgrades/SystemSpeed/ActualButton")
+focus_neighbor_bottom = NodePath("../../OptionAmount/ActualButton")
 
-[node name="OptionFireRate" type="Sprite2D" parent="OptionUpgrades"]
-z_index = 3
-position = Vector2(-376, 165)
-texture = ExtResource("11_831ub")
+[node name="OptionFireRate" parent="OptionUpgrades" instance=ExtResource("4_6uyru")]
+position = Vector2(-275, 202)
+upgrade_type = "FireRate"
+upgrade_category = "Option"
 
-[node name="OFireRateButton" type="TextureButton" parent="OptionUpgrades/OptionFireRate"]
-z_index = -1
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
-pivot_offset = Vector2(16, 16)
-focus_neighbor_right = NodePath("../../OptionDamage/ODamageButton")
-focus_neighbor_bottom = NodePath("../../OptionUnlock/OUnlockButton")
-disabled = true
-texture_normal = ExtResource("8_uiqod")
-texture_disabled = ExtResource("1_cbj8s")
-metadata/_edit_use_anchors_ = true
+[node name="ActualButton" parent="OptionUpgrades/OptionFireRate" index="0"]
+focus_neighbor_left = NodePath("../../../MissileUpgrades/MissileAmount/ActualButton")
+focus_neighbor_top = NodePath("../../../MissileUpgrades/MissileFireRate/ActualButton")
+focus_neighbor_right = NodePath("../../OptionDamage/ActualButton")
+focus_neighbor_bottom = NodePath("../../OptionSpeed/ActualButton")
 
-[node name="OptionAmount" type="Sprite2D" parent="OptionUpgrades"]
-z_index = 3
-position = Vector2(-277, 235)
-texture = ExtResource("11_831ub")
+[node name="OptionAmount" parent="OptionUpgrades" instance=ExtResource("4_6uyru")]
+position = Vector2(-175, 350)
+upgrade_type = "Amount"
+upgrade_category = "Option"
 
-[node name="OAmountButton" type="TextureButton" parent="OptionUpgrades/OptionAmount"]
-z_index = -1
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
-pivot_offset = Vector2(16, 16)
-focus_neighbor_right = NodePath("../../OptionDamage/ODamageButton")
-focus_neighbor_bottom = NodePath("../../OptionUnlock/OUnlockButton")
-disabled = true
-texture_normal = ExtResource("8_uiqod")
-texture_disabled = ExtResource("1_cbj8s")
-metadata/_edit_use_anchors_ = true
+[node name="ActualButton" parent="OptionUpgrades/OptionAmount" index="0"]
+focus_neighbor_left = NodePath("../../OptionFireRate/ActualButton")
+focus_neighbor_top = NodePath("../../OptionSpeed/ActualButton")
+focus_neighbor_right = NodePath("../../../SystemUpgrades/SystemSpeed/ActualButton")
+
+[node name="SystemUpgrades" type="Node2D" parent="."]
+
+[node name="SystemUnlock" parent="SystemUpgrades" instance=ExtResource("4_6uyru")]
+position = Vector2(75, 200)
+texture = ExtResource("19_7vnxd")
+upgrade_type = "Unlock"
+upgrade_category = "System"
+
+[node name="ActualButton" parent="SystemUpgrades/SystemUnlock" index="0"]
+focus_neighbor_left = NodePath("../../../OptionUpgrades/OptionUnlock/ActualButton")
+focus_neighbor_top = NodePath("../../../MainCPU/SortieButton")
+focus_neighbor_right = NodePath("../../SystemShield/ActualButton")
+focus_neighbor_bottom = NodePath("../../SystemSpeed/ActualButton")
+
+[node name="SystemSpeed" parent="SystemUpgrades" instance=ExtResource("4_6uyru")]
+position = Vector2(75, 275)
+texture = ExtResource("20_6uyru")
+upgrade_type = "Speed"
+upgrade_category = "System"
+
+[node name="ActualButton" parent="SystemUpgrades/SystemSpeed" index="0"]
+focus_neighbor_left = NodePath("../../../OptionUpgrades/OptionSpeed/ActualButton")
+focus_neighbor_top = NodePath("../../SystemUnlock/ActualButton")
+focus_neighbor_right = NodePath("../../SystemShield/ActualButton")
+focus_neighbor_bottom = NodePath("../../../OptionUpgrades/OptionAmount/ActualButton")
+
+[node name="SystemShield" parent="SystemUpgrades" instance=ExtResource("4_6uyru")]
+position = Vector2(150, 200)
+texture = ExtResource("21_sapnf")
+upgrade_type = "Shield"
+upgrade_category = "System"
+
+[node name="ActualButton" parent="SystemUpgrades/SystemShield" index="0"]
+focus_neighbor_left = NodePath("../../SystemUnlock/ActualButton")
+focus_neighbor_top = NodePath("../../../PlasmaUpgrades/PlasmaUnlock/ActualButton")
+focus_neighbor_right = NodePath("../../../PlasmaUpgrades/PlasmaDamage/ActualButton")
+focus_neighbor_bottom = NodePath("../../SystemSpeed/ActualButton")
 
 [node name="Cursor" type="AnimatedSprite2D" parent="." groups=["Cursor"]]
 sprite_frames = SubResource("SpriteFrames_v3ac7")
-animation = &"Large"
-autoplay = "Large"
-frame = 1
-frame_progress = 0.172285
+animation = &"CPU"
+autoplay = "CPU"
 
-[node name="TextBox" type="NinePatchRect" parent="."]
+[node name="TextBoxGroup" type="Control" parent="."]
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="TextBoxGroup"]
+visible = false
+layout_mode = 0
+offset_right = 163.0
+offset_bottom = 94.0
+texture = ExtResource("18_sapnf")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="TextBox" type="NinePatchRect" parent="TextBoxGroup"]
+visible = false
 z_index = 3
-offset_right = 161.0
-offset_bottom = 90.0
+offset_right = 165.0
+offset_bottom = 96.0
 texture = ExtResource("8_v3ac7")
 patch_margin_left = 10
 patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
-[node name="MarginContainer" type="MarginContainer" parent="TextBox"]
+[node name="MarginContainer" type="MarginContainer" parent="TextBoxGroup/TextBox"]
 layout_mode = 1
-offset_right = 320.0
-offset_bottom = 178.0
+offset_right = 326.0
+offset_bottom = 188.0
 scale = Vector2(0.5, 0.5)
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="UpgradeTitle" type="Label" parent="TextBox/MarginContainer"]
+[node name="UpgradeTitle" type="Label" parent="TextBoxGroup/TextBox/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme = ExtResource("9_v3ac7")
 text = "Vulkan Damage"
 
-[node name="UpgradeText" type="Label" parent="TextBox/MarginContainer"]
+[node name="UpgradeText" type="Label" parent="TextBoxGroup/TextBox/MarginContainer"]
 layout_mode = 2
 theme = ExtResource("9_v3ac7")
 text = "Increases the damage done by a Vulkan projectile by 50%"
 autowrap_mode = 2
 
-[node name="UpgradeCost" type="Label" parent="TextBox/MarginContainer"]
+[node name="UpgradeCost" type="Label" parent="TextBoxGroup/TextBox/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 theme = ExtResource("9_v3ac7")
 text = "15 Bits"
 
-[node name="UpgradeLevel" type="Label" parent="TextBox/MarginContainer"]
+[node name="UpgradeLevel" type="Label" parent="TextBoxGroup/TextBox/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 theme = ExtResource("9_v3ac7")
 text = "0 / 1"
 
-[node name="SortieButton" type="TextureButton" parent="."]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -29.0
-offset_top = 71.0
-offset_right = 29.0
-offset_bottom = 87.0
-grow_horizontal = 0
-grow_vertical = 0
-pivot_offset = Vector2(58, 16)
-size_flags_horizontal = 8
-size_flags_vertical = 8
-texture_normal = ExtResource("14_bspfg")
-texture_pressed = ExtResource("15_831ub")
-texture_focused = ExtResource("16_8rv04")
-
-[connection signal="focus_entered" from="VulkanUpgrades/VulkanSpeed/VSpeedButton" to="." method="_on_v_speed_button_focus_entered"]
-[connection signal="pressed" from="VulkanUpgrades/VulkanSpeed/VSpeedButton" to="." method="_on_v_speed_button_pressed"]
-[connection signal="focus_entered" from="VulkanUpgrades/VulkanFireRate/VFireRateButton" to="." method="_on_v_fire_rate_button_focus_entered"]
-[connection signal="pressed" from="VulkanUpgrades/VulkanFireRate/VFireRateButton" to="." method="_on_v_fire_rate_button_pressed"]
-[connection signal="focus_entered" from="VulkanUpgrades/VulkanAmount/VAmountButton" to="." method="_on_v_amount_button_focus_entered"]
-[connection signal="pressed" from="VulkanUpgrades/VulkanAmount/VAmountButton" to="." method="_on_v_amount_button_pressed"]
-[connection signal="pressed" from="SortieButton" to="." method="_on_sortie_button_pressed"]
+[connection signal="focus_entered" from="MainCPU/SortieButton" to="." method="_on_sortie_button_focus_entered"]
+[connection signal="focus_exited" from="MainCPU/SortieButton" to="." method="_on_sortie_button_focus_exited"]
+[connection signal="pressed" from="MainCPU/SortieButton" to="." method="_on_sortie_button_pressed"]
 
 [editable path="VulkanUpgrades/VulkanUnlock"]
 [editable path="VulkanUpgrades/VulkanDamage"]
+[editable path="VulkanUpgrades/VulkanSpeed"]
+[editable path="VulkanUpgrades/VulkanFireRate"]
+[editable path="VulkanUpgrades/VulkanAmount"]
+[editable path="MissileUpgrades/MissileUnlock"]
+[editable path="MissileUpgrades/MissileDamage"]
+[editable path="MissileUpgrades/MissileSpeed"]
+[editable path="MissileUpgrades/MissileFireRate"]
+[editable path="MissileUpgrades/MissileAmount"]
+[editable path="PlasmaUpgrades/PlasmaUnlock"]
+[editable path="PlasmaUpgrades/PlasmaDamage"]
+[editable path="PlasmaUpgrades/PlasmaSize"]
+[editable path="PlasmaUpgrades/PlasmaFireRate"]
+[editable path="OptionUpgrades/OptionUnlock"]
+[editable path="OptionUpgrades/OptionDamage"]
+[editable path="OptionUpgrades/OptionSpeed"]
+[editable path="OptionUpgrades/OptionFireRate"]
+[editable path="OptionUpgrades/OptionAmount"]
+[editable path="SystemUpgrades/SystemUnlock"]
+[editable path="SystemUpgrades/SystemSpeed"]
+[editable path="SystemUpgrades/SystemShield"]
