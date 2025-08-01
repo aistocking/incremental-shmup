@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://b6x1yu2efa8dh"]
+
+[ext_resource type="Texture2D" uid="uid://cb3jvk1ex75fx" path="res://Art/Player/Missile_Explosion_Small.png" id="1_hq5ba"]
+[ext_resource type="Script" uid="uid://daim0mk0lqrav" path="res://Scenes/Player/missile_explosion.gd" id="2_kdsi3"]
+[ext_resource type="PackedScene" uid="uid://b4c17usa6vwgb" path="res://Scenes/Components/sfx_player.tscn" id="3_shww5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sle8t"]
+atlas = ExtResource("1_hq5ba")
+region = Rect2(0, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0i02f"]
+atlas = ExtResource("1_hq5ba")
+region = Rect2(18, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tia57"]
+atlas = ExtResource("1_hq5ba")
+region = Rect2(36, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3eqkl"]
+atlas = ExtResource("1_hq5ba")
+region = Rect2(54, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_prw6y"]
+atlas = ExtResource("1_hq5ba")
+region = Rect2(72, 0, 18, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a34co"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sle8t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0i02f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tia57")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3eqkl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_prw6y")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jmg6f"]
+size = Vector2(18, 18)
+
+[node name="PlayerMissile" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_a34co")
+autoplay = "default"
+script = ExtResource("2_kdsi3")
+
+[node name="SfxPlayer" parent="." instance=ExtResource("3_shww5")]
+
+[node name="PlayerBulletHitBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 84
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBulletHitBox"]
+shape = SubResource("RectangleShape2D_jmg6f")
+debug_color = Color(0, 0.560465, 0.885116, 0.42)
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
+[connection signal="area_entered" from="PlayerBulletHitBox" to="." method="_on_player_bullet_hit_box_area_entered"]

@@ -17,13 +17,15 @@ Node References
 @onready var _exhaust_particles_light: GPUParticles2D = $ExhaustAnimGroup/LightExhaustParticles
 
 var _shoot_sfx: AudioStream = preload("res://Sound/Shoot.wav")
+var _missile_fire_sfx: AudioStream = preload("res://Sound/Missile_Fire.wav")
 var _hit_sfx: AudioStream = preload("res://Sound/Hit.wav")
 
 """
 Packed Scenes
 """
-var _BASIC_BULLET_SCENE: PackedScene = preload("res://Scenes/Player/basic_player_bullet.tscn")
-var _BOOST_RING_SCENE: PackedScene = preload("res://Scenes/Player/boost_ring.tscn")
+const _BASIC_BULLET_SCENE: PackedScene = preload("res://Scenes/Player/basic_player_bullet.tscn")
+const _MISSILE_SCENE: PackedScene = preload("res://Scenes/Player/missile_projectile.tscn")
+const _BOOST_RING_SCENE: PackedScene = preload("res://Scenes/Player/boost_ring.tscn")
 
 """
 Variables
@@ -33,13 +35,18 @@ var player_input: bool = false
 var _speed: float = 100.0
 var _previous_velocity: Vector2
 var _firing: bool = false
+var _vulkan_amount: int = Globals.vulkan_dict["Amount"] + Globals.vulkan_dict["Unlock"]
+var _vulkan_firerate: int = Globals.vulkan_dict["FireRate"]
+var _missile_amount: int = Globals.missile_dict["Amount"] + Globals.missile_dict["Unlock"]
+var _missile_firerate: int = Globals.missile_dict["FireRate"]
+var _plasma_unlocked: bool = Globals.plasma_dict["Unlock"]
 var _focused: bool = false
-var _shields: int = 0
+var _shields: int = Globals.system_dict["Shield"]
 
 signal player_died
 
 func _ready():
-	_shields = Globals.system_shield_amount
+	pass
 
 func start() -> void:
 	_anims.play("Intro")
@@ -113,9 +120,9 @@ func handle_movement() -> void:
 
 func _fire_projectiles() -> void:
 	if _vulkan_recover_timer.is_stopped():
-		_vulkan_recover_timer.start(0.54 - (Globals.vulkan_dict["FireRate"] * 0.05))
+		_vulkan_recover_timer.start(0.54 - (_vulkan_firerate * 0.05))
 		_sfx_player.play_sfx_rand_pitch(_shoot_sfx, 0.0, .1)
-		for i in (Globals.vulkan_dict["Amount"] + 1):
+		for i in (_vulkan_amount):
 			var bullet_instance = _BASIC_BULLET_SCENE.instantiate()
 			match i:
 				0:
@@ -129,6 +136,25 @@ func _fire_projectiles() -> void:
 				4:
 					bullet_instance.global_position = _bullet_spawn_marker.global_position + Vector2(-6, -8)
 			get_parent().add_child(bullet_instance)
+	if _missile_recover_timer.is_stopped():
+		_missile_recover_timer.start(1 - (_missile_firerate * 0.085))
+		_sfx_player.play_sfx_rand_pitch(_missile_fire_sfx, 0.0, .1)
+		for i in (_missile_amount):
+			var missile_instance = _MISSILE_SCENE.instantiate()
+			match i:
+				0:
+					missile_instance.global_position = global_position + Vector2(5,0)
+					missile_instance.y_movement = -15
+				1:
+					missile_instance.global_position = global_position + Vector2(5,0)
+					missile_instance.y_movement = 15
+				2:
+					missile_instance.global_position = global_position
+					missile_instance.y_movement = -25
+				3:
+					missile_instance.global_position = global_position
+					missile_instance.y_movement = 25
+			get_parent().add_child(missile_instance)
 
 func get_hit() -> void:
 	if _shields <= 0:
