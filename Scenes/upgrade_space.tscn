@@ -311,9 +311,6 @@ offset_right = 603.0
 offset_bottom = 305.0
 color = Color(0.0509804, 0.0862745, 0.0509804, 1)
 
-[node name="HUD" parent="." instance=ExtResource("2_04kcj")]
-visible = false
-
 [node name="MainCPU" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 128)
 sprite_frames = SubResource("SpriteFrames_ment5")
@@ -622,6 +619,7 @@ patch_margin_bottom = 3
 [node name="TextBox" type="NinePatchRect" parent="TextBoxGroup"]
 visible = false
 z_index = 3
+layout_mode = 0
 offset_right = 165.0
 offset_bottom = 96.0
 texture = ExtResource("8_v3ac7")
@@ -666,6 +664,10 @@ size_flags_horizontal = 0
 size_flags_vertical = 8
 theme = ExtResource("9_v3ac7")
 text = "0 / 1"
+
+[node name="HUD" parent="." instance=ExtResource("2_04kcj")]
+layer = 2
+visible = false
 
 [connection signal="focus_entered" from="MainCPU/SortieButton" to="." method="_on_sortie_button_focus_entered"]
 [connection signal="focus_exited" from="MainCPU/SortieButton" to="." method="_on_sortie_button_focus_exited"]

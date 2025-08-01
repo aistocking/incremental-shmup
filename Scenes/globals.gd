@@ -27,13 +27,12 @@ Upgrade Variables
 var vulkan_dict = {"Unlock": 1, "Damage": 0, "FireRate": 0, "Speed": 0, "Amount": 0, "Pierce": 0}
 #Missile
 var missile_dict = {"Unlock": 0, "Damage": 0, "FireRate": 0, "Speed": 0, "Amount": 0, "Size": 0}
+#Plasma
+var plasma_dict = {"Unlock": 0, "Damage": 0, "FireRate": 0, "Size": 0}
 #Options
-var option_upgrade_amount: int = 0
-var option_upgrade_firerate: int = 0
-var option_upgrade_speed: int = 0
-var option_upgrade_damage: int = 0
+var option_dict = {"Unlock": 0, "Damage": 0, "FireRate": 0, "Speed": 0, "Amount": 0}
 #System
-var system_shield_amount: int = 0
+var system_dict = {"Unlock": 0, "Shield": 0, "Speed": 0}
 
 var enemy_exp_multiplier: int = 0
 

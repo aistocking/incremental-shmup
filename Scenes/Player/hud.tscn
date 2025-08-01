@@ -634,28 +634,6 @@ size_flags_horizontal = 4
 theme = ExtResource("1_e0onf")
 text = "0"
 
-[node name="Debug Buttons" type="Control" parent="FullScreenMargin"]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="FullScreenMargin/Debug Buttons"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -324.0
-offset_bottom = 40.0
-grow_horizontal = 0
-
-[node name="Button" type="Button" parent="FullScreenMargin/Debug Buttons/HBoxContainer"]
-layout_mode = 2
-theme = ExtResource("1_e0onf")
-text = "Eye Scene"
-
-[node name="Button2" type="Button" parent="FullScreenMargin/Debug Buttons/HBoxContainer"]
-layout_mode = 2
-theme = ExtResource("1_e0onf")
-text = "Abort Scene"
-
 [node name="UpgradeSpaceHUD" type="Control" parent="FullScreenMargin"]
 layout_mode = 2
 
@@ -674,5 +652,42 @@ offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[connection signal="pressed" from="FullScreenMargin/Debug Buttons/HBoxContainer/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="FullScreenMargin/Debug Buttons/HBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[node name="Debug Buttons" type="Control" parent="."]
+z_index = 3
+layout_mode = 3
+anchors_preset = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 955.0
+offset_bottom = 535.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Debug Buttons"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -324.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="Button" type="Button" parent="Debug Buttons/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("1_e0onf")
+text = "Eye Scene"
+
+[node name="Button2" type="Button" parent="Debug Buttons/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("1_e0onf")
+text = "Abort Scene"
+
+[node name="Button3" type="Button" parent="Debug Buttons/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("1_e0onf")
+text = "EXP"
+
+[connection signal="pressed" from="Debug Buttons/HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Debug Buttons/HBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Debug Buttons/HBoxContainer/Button3" to="." method="_on_button_3_pressed"]

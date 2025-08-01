@@ -51,3 +51,6 @@ func _on_button_pressed():
 
 func _on_button_2_pressed():
 	Globals.set_cutscene_to_play(Globals.CUTSCENES.ABORT)
+
+func _on_button_3_pressed():
+	Globals.gain_exp(100000)
